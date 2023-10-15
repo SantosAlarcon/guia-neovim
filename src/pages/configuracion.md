@@ -150,4 +150,8 @@ En la siguiente tabla se recogerán las diferentes opciones que permitirán al u
 | ------ | ----------- |
 | `number` | Muestra el número de cada línea |
 | `relativenumber` | Muestra el número relativo de cada línea |
+| `textwidth` | Configura la longitud de letras en una línea |
+| `wrap` | Permite cortar una línea de texto larga y continuarla en la línea siguiente |
+| `ignorecase` | Se ignora si la ocurriencia está en mayúsculas o en minúsculas |
+| `hlsearch` | Se resaltan todas las ocurrencias de la búsqueda |
 </main>
