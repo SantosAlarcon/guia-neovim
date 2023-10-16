@@ -138,6 +138,22 @@ dentro de la carpeta **plugins**.
 En definitiva, esta es la mejor manera de administrar la configuración de Neovim, ya
     que facilita su mantenimiento y diagnóstico.
 
+## Tecla líder
+Una característica de Vim/Neovim es que podemos asignarle una **tecla líder**, que
+viene a ser lo mismo que la tecla Windows, o Comando de Mac. No se puede combinar con
+    otras teclas, aunque si que se puede tocar dicha tecla y luego una combinación.
+
+A continuación veremos cómo se configura la **tecla líder** tanto en VIMScript como
+en Lua.
+
+```
+-- VIMScript
+set g:mapleader = ","
+
+-- Lua
+vim.g.mapleader = ","
+```
+
 ## Opciones
 Ahora que hemos visto todo lo esencial en cuanto a la configuración se refiere, vamos
     a pasar de lleno a la acción.
@@ -151,7 +167,16 @@ En la siguiente tabla se recogerán las diferentes opciones que permitirán al u
 | `number` | Muestra el número de cada línea |
 | `relativenumber` | Muestra el número relativo de cada línea |
 | `textwidth` | Configura la longitud de letras en una línea |
-| `wrap` | Permite cortar una línea de texto larga y continuarla en la línea siguiente |
+| `wrap` | Permite activar/desactivar el salto de línea |
 | `ignorecase` | Se ignora si la ocurriencia está en mayúsculas o en minúsculas |
 | `hlsearch` | Se resaltan todas las ocurrencias de la búsqueda |
+| `confirm` | Muestra una confirmación antes de guardar los cambios |
+| `mouse` | Configura el modo del ratón |
+| `tabstop` | Número de tabulaciones en la indentación |
+| `encoding` | Codificación del archivo |
+| `conceallevel` | Oculta los asteríscos en la negrita y cursiva en los archivos Markdown |
+| `smartindent` | Realiza una indentación automática |
+| `expandtab` | Usa espaciado en vez de tabulaciones |
+| `termguicolors` | Activa el soporte de color verdadero |
+| `echo [mensaje]` | Muestra un mensaje en la barra de comandos |
 </main>
