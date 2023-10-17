@@ -33,6 +33,12 @@ import Layout from "../layouts/Layout.astro";
     justify-content: center;
 
     gap: 1.5em;
+
+    @media (width < 720px) {
+          flex-direction: column;
+          width: 100%;
+    }
+
     & a,
     & a:visited {
       color: inherit;

@@ -1,9 +1,7 @@
 ---
-layout: ../layouts/Layout.astro
+layout: ../layouts/MDLayout.astro
 title: Neovim - Comandos
 ---
-
-<main>
 
 # :comandos
 
@@ -71,8 +69,6 @@ P.D.: Los plugins de terceros que se cargan en **Neovim** cuentan con su propia 
 | `:/[palabra]`  | Busca las ocurrencias que coincidan con la palabra       |
 
 P.D.: Se pueden usar también las **expresiones regulares**, aunque eso queda fuera de este sitio.
-
-</main>
 
 <script>
     document.title = "Neovim - Comandos"
