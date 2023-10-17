@@ -3,7 +3,7 @@ interface Props {
   title: string;
 }
 
-const { title } = Astro.props;
+const { title } = Astro.props.content;
 import { ViewTransitions } from "astro:transitions";
 import Header from "../components/Header.astro";
 ---
@@ -32,12 +32,12 @@ import Header from "../components/Header.astro";
       href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700;900&display=swap"
       rel="stylesheet"
     />
-    <ViewTransitions fallback="none" />
+    <ViewTransitions />
   </head>
   <body>
-    <Header transition:animate="none" />
-    <main>
-      <slot transition:animate="slide" />
+    <Header />
+    <main transition:animate="slide">
+      <slot />
     </main>
     <style is:global>
       :root {
@@ -57,8 +57,20 @@ import Header from "../components/Header.astro";
         box-sizing: border-box;
       }
 
+      a, a:visited, a:link {
+          color: #aaf;
+          text-decoration: none;
+          transition: all .25s ease-in-out;
+
+          &:hover {
+              color: #ff0;
+              text-shadow: 0 0 .5em #ff0;
+          }
+      }
+
       body {
         font-family: "Gabarito";
+          overflow-x: hidden;
       }
       html {
         font-family: system-ui, sans-serif;

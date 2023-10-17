@@ -32,11 +32,11 @@ import Header from "../components/Header.astro";
       href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700;900&display=swap"
       rel="stylesheet"
     />
-    <ViewTransitions fallback="none" />
+    <ViewTransitions />
   </head>
   <body>
-    <Header transition:animate="none" />
-    <slot transition:animate="slide" />
+    <Header />
+    <slot />
   </body>
   <style is:global>
     :root {
@@ -58,6 +58,7 @@ import Header from "../components/Header.astro";
 
     body {
       font-family: "Gabarito";
+        overflow-x: hidden;
     }
     html {
       font-family: system-ui, sans-serif;

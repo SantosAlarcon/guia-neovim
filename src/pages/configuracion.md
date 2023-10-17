@@ -1,8 +1,7 @@
 ---
-title: Neovim - Configuración
 layout: ../layouts/MDLayout.astro
+title: "Neovim - Configuración"
 ---
-
 # :configuracion
 
 Tanto **Vim** como **Neovim** permiten a los usuarios guardar sus configuraciones en un archivo. Se pueden crear archivos de configuración en formato **.vim** (VIMScript) o en formato **.lua** (Lua). En esos archivos se guardan los **atajos de teclado personalizados**, [complementos](/plugins), y las diferentes opciones que modifican el comportamiento del editor. En función del S.O. se guardan en:
@@ -194,4 +193,4 @@ opciones se puede consultar con el comando `:options`.
 | `smartindent`    | Realiza una indentación automática                                     |
 | `expandtab`      | Usa espaciado en vez de tabulaciones                                   |
 | `termguicolors`  | Activa el soporte de color verdadero                                   |
-| `colorscheme` | Establece el esquema de colores para el editor |
+| `colorscheme [esquemaa]` | Establece el esquema de colores para el editor |
