@@ -6,7 +6,4 @@ export default defineConfig({
   base: "/guia-neovim/",
   output: "static",
   publicDir: "./public",
-  redirects: {
-    "/": "/guia-neovim",
-  }
 });
