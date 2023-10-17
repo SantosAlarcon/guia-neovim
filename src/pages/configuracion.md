@@ -140,19 +140,31 @@ En definitiva, esta es la mejor manera de administrar la configuración de Neovi
 
 ## Tecla líder
 Una característica de Vim/Neovim es que podemos asignarle una **tecla líder**, que
-viene a ser lo mismo que la tecla Windows, o Comando de Mac. No se puede combinar con
-    otras teclas, aunque si que se puede tocar dicha tecla y luego una combinación.
+viene a ser lo mismo que la tecla Windows, o Comando de Mac. No se puede usar simultáneamente con
+    otras teclas, sino que hay que tocar dicha tecla y luego una combinación.
 
 A continuación veremos cómo se configura la **tecla líder** tanto en VIMScript como
 en Lua.
 
-```
+``` code
 -- VIMScript
 set g:mapleader = ","
 
 -- Lua
 vim.g.mapleader = ","
 ```
+
+Una vez definida, ahora solo falta asignar unas cuantas combinaciones en ambos formatos.
+
+``` code
+-- VIMScript
+nnoremap <silent> <leader>bd ":bdelete<CR>"
+
+-- Lua
+vim.keymap.set("n", "<leader>bd", ":bdelete<cr>", {silent=true})
+```
+
+En el ejemplo anterior hemos definido la **tecla líder**, seguida de "bd" para cerrar el búfer/archivo actual.
 
 ## Opciones
 Ahora que hemos visto todo lo esencial en cuanto a la configuración se refiere, vamos
@@ -178,5 +190,4 @@ En la siguiente tabla se recogerán las diferentes opciones que permitirán al u
 | `smartindent` | Realiza una indentación automática |
 | `expandtab` | Usa espaciado en vez de tabulaciones |
 | `termguicolors` | Activa el soporte de color verdadero |
-| `echo [mensaje]` | Muestra un mensaje en la barra de comandos |
 </main>

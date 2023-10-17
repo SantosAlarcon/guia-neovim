@@ -15,7 +15,11 @@ import Header from "../components/Header.astro";
     <meta charset="UTF-8" />
     <meta name="description" content="Astro description" />
     <meta name="viewport" content="width=device-width" />
-    <link rel="icon" type="image/svg+xml" href="/neovim-favicon.svg" />
+    <link
+      rel="icon"
+      type="image/svg+xml"
+      href="/guia-neovim/neovim-favicon.svg"
+    />
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -33,133 +37,133 @@ import Header from "../components/Header.astro";
   <body>
     <Header transition:animate="none" />
     <slot transition:animate="slide" />
-    <style is:global>
-      :root {
-        --accent: 136, 58, 234;
-        --accent-light: 224, 204, 250;
-        --accent-dark: 49, 10, 101;
-        --accent-gradient: linear-gradient(
-          45deg,
-          rgb(var(--accent)),
-          rgb(var(--accent-light)) 30%,
-          white 60%
-        );
-      }
-      *,
-      *::before,
-      *::after {
-        box-sizing: border-box;
-      }
-
-      body {
-        font-family: "Gabarito";
-      }
-      html {
-        font-family: system-ui, sans-serif;
-        background: #13151a;
-        background-size: 224px;
-      }
-
-      main {
-        margin: auto;
-        padding: 1rem;
-        width: 1200px;
-        max-width: calc(100% - 2rem);
-        color: #ddd;
-        font-size: 16px;
-        line-height: 1.6;
-
-        & img {
-          width: 100%;
-        }
-      }
-
-      figure {
-        margin: 0;
-      }
-
-      figcaption {
-        font-size: 0.9em;
-      }
-
-      h1 {
-        font-size: 4rem;
-        font-weight: 700;
-        line-height: 1;
-        text-align: center;
-        margin-bottom: 1em;
-
-        @media (width < 720px) {
-          font-size: 2.75rem;
-        }
-      }
-
-      code {
-        font-family:
-          JetBrains Mono,
-          Menlo,
-          Monaco,
-          Lucida Console,
-          Liberation Mono,
-          DejaVu Sans Mono,
-          Bitstream Vera Sans Mono,
-          Courier New,
-          monospace;
-
-        color: #bbf;
-      }
-
-      pre {
-        padding: 1em;
-        background-color: #111 !important;
-        border-radius: 0.25em;
-      }
-
-      kbd {
-        background: linear-gradient(#669 0%, #336 100%);
-        font-size: 12px;
-        padding: 0.5em 1em;
-        border-radius: 0.5em;
-        box-shadow: 0 0.25em 0.5em #0007;
-        user-select: none;
-        cursor: pointer;
-        color: white;
-        text-shadow: 0 0 0.5em #aaf;
-
-        &:active {
-          box-shadow: inset 0 0.25em 0.5em #0007;
-        }
-      }
-
-      table {
-        width: 100%;
-        box-shadow: 0 0.5em 1em #0007;
-        margin-bottom: 3em;
-        border-collapse: collapse;
-      }
-
-      th {
-        text-align: left;
-        padding: 0.5em 1em;
-        background-color: hsl(204.94deg 81.05% 40%);
-      }
-
-      tbody {
-        & tr:nth-child(2n + 1) {
-          background-color: hsl(204.94deg 81.05% 25%);
-        }
-        & tr:nth-child(2n + 2) {
-          background-color: hsl(204.94deg 81.05% 20%);
-        }
-
-        & td {
-          padding: 1em;
-        }
-
-        & td:first-child {
-          width: 30%;
-        }
-      }
-    </style>
   </body>
+  <style is:global>
+    :root {
+      --accent: 136, 58, 234;
+      --accent-light: 224, 204, 250;
+      --accent-dark: 49, 10, 101;
+      --accent-gradient: linear-gradient(
+        45deg,
+        rgb(var(--accent)),
+        rgb(var(--accent-light)) 30%,
+        white 60%
+      );
+    }
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: "Gabarito";
+    }
+    html {
+      font-family: system-ui, sans-serif;
+      background: #13151a;
+      background-size: 224px;
+    }
+
+    main {
+      margin: auto;
+      padding: 1rem;
+      width: 1200px;
+      max-width: calc(100% - 2rem);
+      color: #ddd;
+      font-size: 16px;
+      line-height: 1.6;
+
+      & img {
+        width: 100%;
+      }
+    }
+
+    figure {
+      margin: 0;
+    }
+
+    figcaption {
+      font-size: 0.9em;
+    }
+
+    h1 {
+      font-size: 4rem;
+      font-weight: 700;
+      line-height: 1;
+      text-align: center;
+      margin-bottom: 1em;
+
+      @media (width < 720px) {
+        font-size: 2.75rem;
+      }
+    }
+
+    code {
+      font-family:
+        JetBrains Mono,
+        Menlo,
+        Monaco,
+        Lucida Console,
+        Liberation Mono,
+        DejaVu Sans Mono,
+        Bitstream Vera Sans Mono,
+        Courier New,
+        monospace;
+
+      color: #bbf;
+    }
+
+    pre {
+      padding: 1em;
+      background-color: #111 !important;
+      border-radius: 0.25em;
+    }
+
+    kbd {
+      background: linear-gradient(#669 0%, #336 100%);
+      font-size: 12px;
+      padding: 0.5em 1em;
+      border-radius: 0.5em;
+      box-shadow: 0 0.25em 0.5em #0007;
+      user-select: none;
+      cursor: pointer;
+      color: white;
+      text-shadow: 0 0 0.5em #aaf;
+
+      &:active {
+        box-shadow: inset 0 0.25em 0.5em #0007;
+      }
+    }
+
+    table {
+      width: 100%;
+      box-shadow: 0 0.5em 1em #0007;
+      margin-bottom: 3em;
+      border-collapse: collapse;
+    }
+
+    th {
+      text-align: left;
+      padding: 0.5em 1em;
+      background-color: hsl(204.94deg 81.05% 40%);
+    }
+
+    tbody {
+      & tr:nth-child(2n + 1) {
+        background-color: hsl(204.94deg 81.05% 25%);
+      }
+      & tr:nth-child(2n + 2) {
+        background-color: hsl(204.94deg 81.05% 20%);
+      }
+
+      & td {
+        padding: 1em;
+      }
+
+      & td:first-child {
+        width: 30%;
+      }
+    }
+  </style>
 </html>

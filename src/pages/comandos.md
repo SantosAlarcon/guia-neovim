@@ -26,6 +26,7 @@ En las siguientes tablas hay una variedad de comandos agrupados por tipo.
 | `:help [página]`                      | Carga la ayuda de X página. Útil para revisar la documentación                    |
 | `:tutor`                              | Carga el tutorial de **Neovim**, por si eres un **n00b** y no sabes dónde empezar |
 | `:options`                            | Muestra una lista de opciones que se pueden configurar en **Neovim**              |
+| `:echo [mensaje]` | Muestra un mensaje en la línea de comandos  |
 
 P.D.: Los plugins de terceros que se cargan en **Neovim** cuentan con su propia documentación y comandos.
 
