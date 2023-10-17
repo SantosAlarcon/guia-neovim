@@ -12,7 +12,7 @@ Tanto **Vim** como **Neovim** permiten a los usuarios guardar sus configuracione
 * `~/AppData/Local/nvim` en Windows
 
 <figure>
-        <img src="/images/Inicio-Neovim.webp" alt="Inicio de Neovim" />
+        <img src="/guia-neovim/images/Inicio-Neovim.webp" alt="Inicio de Neovim" />
         <figcaption>Neovim totalmente "pelado", sin plugins, ni configuración ni ná</figcaption>
 </figure>
 
