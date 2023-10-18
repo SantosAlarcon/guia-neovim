@@ -164,3 +164,13 @@ tanto es aconsejable añadir el `-cfg` en el nombre del archivo para que "no se 
 la picha un lío".
 + Hay algunos plugins que cuando se activan, cargan su configuración por defecto. En
   otros hay que añadirle la configuración dentro de la función `setup()`.
+
+## Cómo instalar, activar y configurar X plugins
+
+Pues ya que sabemos instalar y activar plugins, ahora es el momento de ponernos con
+otros plugins. Pero no va a ser en esta sección, sino que escribiré una sección por
+cada plugin, con sus capturas y explicación.
+
+### Enlaces
+
++ [NeoTree](/guia-neovim/plugins/neotree)
