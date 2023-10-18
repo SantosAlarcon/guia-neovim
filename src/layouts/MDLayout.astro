@@ -57,20 +57,9 @@ import Header from "../components/Header.astro";
         box-sizing: border-box;
       }
 
-      a, a:visited, a:link {
-          color: #aaf;
-          text-decoration: none;
-          transition: all .25s ease-in-out;
-
-          &:hover {
-              color: #ff0;
-              text-shadow: 0 0 .5em #ff0;
-          }
-      }
-
       body {
         font-family: "Gabarito";
-          overflow-x: hidden;
+        overflow-x: hidden;
       }
       html {
         font-family: system-ui, sans-serif;
@@ -125,6 +114,7 @@ import Header from "../components/Header.astro";
           monospace;
 
         color: #bbf;
+        font-size: 0.8em;
       }
 
       pre {
@@ -143,6 +133,7 @@ import Header from "../components/Header.astro";
         cursor: pointer;
         color: white;
         text-shadow: 0 0 0.5em #aaf;
+        text-wrap: nowrap;
 
         &:active {
           box-shadow: inset 0 0.25em 0.5em #0007;
@@ -171,11 +162,25 @@ import Header from "../components/Header.astro";
         }
 
         & td {
-          padding: 1em;
+          padding: 0.75em;
         }
 
         & td:first-child {
           width: 30%;
+
+          @media (width < 720px) {
+            width: 100%;
+          }
+        }
+      }
+
+      @media (width < 720px) {
+        tr {
+          display: flex;
+          flex-direction: column;
+        }
+        td {
+          width: 100%;
         }
       }
     </style>

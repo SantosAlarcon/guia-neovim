@@ -19,14 +19,14 @@ En las siguientes tablas hay una variedad de comandos agrupados por tipo.
 | `:checkhealth`                        | Realiza un diágnostico para comprobar que **Neovim** funcione bien                |
 | `:set [opcion]`                       | Activa una opción. Útil para las configuraciones                                  |
 | `:set [opcion = variable]`            | Asigna una variable a una opción. Útil para las configuraciones                   |
-| `:set no [X]`                         | Desactiva la opción X                                                             |
+| `:set no[opcion]`                         | Desactiva la opción X                                                             |
 | `:lua [script]`                       | Ejecuta un script en **Lua**, que puede ser función, variable, etc...             |
 | `:help [página]`                      | Carga la ayuda de X página. Útil para revisar la documentación                    |
 | `:tutor`                              | Carga el tutorial de **Neovim**, por si eres un **n00b** y no sabes dónde empezar |
 | `:options`                            | Muestra una lista de opciones que se pueden configurar en **Neovim**              |
 | `:echo [mensaje]` | Muestra un mensaje en la línea de comandos  |
 
-P.D.: Los plugins de terceros que se cargan en **Neovim** cuentan con su propia documentación y comandos.
+P.D.: Los [plugins](/guia-neovim/plugins) de terceros que se cargan en **Neovim** cuentan con su propia documentación y comandos.
 
 ## Archivo / búfer
 
@@ -59,6 +59,7 @@ P.D.: Los plugins de terceros que se cargan en **Neovim** cuentan con su propia 
 | `:bclose`            | Cierra el búfer                                      |
 | `:bprevious`         | Cambia al búfer anterior                             |
 | `:bnext`             | Cambia al búfer siguiente                            |
+| `:buffers`              | Muestra una lista de los búferes                    |
 
 ## Búsqueda y reemplazo
 

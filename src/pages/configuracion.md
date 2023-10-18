@@ -22,7 +22,7 @@ A continuación vamos a ver diferentes formatos de configuración.
 
 Este formato se podría denominar "de legado", ya que pertenece a la época de **Vim**.
 El formato de este archivo es **.vim** y cuya sintaxis es muy sencilla. En la
-parte de [comandos](/comandos) hemos visto el comando `:set` que permite activar y
+parte de [comandos](/guia-neovim/comandos) hemos visto el comando `:set` que permite activar y
 asignar opciones, y que al guardarlo en un archivo permanecen al salir y arrancar
 **Neovim**.
 
@@ -44,7 +44,7 @@ La sintáxis de dichos comandos es esta:
 - `nnoremap [¿<silent>?] [tecla] [accion]`
 
 Al poner el `<CR>` al final le estamos indicando que ejecute esa acción y que pulse al
-**Enter** (también se denomina "retorno de carro").
+**Enter** (también se denomina "retorno de carro"). El modificador opcional `<silent>` permite ejecutar la acción sin mostrar nada al usuario.
 
 ### Formato Lua
 
@@ -60,7 +60,7 @@ opt.conceallevel=2
 opt.encoding='utf-8'
 
 -- Atajos de teclado
-vim.keymap.set("n", '<C-s>', ':w<cr>')
+vim.keymap.set("n", '<C-s>', ':w<cr>', {silent = true, desc = "Guardar cambios en el archivo"})
 ```
 
 En la última línea hemos visto la forma de crear atajos de teclado usando
@@ -68,7 +68,7 @@ En la última línea hemos visto la forma de crear atajos de teclado usando
 siguientes argumentos (o parámetros):
 
 - **Modo:** "n" para el modo **Normal**, "v" para el modo **Visual**, "i" para el
-  modo **Insertar** y "r" para el modo **Reemplazar**
+  modo **Insertar** y "r" para el modo **Reemplazar**. Se pueden combinar varios modos al mismo tiempo.
 - **Tecla:** la tecla o combinación de teclas que se va a usar
 - **Comando**: el comando que se va a ejecutar
 - **Opcionales**: se pueden especificar valores opcionales entre corchetes. Entre ellos están:
@@ -78,16 +78,15 @@ siguientes argumentos (o parámetros):
 ## Configuración monoarchivo / multiarchivo
 
 La configuración de **Neovim** se puede guardar en uno o varios archivos. Guardar
-toda la configuración en un sólo archivo puede ser muy engorroso, y hay que saber
-organizar las secciones del mismo.
+toda la configuración en un sólo archivo puede ser muy engorroso y muy poco intuitivo para los demás usuarios, y hay que saber organizar las secciones del mismo.
 
-En cambio, guardar las configuraciones se podría denominar como modular, ya que cada
-archivo tiene un propósito diferente. Por ejemplo, podríamos tener un archivo con
+En cambio, guardar las configuraciones en varios archivos se podría denominar como modular, ya que cada
+archivo tiene un propósito diferente. Por ejemplo: podríamos tener un archivo con
 los atajos de teclado, otro con las opciones, otra con los plugins, etc...
 
 Esta es la **opción más recomendable** para facilitar la depuración a la hora de
 crear una configuración para **Neovim**. Y de hecho, la gente que comparte sus
-configuraciones de **Neovim** (aka "dotfiles") en varios archivos.
+configuraciones de **Neovim** (aka "dotfiles") en GitHub/GitLab lo hace de esta manera.
 
 ### Configuración multiarchivo con Lua
 
@@ -96,8 +95,8 @@ estructura de directorios muy interesante.
 
 ```
 /lua/
-    plugins.lua
-    keys.lua
+  └─ plugins.lua
+  └─ keys.lua
 init.lua
 ```
 
@@ -117,10 +116,9 @@ Vamos ahora a suponer que la estructura de directorios es tal que así:
 
 ```
 /lua/
-    /plugins/
-        lazy.lua
-
-    keys.lua
+  └─ /plugins/
+  │    └─ lazy.lua
+  └─ keys.lua
 init.lua
 ```
 
@@ -193,4 +191,6 @@ opciones se puede consultar con el comando `:options`.
 | `smartindent`    | Realiza una indentación automática                                     |
 | `expandtab`      | Usa espaciado en vez de tabulaciones                                   |
 | `termguicolors`  | Activa el soporte de color verdadero                                   |
-| `colorscheme [esquemaa]` | Establece el esquema de colores para el editor |
+| `colorscheme [esquema]` | Establece el esquema de colores para el editor |
+| `spell` | Muestra los errores ortográficos |
+| `spelllang` | Establece el idioma de la ortografía |
