@@ -59,4 +59,62 @@ pulsar una tecla para abrir y cerrar **NeoTree**.
 
 ## Configurar Neotree
 
-En desarrollo...
+Ahora vamos a liarnos con el archivo de configuración de NeoTree para alterar su
+funcionamiento. Lo primero será usar la tecla de **tabulación** para abrir/cerrar
+NeoTree.
+
+Para eso abrimos `neotree-cfg.lua` y dentro de `setup` añadimos esto:
+
+``` lua
+require("neo-tree").setup()
+
+vim.keymap.set("n", "<tab>", ":Neotree toggle<cr>", {silent = true})
+```
+
+Ahora sucede que cuando abrimos un archivo, lo abre en un búfer, en vez de una
+pestaña. Vamos a hacer que cuando pulsemos **Enter**, se abra en una pestaña nueva. Pues dentro de `setup()` añadimos:
+
+``` lua
+require("neo-tree").setup({
+    window = {
+        mappings = {
+            ["<cr>"] = { "open_tabnew" }
+        }
+    }
+})
+```
+
+Cerramos Neovim, volvemos a ejecutarlo, abrimos Neotree y seleccionamos un archivo.
+Al abrirlo, ahora se carga en una pestaña nueva.
+
+<img src="/guia-neovim/images/neotree/configuracion-neotree.webp" alt="Se abren nuevas pestañas al abrir archivos con Neotree" />
+
+Para más información sobre cómo configurar **NeoTree** a tu gusto, puedes dirigirte a
+la [documentación oficial de Github](https://github.com/nvim-neo-tree/neo-tree.nvim) o bien escribiendo el comando `:help neo-tree`. A mí personalmente me gusta que se abra como una ventana lateral, como si estuvieses trabajando en **Visual Studio Code** u otro IDE.
+
+## Atajos de teclado de NeoTree
+
+Este plugin dispone de atajos de teclado por defecto para que el usuario pueda hacer
+un montón de cosas con él. Vamos con ellos.
+
+| Tecla | Descripción |
+| ----- | ----------- |
+| <kbd>A</kbd> | Crea un directorio |
+| <kbd>a</kbd> | Crea un archivo, o un directorio si acaba con una "/" |
+| <kbd>c</kbd> | Copia un archivo/directorio |
+| <kbd>d</kbd> | Borra un archivo/directorio |
+| <kbd>i</kbd> | Muestra la información del archivo/directorio |
+| <kbd>m</kbd> | Mueve un archivo/directorio a otro |
+| <kbd>oc</kbd> | Permite ordenar los archivos por fecha de creación |
+| <kbd>od</kbd> | Permite ordenar los archivos por la cantidad de diagnósticos |
+| <kbd>og</kbd> | Permite ordenar los archivos por el estado de Git |
+| <kbd>om</kbd> | Permite ordenar los archivos por fecha de modificación |
+| <kbd>on</kbd> | Permite ordenar los archivos por nombre |
+| <kbd>os</kbd> | Permite ordenar los archivos por tamaño |
+| <kbd>ot</kbd> | Permite ordenar los archivos por tipo |
+| <kbd>p</kbd> | Pegar del Portapapeles |
+| <kbd>r</kbd> | Cambia el nombre de un archivo/directorio |
+| <kbd>x</kbd> | Cortar del Portapapeles |
+| <kbd>y</kbd> | Copiar del Portapapeles |
+| <kbd>Retroceso</kbd> | Subir a un directorio superior |
+| <kbd>?</kbd> | Muestra los atajos de NeoTree |
