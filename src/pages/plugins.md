@@ -14,7 +14,7 @@ Para este sitio vamos a utilizar este último, ya que nos permite cargar plugins
 
 ## Instalación de Lazy
 
-Para ellos nos vamos al directorio `$HOME/.config/nvim/lua/plugins` (no es obligatorio, pero es mejor así para poder organizar la configuración) y creamos el archivo **lazy.lua**. 
+Para ellos nos vamos al directorio `$HOME/.config/nvim/lua/plugins` (no es obligatorio, pero es mejor así para poder organizar la configuración) y creamos el archivo **lazy-cfg.lua**. 
 
 Dentro del archivo pegamos esto:
 
@@ -37,7 +37,7 @@ require("lazy").setup({})
 ```
 
 Guardamos el archivo y luego abrimos el archivo **init.lua** del directorio "nvim".
-Vamos, el que tenemos la configuración. Añadimos `require("plugins.lazy")` y
+Vamos, el que tenemos la configuración. Añadimos `require("plugins.lazy-cfg")` y
 guardamos.
 
 <img src="/guia-neovim/images/carga-lazy-init-lua.webp" alt="Carga de Lazy en el
@@ -96,8 +96,8 @@ Dentro del archivo `plugins.lua` escribimos esto:
 
 ``` lua 
 return {
-  -- lualine
-  {"nvim-lualine/lualine.nvim", dependencies = {"nvim-tree/nvim-web-icons"}}
+  -- Lualine
+  {"nvim-lualine/lualine.nvim", dependencies = {"nvim-tree/nvim-web-icons"}},
 }
 ```
 
@@ -107,20 +107,60 @@ Vamos a desmenuzar el ejemplo anterior:
 + Lo que hay entre corchetes es el nombre del repositorio del plugin (formado por el nombre del autor y el repositorio).
 + Lo de `dependencies` es opcional, ya que le estamos indicando que instale además la dependencia de ese plugin.
 
-¿Te acuerdas del archivo **lazy.lua** del directorio superior? Pues toca modificarlo para que instale los plugins. Dentro de la misma hay que cambiar las siguientes cosas:
+¿Te acuerdas del archivo **lazy-cfg.lua**? Pues toca modificarlo para que instale los plugins. Dentro de la misma hay que cambiar las siguientes cosas:
 
 ``` lua
--- Asignamos la variable plugins para que reciba el listado de plugins
-local plugins = require("plugins.plugins")
-
 -- Carga Lazy con la lista de plugins
-require("lazy").setup(plugins)
+require("lazy").setup({
+    spec = {
+        {import = "plugins.plugins"},
+    }
+})
 ```
 
-Guardamos los cambios. Salimos de Neovim y cuando volvamos a arrancarlo, detectará los nuevos plugins para luego instalarlos.
+Guardamos los cambios. Salimos de Neovim y cuando volvamos a arrancarlo, detectará los nuevos plugins y los instalará.
+
+
+<img src="/guia-neovim/images/instalacion-plugins.webp" alt="Instalando nuevos plugins con Lazy" />
+
+Pero... **¡¡OJO!!** Que se instalen los plugins no significa que estén activados por
+defecto. Para eso vamos a crear un nuevo archivo llamado `lualine-cfg.lua` dentro de este
+directorio. A continuación lo abrimos y escribimos esto:
+
+``` lua
+-- Activamos el Lualine
+require("lualine").setup()
+```
+
+<img src="/guia-neovim/images/activando-lualine.webp" alt="Activando Lualine 1" />
+
+Ahora tenemos que llamarlo desde el archivo **init.lua** del directorio raíz de la
+configuración (sí, ese que está en `$HOME/.config/nvim`). Dentro metemos esto:
+
+```
+require("plugins.lualine-cfg")
+```
+
+<img src="/guia-neovim/images/activando-lualine2.webp" alt="Activando Lualine 2" />
+
+Salimos de Neovim, volvemos a ejecutarlo y ...
+
+<figure>
+    <img src="/guia-neovim/images/lualine-activado.webp" alt="Lualine activado" />
+    <figcaption>
+        <b>Voilá!!</b> Ya tenemos activado el <b>Lualine</b>.
+    </figcaption>
+</figure>
 
 
 ## Consideraciones especiales
-+ Encontrar el plugin que más se ajuste a nuestras necesidades es una tarea que puede llevarnos horas. Por eso hay que escoger tal plugin para X propósito.
 
++ Encontrar el plugin que más se ajuste a nuestras necesidades es una tarea que puede llevarnos horas. Por eso hay que escoger tal plugin para X propósito.
 + También hay que recordar que instalar demasiados plugins puede **afectar al tiempo de inicio** de Neovim y también puede perjudicar el funcionamiento del editor. En **Lazy** podemos configurar X plugin para que cargue después o cuando se haya abierto un archivo.
++ A la hora de crear un archivo de configuración para un plugin en especifico, no hay
+  que poner el nombre del plugin porque luego a la hora de cargarlo, Lua se quejará
+porque ya no sabe si está llamando al módulo o al archivo de configuración. Por lo
+tanto es aconsejable añadir el `-cfg` en el nombre del archivo para que "no se haga
+la picha un lío".
++ Hay algunos plugins que cuando se activan, cargan su configuración por defecto. En
+  otros hay que añadirle la configuración dentro de la función `setup()`.
