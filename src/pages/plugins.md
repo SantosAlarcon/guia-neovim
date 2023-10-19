@@ -179,3 +179,4 @@ cada plugin, con sus capturas y explicación.
 + [NeoTree](/guia-neovim/plugins/neotree)
 + [Lualine](/guia-neovim/plugins/lualine)
 + [Esquema de colores Tokyodark](/guia-neovim/plugins/tokyodark)
++ [LSPs, autocompletado y snippets](/guia-neovim/plugins/lsp)
