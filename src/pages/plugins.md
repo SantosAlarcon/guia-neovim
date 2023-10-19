@@ -74,6 +74,7 @@ Para hacer más amena la lectura, nos vamos a basar en la lista de los plugins m
 | [Telescope](https://github.com/nvim-telescope/telescope.nvim) | Buscador tipo "fuzzy-finder" |
 | [Lualine](https://github.com/nvim-lualine/lualine.nvim) | Barra de estado rápida, escrita en Lua |
 | [LuaSnip](https://github.com/L3MON4D3/LuaSnip) | Motor para cargar fragmentos de código (snippets) escrito en Lua |
+| [LspKind](https://github.com/onsails/lspkind.nvim) | Pictogramas al estilo **Visual Studio Code** para el LSP de Neovim |
 | [nvim-web-devicons](https://github.com/nvim-tree/nvim-web-devicons) | Paquete de iconos para desarrolladores para Neovim |
 | [vim-devicons](https://github.com/ryanoasis/vim-devicons) | Paquete de iconos para desarrolladores para Vim |
 | [indent-blankline](https://github.com/lukas-reineke/indent-blankline.nvim) | Guías para resaltar la indentación/sangría |
