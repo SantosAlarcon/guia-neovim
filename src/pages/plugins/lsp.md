@@ -196,8 +196,7 @@ LSPs pulsando <kbd>i</kbd> sobre ellos:
 + `typescript-language-server` - LSP de JavaScript y TypeScript
 + `pyright` - LSP de Python
 + `lua-language-server` - LSP de Lua
-+ `json-lsp` - LSP de Python
-
++ `json-lsp` - LSP de JSON
 
 <img src="/guia-neovim/images/lsp/mason-lsps-instalados.webp" alt="LSPs instalados" />
 
@@ -218,6 +217,32 @@ ejecutamos el comando `:LspInfo`.
 <img src="/guia-neovim/images/lsp/Lspinfo.webp" alt="LspInfo" />
 
 Este comando nos viene de perlas para diagnosticar los posibles fallos del LSP.
+
+## LSPs, linters y formateadores para cada lenguaje de programación
+
+Ahora te estarás preguntando *"Si yo programo en
+JavaScript/TypeScript/React/Angular/Vue, ¿qué necesito instalar para tener una
+experiencia en este lenguaje?""*. Pues de esto va esta sección. Vamos a ver qué
+necesitamos instalar para cada lenguaje de programación. HERE WE GO!!
+
+### JavaScript/TypeScript
+
++ **LSP:** `typescript_language_server`
++ **Linter:** `eslint_d`
++ **Formateador**: `prettierd`
+
+### Python
+
++ **LSP:** `pyright`
++ **Linter:** `pylint`
++ **Formateador**: `black`
++ **Depurador**: `debugpy`
+
+### Java
+
++ **LSP:** `java_language_server`
+
+En desarrollo ...
 
 ## Final
 
