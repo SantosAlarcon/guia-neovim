@@ -19,6 +19,8 @@ necesitar de los siguientes plugins:
 - [Mason](https://github.com/williamboman/mason.nvim) - Gestor portable de lenguajes de servidor, linters y formateadores
 - [None-LS](https://github.com/nvimtools/none-ls.nvim) - Inyecta al LSP de Neovim acciones de código, formateo y diagnósticos.
 - [TreeSitter](https://github.com/nvim-treesitter/nvim-treesitter) - Proporciona resaltado de sintaxis
+- [mini.pairs](https://github.com/echasnovski/mini.pairs) - Autoencerramiento
+- [nvim-ts-autotag](https://github.com/windwp/nvim-ts-autotag) - Autoetiquetado
 
 ## Instalación de los plugins
 
@@ -39,8 +41,12 @@ plugins mencionados:
 {"rafamadriz/friendly-snippets"},
 
 -- Mason
-{"williamboman/mason.nvim"}
-{"williamboman/mason-lspconfig.nvim"}
+{"williamboman/mason.nvim"},
+{"williamboman/mason-lspconfig.nvim"},
+
+-- Autoencerramiento y autoetiquetado
+{"echasnovski/mini.pairs"},
+{"windwp/nvim-ts-autotag"},
 ```
 
 Salimos de Neovim y lo volvemos a arrancar para que se instalen
@@ -398,6 +404,32 @@ Vamos a ver un ejemplo de un archivo básico de HTML para ver cómo es antes y d
 La diferencia es evidente: se han resaltado las etiquetas y los enlaces.
 
 Puedes profundizar más sobre este plugin en la documentación oficial.
+
+## Autoemparejamiento y autoencerramiento
+
+Nuestra suerte de IDE no está completo sin algún plugin que nos permita cerrar
+automáticamente etiquetas HTML, corchetes, paréntesis y demás movidas. Vamos a
+activar `mini.pairs` y `nvim-ts-autotag`.
+
+Creamos el archivo `pairs-cfg.lua` dentro de `/plugins/` y escribimos esto:
+
+```lua
+require("mini.pairs").setup()
+require("nvim-ts-autotag").setup()
+```
+
+Acto seguido, abrimos el archivo `init.lua` e insertamos esto:
+
+```lua
+require("plugins.pairs-cfg.lua")
+```
+
+Salimos de Neovim y vamos a crear un archivo HTML dentro de Neovim. Vamos a probar
+que los corchetes, paréntesis y etiquetas se cierran correctamente.
+
+<img src="/guia-neovim/images/lsp/autopairing-funcionando.webp" alt="Autotag funcionando"  />
+
+Pues al final parece que sí.
 
 ## Final
 
