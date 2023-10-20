@@ -104,6 +104,7 @@ un montón de cosas con él. Vamos con ellos.
 | <kbd>c</kbd> | Copia un archivo/directorio |
 | <kbd>d</kbd> | Borra un archivo/directorio |
 | <kbd>i</kbd> | Muestra la información del archivo/directorio |
+| <kbd>H</kbd> | Muestra los archivos ocultos, los que comienzan por el **.** |
 | <kbd>m</kbd> | Mueve un archivo/directorio a otro |
 | <kbd>oc</kbd> | Permite ordenar los archivos por fecha de creación |
 | <kbd>od</kbd> | Permite ordenar los archivos por la cantidad de diagnósticos |

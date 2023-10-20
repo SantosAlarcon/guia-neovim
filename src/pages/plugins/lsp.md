@@ -17,6 +17,7 @@ motor LSP integrado de Neovim
 + [Lspkind](https://github.com/onsails/lspkind.nvim) - Para tener pictogramas al estilo **Visual Studio Code** en Neovim
 + [LuaSnip](https://github.com/L3MON4D3/LuaSnip) - Motor para cargar fragmento de código (snippets)
 + [Mason](https://github.com/williamboman/mason.nvim) - Gestor portable de lenguajes de servidor, linters y formateadores
++ [None-LS](https://github.com/nvimtools/none-ls.nvim) - Inyecta al LSP de Neovim acciones de código, formateo y diagnósticos.
 
 ## Instalación de los plugins
 
@@ -175,7 +176,7 @@ autocompletado, definición y referencias de un lenguaje de programación.
 + **Linter:** es una herramienta que se encarga de mejorar la calidad del código,
 analiza el mismo y busca fallos.
 + **Formateador**: es una herramienta que se encarga de realizar un formato al
-documento, de modo que mejora su legibilidad. Aplica indentación, ajuste de línea, etc... Por ejemplo: si has indentado de más un corche, el formateador te lo pone en tu sitio.
+documento, de modo que mejora su legibilidad. Aplica indentación, ajuste de línea, etc... Por ejemplo: si has indentado de más un corchete, el formateador te lo pone en tu sitio.
 + **Protocolo adaptador de depuración (DAP)**: proporciona la funcionalidad de
 depuración.
 
@@ -222,8 +223,8 @@ Este comando nos viene de perlas para diagnosticar los posibles fallos del LSP.
 
 Ahora te estarás preguntando *"Si yo programo en
 JavaScript/TypeScript/React/Angular/Vue, ¿qué necesito instalar para tener una
-experiencia en este lenguaje?""*. Pues de esto va esta sección. Vamos a ver qué
-necesitamos instalar para cada lenguaje de programación. HERE WE GO!!
+experiencia en este lenguaje?"*. Pues de esto va esta sección. Vamos a ver qué
+necesitamos instalar para cada lenguaje de programación. **HERE WE GO!!**.
 
 ### JavaScript/TypeScript
 
