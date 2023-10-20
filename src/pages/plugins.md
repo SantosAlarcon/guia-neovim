@@ -8,7 +8,7 @@ title: "Neovim - Plugins"
 Uno de los puntos fuertes de Neovim, aparte de la **configuración y personalización**, es la capacidad de instalar "plugins" que permiten **dotarles de muchas funcionalidades**, hasta el punto de convertirlo en un IDE (Entorno de desarrollo integrado). La cantidad de "plugins" que hay es tan inmensa, y además cuentan con su **documentación**, que es un plus adicional.
 
 Para poder instalar plugins en Neovim tenemos que hacer uso de un gestor de plugins
-como [Packer](https://github.com/wbthomason/packer.nvim), [Vim-Plug](https://github.com/junegunn/vim-plug) o [Lazy](https://github.com/folke/Lazy.nvim). 
+como ![Packer](https://github.com/wbthomason/packer.nvim), ![Vim-Plug](https://github.com/junegunn/vim-plug) o ![Lazy](https://github.com/folke/Lazy.nvim). 
 
 Para este sitio vamos a utilizar este último, ya que nos permite cargar plugins de manera "pasiva", haciendo que el tiempo de carga de Neovim sea más rápido.
 
