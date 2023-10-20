@@ -32,7 +32,7 @@ import Header from "../components/Header.astro";
             href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700;900&display=swap"
             rel="stylesheet"
         />
-        <link href="../styles/base.css" rel="stylesheet" />
+        <link href="/guia-neovim/base.css" rel="stylesheet" />
         <ViewTransitions />
     </head>
     <body>
@@ -87,7 +87,6 @@ import Header from "../components/Header.astro";
                 padding: 1rem;
                 width: 1200px;
                 max-width: calc(100% - 2rem);
-                color: #ddd;
                 font-size: 16px;
                 line-height: 1.6;
 
@@ -114,6 +113,11 @@ import Header from "../components/Header.astro";
                 @media (width < 720px) {
                     font-size: 2.75rem;
                 }
+            }
+
+            h2 {
+                border-bottom: 1px #666 solid;
+                padding-bottom: .5em;
             }
 
             code {

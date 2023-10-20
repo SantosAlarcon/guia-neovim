@@ -1,0 +1,9 @@
+body {
+    background-color: #eee;
+    color: #222;
+
+    @media (prefers-color-scheme: dark) {
+        color: #eee;
+        background-color: hsl(198, 100%, 10%);
+    }
+}

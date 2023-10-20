@@ -18,6 +18,7 @@ necesitar de los siguientes plugins:
 - [LuaSnip](https://github.com/L3MON4D3/LuaSnip) - Motor para cargar fragmento de código (snippets)
 - [Mason](https://github.com/williamboman/mason.nvim) - Gestor portable de lenguajes de servidor, linters y formateadores
 - [None-LS](https://github.com/nvimtools/none-ls.nvim) - Inyecta al LSP de Neovim acciones de código, formateo y diagnósticos.
+- [TreeSitter](https://github.com/nvim-treesitter/nvim-treesitter) - Proporciona resaltado de sintaxis
 
 ## Instalación de los plugins
 
@@ -342,7 +343,61 @@ necesitamos instalar para cada lenguaje de programación. **HERE WE GO!!**.
 
 - **LSP:** `java_language_server`
 
-En desarrollo ...
+TODO: En desarrollo ...
+
+## Activación y configuración de TreeSitter
+
+Ahora ha llegado el momento de activar y configurar el plugin de **TreeSitter**.
+Vamos a crear el archivo `ts-cfg.lua` dentro de `/plugins/` y le vamos a meter esto:
+
+```lua
+require("nvim-treesitter.configs").setup({
+
+    -- Listado de parsers a instalar
+    ensure_installed = {"html","css","javascript","typescript","lua", "python", "markdown"},
+
+    -- Permite la instalación automática de parsers
+    auto_install = true,
+
+    -- Resaltado de código
+    highlight = {
+        enable,
+    },
+
+    -- Indentación
+    indent = {
+        enable,
+    },
+})
+```
+
+Guardamos el archivo y lo añadimos al `init.lua` escribiendo:
+
+```lua
+require("plugins.ts-cfg")
+```
+
+Cerramos Neovim y lo volvemos a abrir. Ahora se van a instalar los "parsers" que
+hemos mencionado en el archivo de configuración. Podemos mirar que está dicho plugin
+en funcionamiento con el comando `:checkhealth`.
+
+<img src="/guia-neovim/images/lsp/ts-checkhealth.webp" alt="TreeSitter - Parsers instalados"  />
+
+Vamos a ver un ejemplo de un archivo básico de HTML para ver cómo es antes y después.
+
+<figure>
+    <img src="/guia-neovim/images/lsp/ts-antes.webp" alt="Resaltado de TS desactivado"  />
+    <figcaption>Resaltado de Treesitter desactivado</figcaption>
+</figure>
+
+<figure>
+    <img src="/guia-neovim/images/lsp/ts-despues.webp" alt="Resaltado de TS activado"  />
+    <figcaption>Resaltado de Treesitter activado</figcaption>
+</figure>
+
+La diferencia es evidente: se han resaltado las etiquetas y los enlaces.
+
+Puedes profundizar más sobre este plugin en la documentación oficial.
 
 ## Final
 
