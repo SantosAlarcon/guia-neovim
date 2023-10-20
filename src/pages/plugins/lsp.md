@@ -1,6 +1,6 @@
 ---
-layout: "../../layouts/MDLayout.astro"
-title: "Plugins - LSP"
+layout: ../../layouts/MDLayout.astro
+title: Plugins - LSP
 ---
 
 # :LSP
@@ -30,7 +30,7 @@ plugins mencionados:
 {"hrsh7th/nvim-cmp"},
 {"hrsh7th/cmp-nvim-lsp"},
 {"onsails/lspkind.nvim"},
-{"nvimtools/null-ls.nvim"},
+{"nvimtools/none-ls.nvim"},
 
 -- Snippets
 {"L3MON4D3/LuaSnip"},
@@ -232,18 +232,90 @@ Ahora mismo, a pesar de tener instalados los linters y formateadores, todavía n
 local nls = require("null-ls")
 
 nls.setup({
-    -- Aquí se irán añadiendo los formateadores, linters y acciones de código
-    nls.builtins.formatting.stylua -- Formateador para Lua
-    nls.builtins.formatting.prettierd -- Formateador para JS/TS
-    nls.builtins.formatting.black -- Formateador para Python
 
-    nls.builtins.diagnostics.eslintd -- Linter para JavaScript/TypeScript
-    nls.builtins.diagnostics.pyright -- Linter para Python
+    sources = {
+        -- Aquí se irán añadiendo los formateadores, linters y acciones de código
+        nls.builtins.formatting.stylua, -- Formateador para Lua
+        nls.builtins.formatting.prettierd, -- Formateador para JS/TS
+        nls.builtins.formatting.black, -- Formateador para Python
 
-    nls.builtins.completion.spell -- Autocompletado de ortografía
-    nls.builtins.code_actions.refactoring -- Refactorización
+        nls.builtins.diagnostics.eslint_d, -- Linter para JavaScript/TypeScript
+        nls.builtins.diagnostics.pylint, -- Linter para Python
+
+        nls.builtins.completion.spell, -- Autocompletado de ortografía
+        nls.builtins.code_actions.refactoring, -- Refactorización
+    }
 })
+```
 
+Guardamos el archivo y ahora vamos a añadir el archivo de configuración a nuestro
+`init.lua`.
+
+```lua
+require("plugins.nls-cfg")
+```
+
+Guardamos el archivo. Cerramos Neovim y lo volvemos a abrir. Ahora ya debería estar
+activado el plugin. Para comprobarlo escribimos el comando `:NullLsInfo`.
+
+<img src="/guia-neovim/images/lsp/nls-funcionando.webp" alt="NullLS funcionando" />
+
+¡Um, vaya! **NullLS** está activo pero no hay ningún linter ni formateador en este
+búfer, ya que estamos en un archivo vacío. Pero vamos a crear un archivo en formato
+JavaScript. Veamos qué pasa.
+
+<img src="/guia-neovim/images/lsp/nls-js-origenes.webp" alt="NullLS - Orígenes para
+JavaScript" />
+
+Aquí ya va habiendo más cosas, porque nos dice cuales son los plugins que hay que
+instalar para tener formateado, linter y acciones de código. Como estamos usando un
+archivo escrito en JavaScript, vamos a instalarle `eslint_d` y `prettier` con Mason.
+
+<img src="/guia-neovim/images/lsp/mason-eslint-prettier-instalados.webp" alt="Eslint y Prettier instalados" />
+
+Cerramos Neovim y volvemos a abrir el archivo de JavaScript con Neovim.
+
+<img src="/guia-neovim/images/lsp/nls-origenes-javascript.webp" alt="NullLS - Origenes de JS cargados" />
+
+**¡Esto ya tiene mejor pinta!** Nos está mostrando los origenes que están asociados
+al tipo de archivo.
+
+<img src="/guia-neovim/images/lsp/nls-linter-funcionando.webp" alt="NullLS - Eslint funcionando" />
+
+Además, en la barra de estado nos muestra la cantidad de avisos y
+errores que hay en el código, lo cuál está genial. Pero... ¿y qué pasa con el
+formateado? Pues resulta que no lo hace automáticamente, sino que tenemos que hacerlo
+manualmente con el comando `:lua vim.lsp.buf.format()`. Vamos a hacer una indentación
+mala:
+
+<img src="/guia-neovim/images/lsp/mala-indentacion.webp" alt="Mala indentación" />
+
+Ahora escribimos el comando anterior y ...
+
+<img src="/guia-neovim/images/lsp/prettier-funcionando.webp" alt="Prettier haciendo su
+trabajo" />
+
+¡Listo! Como ves, el amigo **Prettier** ha hecho un buen trabajo corrigiendo la
+indentación, haciendola mucho más legible. ¡Un aplauso!
+
+Vamos a repetir lo mismo con un archivo en formato Lua
+
+<img src="/guia-neovim/images/lsp/mala-indentacion-lua.webp" alt="Mala indentación en Lua" />
+
+Repetimos el comando anterior.
+
+<img src="/guia-neovim/images/lsp/lua-buen-formato.webp" alt="Archivo Lua bien
+formateado" />
+
+Sin comentarios. Un trabajo estupendo.
+
+> Por defecto, Stylua aplica una indentación muy bestial de 8 espacios.
+
+Para facilitarnos más la vida nos vamos al archivo `keys.lua` del directorio `lua` y
+añadimos un atajo para el formateado. Yo he elegido <kbd>Ctrl</kbd> + <kbd>f</kbd>.
+
+```lua
+vim.keymap.set("n", "<c-f>", ":lua vim.lsp.buf.format()<cr>", {silent = true, desc="Formatear documento"})
 ```
 
 ## LSPs, linters y formateadores para cada lenguaje de programación
