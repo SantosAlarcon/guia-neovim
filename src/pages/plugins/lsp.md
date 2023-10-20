@@ -9,15 +9,15 @@ Hemos llegado a una parte muy importante, pero muy complicada, porque ha llegado
 momento de convertir nuestro NeoVim en un IDE con todas las de la Ley. Para eso vamos
 necesitar de los siguientes plugins:
 
-+ [LspConfig](https://github.com/neovim/nvim-lspconfig) - Para cargar los LSP
-+ [nvim-cmp](https://github.com/hrsh7th/nvim-cmp) - Para mostrar el
-autocompletado, los snippets y los diagnosticos
-+ [cmp-nvim-lsp](https://github.com/hrsh7th/cmp-nvim-lsp) - Autocompletado para el
-motor LSP integrado de Neovim
-+ [Lspkind](https://github.com/onsails/lspkind.nvim) - Para tener pictogramas al estilo **Visual Studio Code** en Neovim
-+ [LuaSnip](https://github.com/L3MON4D3/LuaSnip) - Motor para cargar fragmento de código (snippets)
-+ [Mason](https://github.com/williamboman/mason.nvim) - Gestor portable de lenguajes de servidor, linters y formateadores
-+ [None-LS](https://github.com/nvimtools/none-ls.nvim) - Inyecta al LSP de Neovim acciones de código, formateo y diagnósticos.
+- [LspConfig](https://github.com/neovim/nvim-lspconfig) - Para cargar los LSP
+- [nvim-cmp](https://github.com/hrsh7th/nvim-cmp) - Para mostrar el
+  autocompletado, los snippets y los diagnosticos
+- [cmp-nvim-lsp](https://github.com/hrsh7th/cmp-nvim-lsp) - Autocompletado para el
+  motor LSP integrado de Neovim
+- [Lspkind](https://github.com/onsails/lspkind.nvim) - Para tener pictogramas al estilo **Visual Studio Code** en Neovim
+- [LuaSnip](https://github.com/L3MON4D3/LuaSnip) - Motor para cargar fragmento de código (snippets)
+- [Mason](https://github.com/williamboman/mason.nvim) - Gestor portable de lenguajes de servidor, linters y formateadores
+- [None-LS](https://github.com/nvimtools/none-ls.nvim) - Inyecta al LSP de Neovim acciones de código, formateo y diagnósticos.
 
 ## Instalación de los plugins
 
@@ -30,6 +30,7 @@ plugins mencionados:
 {"hrsh7th/nvim-cmp"},
 {"hrsh7th/cmp-nvim-lsp"},
 {"onsails/lspkind.nvim"},
+{"nvimtools/null-ls.nvim"},
 
 -- Snippets
 {"L3MON4D3/LuaSnip"},
@@ -76,6 +77,7 @@ require("luasnip.loaders.from_vscode").lazy_load()
 ```
 
 ## Configurar el autocompletado
+
 Este es el plugin con la configuración más tocha, pero con los comentarios se
 entenderá lo que hace cada cosa.
 Creamos el archivo `cmp-cfg.lua` y metemos todo esto:
@@ -168,17 +170,17 @@ require("plugins.mason-cfg")
 
 Antes he comentado que este gestor de paquete nos permite gestionar los servidores de
 lenguaje, adaptadores de depuración, linters y formateadores. Vale, y tú te estarás
-preguntando *¿Qué es eso de un linter? ¿O un formateador?*. Vamos a comentar cada
+preguntando _¿Qué es eso de un linter? ¿O un formateador?_. Vamos a comentar cada
 cosa:
 
-+ **Servidor de lenguaje (LSP):** es una característica de los IDE que provee
-autocompletado, definición y referencias de un lenguaje de programación.
-+ **Linter:** es una herramienta que se encarga de mejorar la calidad del código,
-analiza el mismo y busca fallos.
-+ **Formateador**: es una herramienta que se encarga de realizar un formato al
-documento, de modo que mejora su legibilidad. Aplica indentación, ajuste de línea, etc... Por ejemplo: si has indentado de más un corchete, el formateador te lo pone en tu sitio.
-+ **Protocolo adaptador de depuración (DAP)**: proporciona la funcionalidad de
-depuración.
+- **Servidor de lenguaje (LSP):** es una característica de los IDE que provee
+  autocompletado, definición y referencias de un lenguaje de programación.
+- **Linter:** es una herramienta que se encarga de mejorar la calidad del código,
+  analiza el mismo y busca fallos.
+- **Formateador**: es una herramienta que se encarga de realizar un formato al
+  documento, de modo que mejora su legibilidad. Aplica indentación, ajuste de línea, etc... Por ejemplo: si has indentado de más un corchete, el formateador te lo pone en tu sitio.
+- **Protocolo adaptador de depuración (DAP)**: proporciona la funcionalidad de
+  depuración.
 
 Después de los tecnicismos, vamos a cargar el **Mason** con el comando `:Mason`.
 
@@ -192,12 +194,12 @@ previamente en el equipo.
 Pulsamos <kbd>2</kbd> para irnos a los **LSP** y vamos a instalar los siguientes
 LSPs pulsando <kbd>i</kbd> sobre ellos:
 
-+ `html-lsp` - LSP de HTML
-+ `css-lsp` - LSP de CSS
-+ `typescript-language-server` - LSP de JavaScript y TypeScript
-+ `pyright` - LSP de Python
-+ `lua-language-server` - LSP de Lua
-+ `json-lsp` - LSP de JSON
+- `html-lsp` - LSP de HTML
+- `css-lsp` - LSP de CSS
+- `typescript-language-server` - LSP de JavaScript y TypeScript
+- `pyright` - LSP de Python
+- `lua-language-server` - LSP de Lua
+- `json-lsp` - LSP de JSON
 
 <img src="/guia-neovim/images/lsp/mason-lsps-instalados.webp" alt="LSPs instalados" />
 
@@ -219,29 +221,54 @@ ejecutamos el comando `:LspInfo`.
 
 Este comando nos viene de perlas para diagnosticar los posibles fallos del LSP.
 
+## Configuración y activación de None-LS
+
+Antes este plugin se denominaba **"Null-LS"**, pero su autor decidió dejar de lado su desarrollo y ahora la comunidad se encarga de su mantenimiento.
+
+Ahora mismo, a pesar de tener instalados los linters y formateadores, todavía no están activados. Para eso vamos a activarlos creando el archivo `nls-cfg.lua` dentro de `/plugins/`. Acto seguido, escribimos esto dentro:
+
+```lua
+-- Asignamos la variable nls para que cargue la función
+local nls = require("null-ls")
+
+nls.setup({
+    -- Aquí se irán añadiendo los formateadores, linters y acciones de código
+    nls.builtins.formatting.stylua -- Formateador para Lua
+    nls.builtins.formatting.prettierd -- Formateador para JS/TS
+    nls.builtins.formatting.black -- Formateador para Python
+
+    nls.builtins.diagnostics.eslintd -- Linter para JavaScript/TypeScript
+    nls.builtins.diagnostics.pyright -- Linter para Python
+
+    nls.builtins.completion.spell -- Autocompletado de ortografía
+    nls.builtins.code_actions.refactoring -- Refactorización
+})
+
+```
+
 ## LSPs, linters y formateadores para cada lenguaje de programación
 
-Ahora te estarás preguntando *"Si yo programo en
+Ahora te estarás preguntando _"Si yo programo en
 JavaScript/TypeScript/React/Angular/Vue, ¿qué necesito instalar para tener una
-experiencia en este lenguaje?"*. Pues de esto va esta sección. Vamos a ver qué
+experiencia en este lenguaje?"_. Pues de esto va esta sección. Vamos a ver qué
 necesitamos instalar para cada lenguaje de programación. **HERE WE GO!!**.
 
 ### JavaScript/TypeScript
 
-+ **LSP:** `typescript_language_server`
-+ **Linter:** `eslint_d`
-+ **Formateador**: `prettierd`
+- **LSP:** `typescript_language_server`
+- **Linter:** `eslint_d`
+- **Formateador**: `prettierd`
 
 ### Python
 
-+ **LSP:** `pyright`
-+ **Linter:** `pylint`
-+ **Formateador**: `black`
-+ **Depurador**: `debugpy`
+- **LSP:** `pyright`
+- **Linter:** `pylint`
+- **Formateador**: `black`
+- **Depurador**: `debugpy`
 
 ### Java
 
-+ **LSP:** `java_language_server`
+- **LSP:** `java_language_server`
 
 En desarrollo ...
 
