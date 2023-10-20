@@ -117,7 +117,7 @@ cmp.setup({
         end,
 
         -- La tecla abajo selecciona la siguiente sugerencia
-        ["<Dowm>"] = function(fallback)
+        ["<Down>"] = function(fallback)
             if cmp.visible() then
                 cmp.select_next_item()
             else
