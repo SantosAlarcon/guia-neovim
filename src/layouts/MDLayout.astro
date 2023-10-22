@@ -195,6 +195,17 @@ import Header from "../components/Header.astro";
                 }
             }
 
+            blockquote {
+                margin: 0 1em;
+
+                & p {
+                    border-left: .5em #55f solid;
+                    padding: .25em .5em;
+                    box-shadow: 4px 4px 2em #0006;
+                    border-radius: .25em;
+                }
+            }
+
             @media (width < 720px) {
                 tr {
                     display: flex;
