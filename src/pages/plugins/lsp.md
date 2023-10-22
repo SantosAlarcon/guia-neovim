@@ -2,8 +2,30 @@
 layout: ../../layouts/MDLayout.astro
 title: Plugins - LSP
 ---
-
 # :LSP
+
+## Tabla de contenidos
+- [Instalación de los plugins](plugins/lsp/#instalacion-de-los-plugins)
+- [Configurar Lspconfig](plugins/lsp/#configurar-lspconfig)
+- [Configurar LuaSnip](plugins/lsp/#configurar-luasnip)
+- [Configurar el autocompletado](plugins/lsp/#configurar-el-autocompletado)
+- [Activar Mason](plugins/lsp/#activar-mason)
+- [Cargar los plugins](plugins/lsp/#cargar-los-plugins)
+- [Mason](plugins/lsp/#mason)
+- [Configuración y activación de None-LS](plugins/lsp/#configuracion-y-activacion-de-none-ls)
+- [LSPs, linters y formateadores para cada lenguaje de programación](plugins/lsp/#lsps-linters-y-formateadores-para-cada-lenguaje-de-programacion)
+  * [JavaScript/TypeScript](plugins/lsp/#javascripttypescript)
+  * [Python](plugins/lsp/#python)
+  * [Java](plugins/lsp/#java)
+  * [C / C++](plugins/lsp/#c--c)
+  * [PHP](plugins/lsp/#php)
+  * [Kotlin](plugins/lsp/#kotlin)
+  * [Rust](plugins/lsp/#rust)
+  * [Ruby](plugins/lsp/#ruby)
+  * [Go](plugins/lsp/#go)
+- [Activación y configuración de TreeSitter](plugins/lsp/#activacion-y-configuracion-de-treesitter)
+- [Autoemparejamiento y autoencerramiento](plugins/lsp/#autoemparejamiento-y-autoencerramiento)
+- [Final](plugins/lsp/#final)
 
 Hemos llegado a una parte muy importante, pero muy complicada, porque ha llegado el
 momento de convertir nuestro NeoVim en un IDE con todas las de la Ley. Para eso vamos
