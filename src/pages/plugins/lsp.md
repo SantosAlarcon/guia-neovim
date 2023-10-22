@@ -334,7 +334,7 @@ necesitamos instalar para cada lenguaje de programación. **HERE WE GO!!**.
 
 ### JavaScript/TypeScript
 
-- **LSP:** `typescript_language_server`
+- **LSP:** `typescript-language-server`
 - **Linter:** `eslint_d`
 - **Formateador**: `prettierd`
 
@@ -347,9 +347,51 @@ necesitamos instalar para cada lenguaje de programación. **HERE WE GO!!**.
 
 ### Java
 
-- **LSP:** `java_language_server`
+- **LSP:** `java-language-server`
+- **Formateador:** `google-java-format`
+- **Linter:** `checkstyle`
 
-TODO: En desarrollo ...
+### C / C++
+
+- **LSP:** `clangd`
+- **Formateador:** `clang-format`
+- **Linter:** `cpplint`
+- **Depurador**: `cpptools`
+
+### PHP
+
+- **LSP:** `phpactor`
+- **Formateador:** `phpcbf`
+- **Linter:** `phpcs`
+- **Depurador**: `php-debug-adapter`
+
+### Kotlin
+
+- **LSP:** `kotlin-language-server`
+- **Formateador:** `clang-format`
+- **Linter:** `ktlint`
+- **Depurador**: `kotlin-debug-adapter`
+
+### Rust
+
+- **LSP:** `rust-analyzer`
+- **Formateador:** `clang-format`
+- **Linter:** `rustfmt`
+
+### Ruby
+
+- **LSP:** `ruby-language-server`
+- **Formateador:** `rubyfmt`
+- **Linter:** `rubocop`
+
+### Go
+
+- **LSP:** `gopls`
+- **Formateador:** `gofumpt`
+- **Linter:** `glint`
+- **Depurador**: `go-debug-adapter`
+
+> **NOTA:** Si estás usando un lenguaje de programación que no está aquí, busca por Internet el LSP, linter, formateador y el adaptador de la depuración.
 
 ## Activación y configuración de TreeSitter
 
@@ -408,7 +450,7 @@ Puedes profundizar más sobre este plugin en la documentación oficial.
 ## Autoemparejamiento y autoencerramiento
 
 Nuestra suerte de IDE no está completo sin algún plugin que nos permita cerrar
-automáticamente etiquetas HTML, corchetes, paréntesis y demás movidas. Vamos a
+automáticamente etiquetas (que pueden ser HTML o componentes), corchetes, paréntesis, llaves, comillas y demás movidas. Vamos a
 activar `mini.pairs` y `nvim-ts-autotag`.
 
 Creamos el archivo `pairs-cfg.lua` dentro de `/plugins/` y escribimos esto:
@@ -429,9 +471,13 @@ que los corchetes, paréntesis y etiquetas se cierran correctamente.
 
 <img src="/guia-neovim/images/lsp/autopairing-funcionando.webp" alt="Autotag funcionando"  />
 
-Pues al final parece que sí.
+Pues sí que funciona, sí.
 
 ## Final
 
 Ya tenemos el autocompletado funcionando, los snippets funcionando y los diagnósticos
-de código rulando. ¡Muy bien!
+de código rulando. Podríamos decir que ya tenemos una suerte de IDE en nuestro
+Neovim. Desde luego que en este artículo no se va a tocar lo del tema de la
+depuración (o "debug") porque todavía no he llegado a ese punto.
+
+Espero que le puedas meter caña a Neovim con tu lenguaje de programación favorito.
