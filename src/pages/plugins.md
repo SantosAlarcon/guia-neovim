@@ -13,7 +13,7 @@ Para este sitio vamos a utilizar este último, ya que nos permite cargar plugins
 
 ## Instalación de Lazy
 
-**ADVERTENCIA:** Antes de proceder a instalar **Lazy**, conviene tener instalado **git** en nuestro sistema operativo, ya que este gestor necesita clonar los repositorios para instalarse.
+> **ADVERTENCIA:** Antes de proceder a instalar **Lazy**, conviene tener instalado **git** en nuestro sistema operativo, ya que este gestor necesita clonar los repositorios para instalarse.
 
 Una vez instalado **git**, nos vamos al directorio `$HOME/.config/nvim/lua/plugins` (no es obligatorio, pero es mejor así para poder organizar la configuración) y creamos el archivo **lazy-cfg.lua**.
 

@@ -200,9 +200,23 @@ import Header from "../components/Header.astro";
 
                 & p {
                     border-left: .5em #55f solid;
-                    padding: .25em .5em;
+                    padding: .75em;
                     box-shadow: 4px 4px 2em #0006;
                     border-radius: .25em;
+                    background-color: hsl(230deg, 56%, 30%);
+                }
+            }
+
+            blockquote > blockquote > blockquote {
+                margin: 0 1em;
+                width: 100%;
+
+                & p {
+                    border-left: .5em hsl(0deg, 56%, 50%) solid;
+                    padding: .75em;
+                    box-shadow: 4px 4px 2em #0006;
+                    border-radius: .25em;
+                    background-color: hsl(0deg, 56%, 25%);
                 }
             }
 
@@ -216,13 +230,6 @@ import Header from "../components/Header.astro";
                 }
             }
         </style>
-    </body><script>
-        const sonido = new Audio("/guia-neovim/tecla.mp3");
-        const teclas = document.querySelectorAll("kbd");
-        teclas.forEach((tecla) => {
-            tecla.addEventListener("click", () => {
-                sonido.play();
-            });
-        });
-    </script>
+        <script is:inline src="/guia-neovim/script-sonido.js" />
+    </body>
 </html>

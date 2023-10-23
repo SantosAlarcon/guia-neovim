@@ -26,7 +26,7 @@ En las siguientes tablas hay una variedad de comandos agrupados por tipo.
 | `:options`                            | Muestra una lista de opciones que se pueden configurar en **Neovim**              |
 | `:echo [mensaje]`                     | Muestra un mensaje en la línea de comandos                                        |
 
-P.D.: Los [plugins](/guia-neovim/plugins) de terceros que se cargan en **Neovim** cuentan con su propia documentación y comandos.
+> P.D.: Los [plugins](/guia-neovim/plugins) de terceros que se cargan en **Neovim** cuentan con su propia documentación y comandos.
 
 ## Archivo / búfer
 
@@ -70,5 +70,5 @@ P.D.: Los [plugins](/guia-neovim/plugins) de terceros que se cargan en **Neovim*
 | `:?[palabra]`  | Busca las ocurrencias que coincidan con la palabra       |
 | `:/[palabra]`  | Busca las ocurrencias que coincidan con la palabra       |
 
-P.D.: Se pueden usar también las **expresiones regulares**, aunque eso queda fuera de
+> P.D.: Se pueden usar también las **expresiones regulares**, aunque eso queda fuera de
 este sitio. No obstante, puedes echarle un ojo con el comando `:help pattern.txt`.

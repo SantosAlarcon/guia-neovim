@@ -156,7 +156,7 @@ vim.g.mapleader = ","
 
 Una vez definida, ahora solo falta asignar unas cuantas combinaciones en ambos formatos.
 
-```code
+```text
 -- VIMScript
 nnoremap <silent> <leader>bd ":bdelete<CR>"
 
@@ -194,3 +194,6 @@ opciones se puede consultar con el comando `:options`.
 | `colorscheme [esquema]` | Establece el esquema de colores para el editor |
 | `spell` | Muestra los errores ortográficos |
 | `spelllang` | Establece el idioma de la ortografía |
+| `cursorline` | Resalta la línea donde está situado el cursor. |
+
+> Hay algunas opciones que no tienen su variante en Lua, por lo que hay que usar `vim.cmd("inserta aquí la opción")` para poder usarlas en Lua.
