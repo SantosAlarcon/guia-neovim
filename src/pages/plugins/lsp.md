@@ -312,8 +312,9 @@ al tipo de archivo.
 <img src="/guia-neovim/images/lsp/nls-linter-funcionando.webp" alt="NullLS - Eslint funcionando" />
 
 Además, en la barra de estado nos muestra la cantidad de avisos y
-errores que hay en el código, lo cuál está genial. Pero... ¿y qué pasa con el
-formateado? Pues resulta que no lo hace automáticamente, sino que tenemos que hacerlo
+errores que hay en el código, lo cuál está genial. 
+
+Pero... ¿y qué pasa con el formateado? Pues resulta que no lo hace automáticamente, sino que tenemos que hacerlo
 manualmente con el comando `:lua vim.lsp.buf.format()`. Vamos a hacer una indentación
 mala:
 
