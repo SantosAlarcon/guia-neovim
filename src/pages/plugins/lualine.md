@@ -39,7 +39,7 @@ desarrolladores.
 ## Vamo a configurar Lualine
 
 Vamos al archivo `lualine-cfg.lua` del directorio `plugins` y vamos a añadir la
-configuración por defecto:
+configuración por defecto dentro de la parte de `setup()`:
 
 ```lua
 require("lualine").setup{
@@ -93,7 +93,7 @@ parte del archivo escribiendo esto:
 
 ``` lua
 tabline = {
-    lualine_a = {`buffers`}
+    lualine_a = {"buffers"}
 }
 ```
 
@@ -143,7 +143,7 @@ Abrimos el archivo `lualine-cfg.lua` y vamos a efectuar el siguiente cambio:
 
 ``` lua
     lualine_x = {},
-    lualine_y = {'fileformat'},
+    lualine_y = {'filetype'},
     lualine_z = {'location'}
 ```
 

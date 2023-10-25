@@ -14,11 +14,13 @@ Para este caso he decidido instalar "**tokyodark**".
 
 ## Instalación de Tokyodark
 
-¡Vamos al turrón! Nos vamos al archivo `plugins.lua` y añadimos lo siguiente:
+¡Vamos al turrón! Vamos a crear el archivo `tokyodark-cfg.lua` dentro de `/plugins/` y añadimos lo siguiente:
 
 ``` lua
--- Esquema de colores Tokyodark
-{"tiagovla/tokyodark.nvim"},
+return {
+    -- Esquema de colores Tokyodark
+    {"tiagovla/tokyodark.nvim"},
+}
 ```
 
 Cerramos Neovim y lo volvemos a abrir.
@@ -27,27 +29,24 @@ Cerramos Neovim y lo volvemos a abrir.
 
 ## Activar Tokyodark
 
-Ahora vamos a crear el archivo `tokyodark-cfg.lua` y vamos a añadir esto:
+Abrimos de nuevo el archivo `tokyodark-cfg.lua` y vamos a añadir esto:
 
 ``` lua
-require("tokyodark").setup()
-
-vim.cmd("colorscheme tokyodark")
+return {
+    -- Esquema de colores Tokyodark
+    {"tiagovla/tokyodark.nvim",
+    config = function()
+        vim.cmd("colorscheme tokyodark")
+    end,
+    },
+}
 ```
 
-<img src="/guia-neovim/images/tokyodark/activar-tokyodark.webp" alt="Activar Tokyodark" />
-
-Como curiosidad, en la última línea le estamos diciendo que una vez que esté activado
-este esquema de colores, que lo cambie automáticamente.
-
-Abrimos el archivo `init.lua` de la configuración de la raíz y añadimos
-`require("plugins.tokyodark")`.
-
-<img src="/guia-neovim/images/tokyodark/activar-tokyodark2.webp" alt="Activar Tokyodark 2" />
-
-Guardamos, cerramos Neovim y volvemos a cargarlo.
+Guardamos el archivo, cerramos Neovim y volvemos a cargarlo.
 
 <img src="/guia-neovim/images/tokyodark/tokyodark-activado.webp" alt="Tokyodark activado" />
 
 A ver, vale que no sea el mejor tema del mundo, pero es mucho mejor que el que nos
 ofrecía Neovim por defecto.
+
+> Date cuenta de que no ha sido necesario utilizar la función `setup()` con el "require" para activar el esquema de colores.

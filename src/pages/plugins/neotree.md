@@ -11,12 +11,12 @@ y directorios, y navegar entre ellos.
 
 ## Instalación
 
-Nos vamos al directorio `$HOME/.config/nvim/plugins/` y abrimos el archivo
-`plugins.lua`. A continuación escribimos esto debajo de la especificación anterior:
+Nos vamos al directorio `$HOME/.config/nvim/plugins/` y vamos a crear el archivo
+`neotree-cfg.lua`. Una vez abierto escribimos esto dentro:
 
 ``` lua
--- NeoTree
-{
+return {
+    -- NeoTree
     "nvim-neo-tree/neo-tree.nvim", 
     dependencies = {"nvim-lua/plenary.nvim", "MunifTanjim/nui.nvim"}
 },
@@ -33,18 +33,18 @@ solo hay que activar **NeoTree**.
 
 ## Activar NeoTree
 
-Dentro del mismo directorio vamos a crear un archivo llamado `neotree-cfg.lua` y
-dentro escribimos:
+Dentro del archivo `neotree-cfg.lua`, vamos a modificar lo que hay después de las
+dependencias:
 
 ``` lua
-require("neo-tree").setup()
-```
-
-Ahora nos vamos al archivo `init.lua` de la configuración raíz (recuerda:
-`$HOME/.config/nvim`) y añadimos esto:
-
-``` lua
-require("plugins.neotree-cfg.lua")
+return {
+    -- NeoTree
+    "nvim-neo-tree/neo-tree.nvim", 
+    dependencies = {"nvim-lua/plenary.nvim", "MunifTanjim/nui.nvim"},
+    config = function()
+        require("neo-tree").setup() -- Se activa el plugin
+    end,
+},
 ```
 
 Guardamos el archivo, salimos de Neovim y lo volvemos a cargar. De momento no sucede
@@ -63,7 +63,8 @@ Ahora vamos a liarnos con el archivo de configuración de NeoTree para alterar s
 funcionamiento. Lo primero será usar la tecla de **tabulación** para abrir/cerrar
 NeoTree.
 
-Para eso abrimos `neotree-cfg.lua` y dentro de `setup` añadimos esto:
+Para eso abrimos de nuevo `neotree-cfg.lua` y debajo de la línea de `setup()`
+añadimos el atajo:
 
 ``` lua
 require("neo-tree").setup()
