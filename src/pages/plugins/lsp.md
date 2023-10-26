@@ -4,6 +4,29 @@ title: Plugins - LSP
 ---
 # :LSP
 
+## Tabla de contenidos
+
+- [Introducción](/guia-neovim/plugins/lsp#introduccion)
+- [Instalar y configurar Lspconfig](/guia-neovim/plugins/lsp#instalar-y-configurar-lspconfig)
+- [Instalar y configurar LuaSnip](/guia-neovim/plugins/lsp#instalar-y-configurar-luasnip)
+- [Instalar y configurar el autocompletado](/guia-neovim/plugins/lsp#instalar-y-configurar-el-autocompletado)
+- [Instalar y activar Mason](/guia-neovim/plugins/lsp#instalar-y-activar-mason)
+- [Un apunte sobre Mason](/guia-neovim/plugins/lsp#un-apunte-sobre-mason)
+- [Instalación, activación y configuración None-LS (Null-LS)](/guia-neovim/plugins/lsp#instalacion-activacion-y-configuracion-none-ls-null-ls)
+- [LSPs, linters y formateadores para cada lenguaje de programación](/guia-neovim/plugins/lsp#lsps-linters-y-formateadores-para-cada-lenguaje-de-programacion)
+  * [JavaScript/TypeScript](/guia-neovim/plugins/lsp#javascripttypescript)
+  * [Python](/guia-neovim/plugins/lsp#python)
+  * [Java](/guia-neovim/plugins/lsp#java)
+  * [C / C++](/guia-neovim/plugins/lsp#c--c)
+  * [PHP](/guia-neovim/plugins/lsp#php)
+  * [Kotlin](/guia-neovim/plugins/lsp#kotlin)
+  * [Rust](/guia-neovim/plugins/lsp#rust)
+  * [Ruby](/guia-neovim/plugins/lsp#ruby)
+  * [Go](/guia-neovim/plugins/lsp#go)
+- [Instalación, activación y configuración de TreeSitter](/guia-neovim/plugins/lsp#instalacion-activacion-y-configuracion-de-treesitter)
+- [Autoemparejamiento y autoencerramiento](/guia-neovim/plugins/lsp#autoemparejamiento-y-autoencerramiento)
+- [Final](/guia-neovim/plugins/lsp#final)
+
 ## Introducción
 
 Hemos llegado a una parte muy importante, pero muy complicada, porque ha llegado el
@@ -182,7 +205,7 @@ Después de los tecnicismos, vamos a cargar el **Mason** con el comando `:Mason`
 La primera que cargamos el Mason no hay instalado nada. Pero eso lo vamos a cambiar.
 
 > La configuración por defecto de Mason no carga los diferentes iconos. En `:help
-> mason-settings` tienes la configuración que carga los iconos.
+mason-settings` tienes la configuración que carga los iconos.
 
 Pero antes de instalar cosas, conviene tener instalado tanto `nodejs` y `npm`
 previamente en el equipo, que carga e instala librerías de JavaScript y TypeScript. También `pip` es necesario para instalar librerías y
@@ -281,7 +304,7 @@ al tipo de archivo.
 <img src="/guia-neovim/images/lsp/nls-linter-funcionando.webp" alt="NullLS - Eslint funcionando" />
 
 Además, en la barra de estado nos muestra la cantidad de avisos y
-errores que hay en el código, lo cuál está genial. 
+errores que hay en el código, lo cuál está genial.
 
 Pero... ¿y qué pasa con el formateado? Pues resulta que no lo hace automáticamente, sino que tenemos que hacerlo
 manualmente con el comando `:lua vim.lsp.buf.format()`. Vamos a hacer una indentación
@@ -462,6 +485,7 @@ return {
 }
 
 ```
+
 Salimos de Neovim y vamos a crear un archivo HTML dentro de Neovim. Vamos a probar
 que los corchetes, paréntesis y etiquetas se cierran correctamente.
 
