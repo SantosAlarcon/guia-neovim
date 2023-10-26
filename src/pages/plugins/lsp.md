@@ -4,28 +4,7 @@ title: Plugins - LSP
 ---
 # :LSP
 
-## Tabla de contenidos
-- [Instalación de los plugins](plugins/lsp/#instalacion-de-los-plugins)
-- [Configurar Lspconfig](plugins/lsp/#configurar-lspconfig)
-- [Configurar LuaSnip](plugins/lsp/#configurar-luasnip)
-- [Configurar el autocompletado](plugins/lsp/#configurar-el-autocompletado)
-- [Activar Mason](plugins/lsp/#activar-mason)
-- [Cargar los plugins](plugins/lsp/#cargar-los-plugins)
-- [Mason](plugins/lsp/#mason)
-- [Configuración y activación de None-LS](plugins/lsp/#configuracion-y-activacion-de-none-ls)
-- [LSPs, linters y formateadores para cada lenguaje de programación](plugins/lsp/#lsps-linters-y-formateadores-para-cada-lenguaje-de-programacion)
-  * [JavaScript/TypeScript](plugins/lsp/#javascripttypescript)
-  * [Python](plugins/lsp/#python)
-  * [Java](plugins/lsp/#java)
-  * [C / C++](plugins/lsp/#c--c)
-  * [PHP](plugins/lsp/#php)
-  * [Kotlin](plugins/lsp/#kotlin)
-  * [Rust](plugins/lsp/#rust)
-  * [Ruby](plugins/lsp/#ruby)
-  * [Go](plugins/lsp/#go)
-- [Activación y configuración de TreeSitter](plugins/lsp/#activacion-y-configuracion-de-treesitter)
-- [Autoemparejamiento y autoencerramiento](plugins/lsp/#autoemparejamiento-y-autoencerramiento)
-- [Final](plugins/lsp/#final)
+## Introducción
 
 Hemos llegado a una parte muy importante, pero muy complicada, porque ha llegado el
 momento de convertir nuestro NeoVim en un IDE con todas las de la Ley. Para eso vamos
@@ -44,158 +23,143 @@ necesitar de los siguientes plugins:
 - [mini.pairs](https://github.com/echasnovski/mini.pairs) - Autoencerramiento
 - [nvim-ts-autotag](https://github.com/windwp/nvim-ts-autotag) - Autoetiquetado
 
-## Instalación de los plugins
+## Instalar y configurar Lspconfig
 
-¡Vamos al meollo del asunto! Abrimos el archivo `plugins.lua` y metemos dentro los
-plugins mencionados:
-
-```lua
--- LSP
-{"neovim/nvim-lspconfig"},
-{"hrsh7th/nvim-cmp"},
-{"hrsh7th/cmp-nvim-lsp"},
-{"onsails/lspkind.nvim"},
-{"nvimtools/none-ls.nvim"},
-
--- Snippets
-{"L3MON4D3/LuaSnip"},
-{"saadparwaiz1/cmp_luasnip"},
-{"rafamadriz/friendly-snippets"},
-
--- Mason
-{"williamboman/mason.nvim"},
-{"williamboman/mason-lspconfig.nvim"},
-
--- Autoencerramiento y autoetiquetado
-{"echasnovski/mini.pairs"},
-{"windwp/nvim-ts-autotag"},
-```
-
-Salimos de Neovim y lo volvemos a arrancar para que se instalen
-
-<img src="/guia-neovim/images/lsp/plugins-instalados.webp" alt="Plugins instalados" />
-
-## Configurar Lspconfig
-
-Primero vamos a configurar el archivo `lsp-cfg.lua` dentro de `lua/plugins/`. Lo
+Primero vamos a instalar y a configurar el archivo `lsp-cfg.lua` dentro de `lua/plugins/`. Lo
 creamos y le añadimos esto:
 
 ```lua
-local lspconfig = require("lspconfig")
-local capabilities = require("cmp_nvim_lsp").default_capabilities()
+return {
+    {"neovim/nvim-lspconfig", dependencies = {"hrsh7th/cmp-nvim-lsp"},
+    config = function()
+        local lspconfig = require("lspconfig")
+        local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
--- Listado de servidores de lenguaje
-local servers = {"html", "cssls","tsserver","pyright","lua_ls","jsonls"}
+        -- Listado de servidores de lenguaje
+        local servers = {"html", "cssls","tsserver","pyright","lua_ls","jsonls"}
 
-for _, lsp in ipairs(servers) do
-    lspconfig[lsp].setup {
-        capabilities = capabilities,
+        for _, lsp in ipairs(servers) do
+            lspconfig[lsp].setup {
+                capabilities = capabilities,
+            }
+        end
+    end,
     }
-end
+}
 ```
 
 En la configuración le hemos pedido que cargue los **servidores de lenguaje** de HTML,
 CSS, JavaScript, TypeScript, Lua, Python y JSON.
 
-## Configurar LuaSnip
+## Instalar y configurar LuaSnip
 
 Creamos el archivo `luasnip-cfg.lua` y le metemos esto:
 
 ```lua
-require("luasnip.loaders.from_vscode").lazy_load()
+return {
+    {"L3MON4DE/LuaSnip",
+        dependencies = {"rafamadriz/friendly-snippets"},
+        config = function()
+            require("luasnip.loaders.from_vscode").lazy_load()
+        end,
+    }
+}
 ```
 
-## Configurar el autocompletado
+## Instalar y configurar el autocompletado
 
 Este es el plugin con la configuración más tocha, pero con los comentarios se
 entenderá lo que hace cada cosa.
 Creamos el archivo `cmp-cfg.lua` y metemos todo esto:
 
 ```lua
-local cmp = require("cmp")
-local lspkind = require("lspkind")
+return {
+        {"hrsh7th/nvim-cmp",
+        dependencies = {"onsails/lspkind.nvim", "saadparwaiz1/cmp_luasnip"},
+        config = function()
+            local cmp = require("cmp")
+            local lspkind = require("lspkind")
 
-cmp.setup({
-    -- Ventana para mostrar el autocompletado y su documentación
-    window = {
-        completion = cmp.config.window,
-        documentation = cmp.config.window,
-    },
+            cmp.setup({
+                -- Ventana para mostrar el autocompletado y su documentación
+                window = {
+                    completion = cmp.config.window,
+                    documentation = cmp.config.window,
+                },
 
-    -- Origenes
-    sources = cmp.config.sources({
-        {name = "nvim_lsp"},
-        {name = "luasnip", option = {show_autosnippets = true}}
-    }),
+                -- Origenes
+                sources = cmp.config.sources({
+                    {name = "nvim_lsp"},
+                    {name = "luasnip", option = {show_autosnippets = true}}
+                }),
 
-    -- Atajos de teclado
-    mapping = {
-        -- Enter acepta la sugerencia
-        ["<CR>"] = function(fallback)
-            if cmp.visible() then
-                cmp.confirm()
-            else
-                fallback()
-            end
+                -- Atajos de teclado
+                mapping = {
+                    -- Enter acepta la sugerencia
+                    ["<CR>"] = function(fallback)
+                        if cmp.visible() then
+                            cmp.confirm()
+                        else
+                            fallback()
+                        end
+                    end,
+
+                    -- La tecla arriba selecciona la anterior sugerencia
+                    ["<Up>"] = function(fallback)
+                        if cmp.visible() then
+                            cmp.select_prev_item()
+                        else
+                            fallback()
+                        end
+                    end,
+
+                    -- La tecla abajo selecciona la siguiente sugerencia
+                    ["<Down>"] = function(fallback)
+                        if cmp.visible() then
+                            cmp.select_next_item()
+                        else
+                            fallback()
+                        end
+                    end,
+                },
+
+                -- Formato de la ventana
+                formatting = {
+                    format = lspkind.cmp_format({
+                        width_text = false,
+                        mode = "symbol", -- Muestra solo los símbolos
+                        maxwidth = 50
+                    })
+                }
+
+                -- Snippets
+                snippet = {
+                    expand = function(args)
+                        require("luasnip").lsp_expand(args.body)
+                    end,
+                }
+            })
         end,
-
-        -- La tecla arriba selecciona la anterior sugerencia
-        ["<Up>"] = function(fallback)
-            if cmp.visible() then
-                cmp.select_prev_item()
-            else
-                fallback()
-            end
-        end,
-
-        -- La tecla abajo selecciona la siguiente sugerencia
-        ["<Down>"] = function(fallback)
-            if cmp.visible() then
-                cmp.select_next_item()
-            else
-                fallback()
-            end
-        end,
-    },
-
-    -- Formato de la ventana
-    formatting = {
-        format = lspkind.cmp_format({
-            width_text = false,
-            mode = "symbol", -- Muestra solo los símbolos
-            maxwidth = 50
-        })
-    }
-
-    -- Snippets
-    snippet = {
-        expand = function(args)
-            require("luasnip").lsp_expand(args.body)
-        end,
-    }
-})
+        },
+}
 ```
 
-## Activar Mason
+## Instalar y activar Mason
 
 Creamos el archivo `mason-cfg.lua` en `/plugins/` y escribimos esto:
 
 ```lua
-require("mason").setup()
+return {
+    {"williamboman/mason.nvim",
+    dependencies = {"williamboman/mason-lspconfig.nvim"},
+        config = function()
+            require("mason").setup()
+        end,
+    }
+}
 ```
 
-## Cargar los plugins
-
-Ahora vamos a cargar los plugins a través del `ìnit.lua`, por lo que añadiremos esto:
-
-```lua
-require("plugins.lsp-cfg")
-require("plugins.cmp-cfg")
-require("plugins.luasnip-cfg")
-require("plugins.mason-cfg")
-```
-
-## Mason
+## Un apunte sobre Mason
 
 Antes he comentado que este gestor de paquete nos permite gestionar los servidores de
 lenguaje, adaptadores de depuración, linters y formateadores. Vale, y tú te estarás
@@ -209,7 +173,7 @@ cosa:
 - **Formateador**: es una herramienta que se encarga de realizar un formato al
   documento, de modo que mejora su legibilidad. Aplica indentación, ajuste de línea, etc... Por ejemplo: si has indentado de más un corchete, el formateador te lo pone en tu sitio.
 - **Protocolo adaptador de depuración (DAP)**: proporciona la funcionalidad de
-  depuración.
+  depuración para X lenguaje de programación.
 
 Después de los tecnicismos, vamos a cargar el **Mason** con el comando `:Mason`.
 
@@ -217,8 +181,14 @@ Después de los tecnicismos, vamos a cargar el **Mason** con el comando `:Mason`
 
 La primera que cargamos el Mason no hay instalado nada. Pero eso lo vamos a cambiar.
 
+> La configuración por defecto de Mason no carga los diferentes iconos. En `:help
+> mason-settings` tienes la configuración que carga los iconos.
+
 Pero antes de instalar cosas, conviene tener instalado tanto `nodejs` y `npm`
-previamente en el equipo.
+previamente en el equipo, que carga e instala librerías de JavaScript y TypeScript. También `pip` es necesario para instalar librerías y
+utilidades para **Python**. Y `luarocks` para librerías y utilizades de **Lua**. Todos esos paquetes son denominados **gestores de paquetes** de cada lenguaje.
+
+Y ahora sí: dejamos la turra y volvemos con Mason.
 
 Pulsamos <kbd>2</kbd> para irnos a los **LSP** y vamos a instalar los siguientes
 LSPs pulsando <kbd>i</kbd> sobre ellos:
@@ -243,45 +213,44 @@ snippets? 🤔
 
 <img src="/guia-neovim/images/lsp/snippets-funcionando.webp" alt="Snippets funcionando" />
 
-Para ver más información sobre el LSP que se está ejecutando en el archivo,
+Para ver más información sobre el LSP que se está ejecutando en el archivo/búfer,
 ejecutamos el comando `:LspInfo`.
 
 <img src="/guia-neovim/images/lsp/Lspinfo.webp" alt="LspInfo" />
 
-Este comando nos viene de perlas para diagnosticar los posibles fallos del LSP.
+Este comando nos viene de perlas para diagnosticar los posibles fallos del LSP,
+además de mostrarnos cuál es el LSP que se está usando y qué tipo de archivo está
+abierto.
 
-## Configuración y activación de None-LS
+## Instalación, activación y configuración None-LS (Null-LS)
 
 Antes este plugin se denominaba **"Null-LS"**, pero su autor decidió dejar de lado su desarrollo y ahora la comunidad se encarga de su mantenimiento.
 
 Ahora mismo, a pesar de tener instalados los linters y formateadores, todavía no están activados. Para eso vamos a activarlos creando el archivo `nls-cfg.lua` dentro de `/plugins/`. Acto seguido, escribimos esto dentro:
 
 ```lua
--- Asignamos la variable nls para que cargue la función
-local nls = require("null-ls")
+return {
+    "nvimtools/none-ls.nvim",
+    config = function()
+        -- Asignamos la variable nls para que cargue la función
+        local nls = require("null-ls")
 
-nls.setup({
+        nls.setup({
+            sources = {
+                -- Aquí se irán añadiendo los formateadores, linters y acciones de código
+                nls.builtins.formatting.stylua, -- Formateador para Lua
+                nls.builtins.formatting.prettierd, -- Formateador para JS/TS
+                nls.builtins.formatting.black, -- Formateador para Python
 
-    sources = {
-        -- Aquí se irán añadiendo los formateadores, linters y acciones de código
-        nls.builtins.formatting.stylua, -- Formateador para Lua
-        nls.builtins.formatting.prettierd, -- Formateador para JS/TS
-        nls.builtins.formatting.black, -- Formateador para Python
+                nls.builtins.diagnostics.eslint_d, -- Linter para JavaScript/TypeScript
+                nls.builtins.diagnostics.pylint, -- Linter para Python
 
-        nls.builtins.diagnostics.eslint_d, -- Linter para JavaScript/TypeScript
-        nls.builtins.diagnostics.pylint, -- Linter para Python
-
-        nls.builtins.completion.spell, -- Autocompletado de ortografía
-        nls.builtins.code_actions.refactoring, -- Refactorización
-    }
-})
-```
-
-Guardamos el archivo y ahora vamos a añadir el archivo de configuración a nuestro
-`init.lua`.
-
-```lua
-require("plugins.nls-cfg")
+                nls.builtins.completion.spell, -- Autocompletado de ortografía
+                nls.builtins.code_actions.refactoring, -- Refactorización
+            }
+        })
+    end,
+}
 ```
 
 Guardamos el archivo. Cerramos Neovim y lo volvemos a abrir. Ahora ya debería estar
@@ -337,9 +306,9 @@ Repetimos el comando anterior.
 <img src="/guia-neovim/images/lsp/lua-buen-formato.webp" alt="Archivo Lua bien
 formateado" />
 
-Sin comentarios. Un trabajo estupendo.
-
-> Por defecto, Stylua aplica una indentación muy bestial de 8 espacios.
+Sin comentarios. Un trabajo estupendo. Pero resulta que por defecto, **Stylua** le aplica una
+indentación brutal de 8 espacios. Para configurar la indentación vamos a crear el
+archivo `stylua.toml` dentro de `/nvim/lua/`.
 
 Para facilitarnos más la vida nos vamos al archivo `keys.lua` del directorio `lua` y
 añadimos un atajo para el formateado. Yo he elegido <kbd>Ctrl</kbd> + <kbd>f</kbd>.
@@ -416,36 +385,35 @@ necesitamos instalar para cada lenguaje de programación. **HERE WE GO!!**.
 
 > **NOTA:** Si estás usando un lenguaje de programación que no está aquí, busca por Internet el LSP, linter, formateador y el adaptador de la depuración.
 
-## Activación y configuración de TreeSitter
+## Instalación, activación y configuración de TreeSitter
 
 Ahora ha llegado el momento de activar y configurar el plugin de **TreeSitter**.
 Vamos a crear el archivo `ts-cfg.lua` dentro de `/plugins/` y le vamos a meter esto:
 
 ```lua
-require("nvim-treesitter.configs").setup({
+return {
+    "nvim-treesitter/nvim-treesitter",
+    config = function()
+        require("nvim-treesitter.configs").setup({
 
-    -- Listado de parsers a instalar
-    ensure_installed = {"html","css","javascript","typescript","lua", "python", "markdown"},
+            -- Listado de parsers a instalar
+            ensure_installed = {"html","css","javascript","typescript","lua", "python", "markdown"},
 
-    -- Permite la instalación automática de parsers
-    auto_install = true,
+            -- Permite la instalación automática de parsers
+            auto_install = true,
 
-    -- Resaltado de código
-    highlight = {
-        enable,
-    },
+            -- Resaltado de código
+            highlight = {
+                enable,
+            },
 
-    -- Indentación
-    indent = {
-        enable,
-    },
-})
-```
-
-Guardamos el archivo y lo añadimos al `init.lua` escribiendo:
-
-```lua
-require("plugins.ts-cfg")
+            -- Indentación
+            indent = {
+                enable,
+            },
+        })
+    end,
+}
 ```
 
 Cerramos Neovim y lo volvemos a abrir. Ahora se van a instalar los "parsers" que
@@ -479,16 +447,21 @@ activar `mini.pairs` y `nvim-ts-autotag`.
 Creamos el archivo `pairs-cfg.lua` dentro de `/plugins/` y escribimos esto:
 
 ```lua
-require("mini.pairs").setup()
-require("nvim-ts-autotag").setup()
+return {
+    {"echasnovski/mini.pairs",
+        config = function()
+            require("mini.pairs").setup()
+        end,
+    },
+
+    {"windwp/nvim-ts-autotag",
+        config = function()
+            require("nvim-ts-autotag").setup()
+        end,
+    }
+}
+
 ```
-
-Acto seguido, abrimos el archivo `init.lua` e insertamos esto:
-
-```lua
-require("plugins.pairs-cfg.lua")
-```
-
 Salimos de Neovim y vamos a crear un archivo HTML dentro de Neovim. Vamos a probar
 que los corchetes, paréntesis y etiquetas se cierran correctamente.
 

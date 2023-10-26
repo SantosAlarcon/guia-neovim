@@ -83,6 +83,7 @@ Para hacer más amena la lectura, nos vamos a basar en la lista de los plugins m
 | [nvim-notify](https://github.com/rcarriga/nvim-notify)                     | Gestor de notificaciones                                                                        |
 | [Noice](https://github.com/folke/noice.nvim)                               | Reemplaza la IU de Neovim por otra                                                              |
 | [WhichKey](https://github.com/folke/which-key.nvim)                        | Muestra un listado de los atajos de Neovim, y permite añadir otros nuevos                       |
+| [nvim-dap](https://github.com/mfussenegger/nvim-dap)                     | Permite la depuración en Neovim                                                                   |
 | [nvim-dap-ui](https://github.com/rcarriga/nvim-dap-ui)                     | IU para el modo de depuración                                                                   |
 | [NeoTree](https://github.com/nvim-neo-tree/neo-tree.nvim)                  | Gestor de archivos y directorios                                                                |
 | [Trouble](https://github.com/folke/trouble.nvim)                           | Lista de diagnósticos de código y corrección de errores                                         |
