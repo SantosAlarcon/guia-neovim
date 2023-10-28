@@ -4,7 +4,8 @@ title: Plugins - LSP
 ---
 # :LSP
 
-## Tabla de contenidos
+<details>
+<summary>Tabla de contenidos</summary>
 
 - [Introducción](/guia-neovim/plugins/lsp#introduccion)
 - [Instalar y configurar Lspconfig](/guia-neovim/plugins/lsp#instalar-y-configurar-lspconfig)
@@ -26,6 +27,8 @@ title: Plugins - LSP
 - [Instalación, activación y configuración de TreeSitter](/guia-neovim/plugins/lsp#instalacion-activacion-y-configuracion-de-treesitter)
 - [Autoemparejamiento y autoencerramiento](/guia-neovim/plugins/lsp#autoemparejamiento-y-autoencerramiento)
 - [Final](/guia-neovim/plugins/lsp#final)
+
+</details>
 
 ## Introducción
 

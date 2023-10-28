@@ -2,7 +2,6 @@
 layout: ../layouts/MDLayout.astro
 title: Neovim - Plugins
 ---
-
 # :plugins
 
 Uno de los puntos fuertes de Neovim, aparte de la **configuración y personalización**, es la capacidad de instalar "plugins" que permiten **dotarles de muchas funcionalidades**, hasta el punto de convertirlo en un IDE (Entorno de desarrollo integrado). La cantidad de "plugins" que hay es tan inmensa, y además cuentan con su **documentación**, que es un plus adicional.
@@ -83,11 +82,12 @@ Para hacer más amena la lectura, nos vamos a basar en la lista de los plugins m
 | [nvim-notify](https://github.com/rcarriga/nvim-notify)                     | Gestor de notificaciones                                                                        |
 | [Noice](https://github.com/folke/noice.nvim)                               | Reemplaza la IU de Neovim por otra                                                              |
 | [WhichKey](https://github.com/folke/which-key.nvim)                        | Muestra un listado de los atajos de Neovim, y permite añadir otros nuevos                       |
-| [nvim-dap](https://github.com/mfussenegger/nvim-dap)                     | Permite la depuración en Neovim                                                                   |
+| [nvim-dap](https://github.com/mfussenegger/nvim-dap)                       | Permite la depuración en Neovim                                                                 |
 | [nvim-dap-ui](https://github.com/rcarriga/nvim-dap-ui)                     | IU para el modo de depuración                                                                   |
 | [NeoTree](https://github.com/nvim-neo-tree/neo-tree.nvim)                  | Gestor de archivos y directorios                                                                |
 | [Trouble](https://github.com/folke/trouble.nvim)                           | Lista de diagnósticos de código y corrección de errores                                         |
 | [move.nvim](https://github.com/fedepujol/move.nvim)                        | Mover líneas y bloques de texto como en el **Visual Studio Code**                               |
+| [nvim-dashboard](https://github.com/nvimdev/nvim-dashboard)                | Pantalla de inicio personalizado                                                                |
 
 También hay mogollón de esquemas de colores que no han entrado en la tabla, pero que en esta [lista](https://dotfyle.com/neovim/colorscheme/top) se recogen los más utilizados por la comunidad. Pero esto ya queda a gusto del consumidor.
 
@@ -165,3 +165,4 @@ cada plugin, con sus capturas y explicación.
 - [Lualine](/guia-neovim/plugins/lualine)
 - [Esquema de colores Tokyodark](/guia-neovim/plugins/tokyodark)
 - [LSPs, autocompletado y snippets](/guia-neovim/plugins/lsp)
+- [Lazy](/guia-neovim/plugins/lazy)
