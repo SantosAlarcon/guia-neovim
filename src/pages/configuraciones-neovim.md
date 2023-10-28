@@ -1,9 +1,25 @@
 ---
-layout: "../layouts/MDLayout.astro"
-title: "Configuraciones de Neovim"
+layout: ../layouts/MDLayout.astro
+title: Configuraciones de Neovim
 ---
 
 # Configuraciones de Neovim
+
+<details>
+<summary>Tabla de contenidos</summary>
+
+- [Configuraciones de Neovim](configuraciones-neovim#configuraciones-de-neovim)
+  - [LazyVim](configuraciones-neovim#lazyvim)
+    - [Características de LazyVim](configuraciones-neovim#características-de-lazyvim)
+  - [NvChad](configuraciones-neovim#nvchad)
+    - [Características de NvChad](configuraciones-neovim#características-de-nvchad)
+  - [AstroNvim](configuraciones-neovim#astronvim)
+    - [Características de AstroNvim](configuraciones-neovim#características-de-astronvim)
+  - [LunarVim](configuraciones-neovim#lunarvim)
+    - [Características de LunarVim](configuraciones-neovim#características-de-lunarvim)
+  - [Conclusión](configuraciones-neovim#conclusión)
+
+</details>
 
 Todos sabemos que configurar Neovim a gusto del usuario es una tarea que puede durar
 horas. En GitHub hay muchos usuarios que comparten sus **dotfiles**, en los que
@@ -27,11 +43,11 @@ de **Lazy** y de otros plugins.
 
 ### Características de LazyVim
 
-+ 🔥 Convierte Neovim en un IDE con esteróides (más o menos)
-+ 💤 Permite al usuario personalizar y añadir configuraciones
-+ 🚀 Más rápido que Ussain Bolt
-+ 🧹 Configuración limpia de opciones, comandos automáticos y atajos de teclado
-+ 📦 Viene con un buen puñado de plugins y listo para usar
+- 🔥 Convierte Neovim en un IDE con esteróides (más o menos)
+- 💤 Permite al usuario personalizar y añadir configuraciones
+- 🚀 Más rápido que Ussain Bolt
+- 🧹 Configuración limpia de opciones, comandos automáticos y atajos de teclado
+- 📦 Viene con un buen puñado de plugins y listo para usar
 
 De hecho, su [página oficial](https://www.lazyvim.org) tiene una muy buena
 documentación, y dice además cuáles son los plugins que están instalados.
@@ -46,15 +62,15 @@ características vas a flipar.
 
 ### Características de NvChad
 
-+ 🚀 Carga rapídisimo, ya que los plugin solo cargan cuando se le pidan
-+ 🪶 Configuración limpia
-+ 🎨 Gestor de temas, con más de 50 temas incluídos
-+ ⚙️  Mecanismo de actualización sin provocar cambios en la configuración del usuario
-+ ⚙️  Altamente configurable por el usuario, incluso se pueden desactivar algunos plugins
-+ 🦋 Interfaz de usuario **"¡Muy bonito, me gusta!"**
-+ Toda la configuración está escrita con Lua
-+ 📦 Plugins exclusivos de NvChad
-+ 🙂 Muy fácil de usar
+- 🚀 Carga rapídisimo, ya que los plugin solo cargan cuando se le pidan
+- 🪶 Configuración limpia
+- 🎨 Gestor de temas, con más de 50 temas incluídos
+- ⚙️ Mecanismo de actualización sin provocar cambios en la configuración del usuario
+- ⚙️ Altamente configurable por el usuario, incluso se pueden desactivar algunos plugins
+- 🦋 Interfaz de usuario **"¡Muy bonito, me gusta!"**
+- Toda la configuración está escrita con Lua
+- 📦 Plugins exclusivos de NvChad
+- 🙂 Muy fácil de usar
 
 En la [página oficial](https://nvchad.com) puedes echar un vistazo a la documentación de NvChad para ver si
 te convence.
@@ -68,19 +84,19 @@ estética no es mejor que las dos anteriores. Vamos a ver qué nos ofrece.
 
 ### Características de AstroNvim
 
-+ Especificaciones de los plugins más utilizados por AstroCommunity
-+ Hace uso de Neo-Tree como explorador de archivos
-+ Utiliza el autocompletado de **nvim-cmp**
-+ Integración con Git mediamente **Gitsigns**
-+ Utiliza **Heirline** como barra de estado, de ventana y de búfer
-+ Permite cargar terminales con **Toggleterm**
-+ Utiliza **Telescope** para el "Fuzzy finding"
-+ Utiliza **Treesitter** para resaltar la sintaxis
-+ Utiliza **Null-ls** para el formateado y el linting
-+ Utiliza **LSPConfig** para configurar el LSP
-+ Utiliza **nvim-dap** para permitir la depuración (*debugging*)
-+ Utiliza **Lazy** como gestor de plugins
-+ También se puede actualizar **AstroNvim** como si fuese un plugin más.
+- Especificaciones de los plugins más utilizados por AstroCommunity
+- Hace uso de Neo-Tree como explorador de archivos
+- Utiliza el autocompletado de **nvim-cmp**
+- Integración con Git mediamente **Gitsigns**
+- Utiliza **Heirline** como barra de estado, de ventana y de búfer
+- Permite cargar terminales con **Toggleterm**
+- Utiliza **Telescope** para el "Fuzzy finding"
+- Utiliza **Treesitter** para resaltar la sintaxis
+- Utiliza **Null-ls** para el formateado y el linting
+- Utiliza **LSPConfig** para configurar el LSP
+- Utiliza **nvim-dap** para permitir la depuración (_debugging_)
+- Utiliza **Lazy** como gestor de plugins
+- También se puede actualizar **AstroNvim** como si fuese un plugin más.
 
 En su [página oficial](https://astronvim.com) te dice que esta configuración está hecha para **configurar menos
 y darle más a las teclas**.
@@ -94,11 +110,11 @@ características no tiene desperdicio.
 
 ### Características de LunarVim
 
-+ 🔭 Cuenta con plugins de autocompletado, explorador de archivos, LSP, linting,
+- 🔭 Cuenta con plugins de autocompletado, explorador de archivos, LSP, linting,
   formateado y depuración.
-+ 🧑‍🚀 El usuario puede desactivar plugins, añadir otros, y crear sus propias
+- 🧑‍🚀 El usuario puede desactivar plugins, añadir otros, y crear sus propias
   configuraciones.
-+ 🚀 Es muy rápido de narices
+- 🚀 Es muy rápido de narices
 
 Tienes en la [página oficial](https://www.lunarvim.org) una buena documentación para que le metas caña a esta configuración "espacial".
 
