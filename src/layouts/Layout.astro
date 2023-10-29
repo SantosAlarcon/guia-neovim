@@ -16,6 +16,7 @@ import Footer from "../components/Footer.astro";
         <meta charset="UTF-8" />
         <meta name="description" content="Astro description" />
         <meta name="viewport" content="width=device-width" />
+        <meta name="color-scheme" content="light dark" />
         <link
             rel="icon"
             type="image/svg+xml"
@@ -89,7 +90,7 @@ import Footer from "../components/Footer.astro";
                 padding: 1rem;
                 width: 1200px;
                 max-width: calc(100% - 2rem);
-                font-size: 18px;
+                font-size: 17px;
                 line-height: 1.6;
 
                 & img {
@@ -187,6 +188,7 @@ import Footer from "../components/Footer.astro";
                 box-shadow: 0 0.5em 1em #0007;
                 margin-bottom: 3em;
                 border-collapse: collapse;
+                color: var(--dark-fg);
             }
 
             th {
