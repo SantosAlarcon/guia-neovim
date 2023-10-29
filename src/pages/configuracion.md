@@ -194,6 +194,7 @@ opciones se puede consultar con el comando `:options`.
 | `colorscheme [esquema]` | Establece el esquema de colores para el editor |
 | `spell` | Muestra los errores ortográficos |
 | `spelllang` | Establece el idioma de la ortografía |
-| `cursorline` | Resalta la línea donde está situado el cursor. |
+| `cursorline` | Resalta la línea donde está situado el cursor |
+| `swapline` | Permite crear un archivo de intercambio |
 
 > Hay algunas opciones que no tienen su variante en Lua, por lo que hay que usar `vim.cmd("inserta aquí la opción")` para poder usarlas en Lua.
