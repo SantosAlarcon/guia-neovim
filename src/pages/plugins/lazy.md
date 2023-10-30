@@ -7,11 +7,11 @@ title: Plugins - Lazy
 <details>
 <summary>Tabla de contenidos</summary>
 
-- [Atajos de teclado](/guia-neovim/plugins/lazy#atajos-de-teclado)
-- [Pestaña Profile (Perfil)](/guia-neovim/plugins/lazy#pestana-profile-perfil)
-- [Carga diferida de los plugins (Lazy load)](/guia-neovim/plugins/lazy#carga-diferida-de-los-plugins-lazy-load)
-- [Eventos](/guia-neovim/plugins/lazy#eventos)
-- [Aplicando los eventos a los plugins](/guia-neovim/plugins/lazy#aplicando-los-eventos-a-los-plugins)
+- [Atajos de teclado](/guia-neovim/plugins/lazy/#atajos-de-teclado)
+- [Pestaña Profile (Perfil)](/guia-neovim/plugins/lazy/#pestana-profile-perfil)
+- [Carga diferida de los plugins (Lazy load)](/guia-neovim/plugins/lazy/#carga-diferida-de-los-plugins-lazy-load)
+- [Eventos](/guia-neovim/plugins/lazy/#eventos)
+- [Aplicando los eventos a los plugins](/guia-neovim/plugins/lazy/#aplicando-los-eventos-a-los-plugins)
 
 </details>
 

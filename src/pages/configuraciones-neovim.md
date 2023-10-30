@@ -8,15 +8,15 @@ title: Configuraciones de Neovim
 <details>
 <summary>Tabla de contenidos</summary>
 
-- [LazyVim](configuraciones-neovim#lazyvim)
-    - [Características de LazyVim](configuraciones-neovim#características-de-lazyvim)
-- [NvChad](configuraciones-neovim#nvchad)
-    - [Características de NvChad](configuraciones-neovim#características-de-nvchad)
-- [AstroNvim](configuraciones-neovim#astronvim)
-    - [Características de AstroNvim](configuraciones-neovim#características-de-astronvim)
-- [LunarVim](configuraciones-neovim#lunarvim)
-    - [Características de LunarVim](configuraciones-neovim#características-de-lunarvim)
-- [Conclusión](configuraciones-neovim#conclusión)
+- [LazyVim](configuraciones-neovim/#lazyvim)
+    - [Características de LazyVim](configuraciones-neovim/#características-de-lazyvim)
+- [NvChad](configuraciones-neovim/#nvchad)
+    - [Características de NvChad](configuraciones-neovim/#características-de-nvchad)
+- [AstroNvim](configuraciones-neovim/#astronvim)
+    - [Características de AstroNvim](configuraciones-neovim/#características-de-astronvim)
+- [LunarVim](configuraciones-neovim/#lunarvim)
+    - [Características de LunarVim](configuraciones-neovim/#características-de-lunarvim)
+- [Conclusión](configuraciones-neovim/#conclusión)
 
 </details>
 
