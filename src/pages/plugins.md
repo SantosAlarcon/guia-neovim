@@ -34,7 +34,7 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
-# Activa Lazy y lo configura
+-- Activa Lazy y lo configura
 require("lazy").setup({
     {import = "plugins"} -- Carga todos los archivos que hay dentro de este directorio
 })

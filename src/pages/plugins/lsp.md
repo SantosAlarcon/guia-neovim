@@ -7,14 +7,14 @@ title: Plugins - LSP
 <details>
 <summary>Tabla de contenidos</summary>
 
-- [Introducción](/guia-neovim/plugins/lsp#introduccion)
+- [Introducción](/guia-neovim/plugins/lsp#introducción)
 - [Instalar y configurar Lspconfig](/guia-neovim/plugins/lsp#instalar-y-configurar-lspconfig)
 - [Instalar y configurar LuaSnip](/guia-neovim/plugins/lsp#instalar-y-configurar-luasnip)
 - [Instalar y configurar el autocompletado](/guia-neovim/plugins/lsp#instalar-y-configurar-el-autocompletado)
 - [Instalar y activar Mason](/guia-neovim/plugins/lsp#instalar-y-activar-mason)
 - [Un apunte sobre Mason](/guia-neovim/plugins/lsp#un-apunte-sobre-mason)
-- [Instalación, activación y configuración None-LS (Null-LS)](/guia-neovim/plugins/lsp#instalacion-activacion-y-configuracion-none-ls-null-ls)
-- [LSPs, linters y formateadores para cada lenguaje de programación](/guia-neovim/plugins/lsp#lsps-linters-y-formateadores-para-cada-lenguaje-de-programacion)
+- [Instalación, activación y configuración None-LS (Null-LS)](/guia-neovim/plugins/lsp#instalación-activación-y-configuración-none-ls-null-ls)
+- [LSPs, linters y formateadores para cada lenguaje de programación](/guia-neovim/plugins/lsp#lsps-linters-y-formateadores-para-cada-lenguaje-de-programación)
   * [JavaScript/TypeScript](/guia-neovim/plugins/lsp#javascripttypescript)
   * [Python](/guia-neovim/plugins/lsp#python)
   * [Java](/guia-neovim/plugins/lsp#java)
@@ -24,7 +24,7 @@ title: Plugins - LSP
   * [Rust](/guia-neovim/plugins/lsp#rust)
   * [Ruby](/guia-neovim/plugins/lsp#ruby)
   * [Go](/guia-neovim/plugins/lsp#go)
-- [Instalación, activación y configuración de TreeSitter](/guia-neovim/plugins/lsp#instalacion-activacion-y-configuracion-de-treesitter)
+- [Instalación, activación y configuración de TreeSitter](/guia-neovim/plugins/lsp#instalación-activación-y-configuración-de-treesitter)
 - [Autoemparejamiento y autoencerramiento](/guia-neovim/plugins/lsp#autoemparejamiento-y-autoencerramiento)
 - [Final](/guia-neovim/plugins/lsp#final)
 
@@ -205,7 +205,7 @@ Después de los tecnicismos, vamos a cargar el **Mason** con el comando `:Mason`
 
 <img src="/guia-neovim/images/lsp/mason-primera-vez.webp" alt="Primer arranque de Mason" />
 
-La primera que cargamos el Mason no hay instalado nada. Pero eso lo vamos a cambiar.
+La primera vez que cargamos el Mason no hay instalado nada. Pero eso lo vamos a cambiar.
 
 > La configuración por defecto de Mason no carga los diferentes iconos. En `:help
 mason-settings` tienes la configuración que carga los iconos.
@@ -239,8 +239,9 @@ snippets? 🤔
 
 <img src="/guia-neovim/images/lsp/snippets-funcionando.webp" alt="Snippets funcionando" />
 
-Para ver más información sobre el LSP que se está ejecutando en el archivo/búfer,
-ejecutamos el comando `:LspInfo`.
+**¡Hombre, también funcionan los snippets!** 
+
+Podemos consultar la información del LSP cargado en el en el archivo/búfer usando el comando `:LspInfo`.
 
 <img src="/guia-neovim/images/lsp/Lspinfo.webp" alt="LspInfo" />
 
@@ -332,15 +333,24 @@ Repetimos el comando anterior.
 <img src="/guia-neovim/images/lsp/lua-buen-formato.webp" alt="Archivo Lua bien
 formateado" />
 
-Sin comentarios. Un trabajo estupendo. Pero resulta que por defecto, **Stylua** le aplica una
+Sin comentarios. Un trabajo estupendo. 
+
+Pero resulta que por defecto, **Stylua** le aplica una
 indentación brutal de 8 espacios. Para configurar la indentación vamos a crear el
-archivo `stylua.toml` dentro de `/nvim/lua/`.
+archivo `.stylua.toml` dentro de `/nvim/lua/` y dentro del mismo escribimos esto:
+
+```toml
+indent_type = "Spaces"
+indent_width = 4
+```
+
+Con esto, cada vez que usemos el formateador Stylua, éste le aplicará 4 espacios en la indentación.
 
 Para facilitarnos más la vida nos vamos al archivo `keys.lua` del directorio `lua` y
-añadimos un atajo para el formateado. Yo he elegido <kbd>Ctrl</kbd> + <kbd>f</kbd>.
+añadimos un atajo para el formateado. Yo he elegido <kbd>Líder</kbd> + <kbd>f</kbd>.
 
 ```lua
-vim.keymap.set("n", "<c-f>", ":lua vim.lsp.buf.format()<cr>", {silent = true, desc="Formatear documento"})
+vim.keymap.set("n", "<leader>f", ":lua vim.lsp.buf.format()<cr>", {silent = true, desc="Formatear documento"})
 ```
 
 ## LSPs, linters y formateadores para cada lenguaje de programación
@@ -430,12 +440,12 @@ return {
 
             -- Resaltado de código
             highlight = {
-                enable,
+                enable = true,
             },
 
             -- Indentación
             indent = {
-                enable,
+                enable = true,
             },
         })
     end,
