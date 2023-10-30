@@ -86,6 +86,12 @@ import Footer from "../components/Footer.astro";
                 font-family: system-ui, sans-serif;
                 background: #13151a;
                 background-size: 224px;
+
+                &[theme=light] {
+                    & a:hover {
+                        text-shadow: 0 0 .2em #446;
+                      }
+                }
             }
 
             main {
