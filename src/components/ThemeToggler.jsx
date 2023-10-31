@@ -26,7 +26,6 @@ const ThemeToggler = () => {
   })
 
   const changeTheme = () => {
-    console.log(`Color scheme: ${theme}`)
     const t = theme === "light" ? "dark" : "light"
     localStorage.setItem("theme", t)
     setTheme(t)
