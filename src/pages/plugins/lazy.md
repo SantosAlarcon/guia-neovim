@@ -110,8 +110,8 @@ Antes habíamos visto el evento `'VeryLazy'`, que es exclusivo de Lazy. Pero Neo
 | `BufWinEnter`              | Después de que un búfer se muestre en una ventana                                      |
 | `BufWinLeave`              | Antes de que un búfer se borre de una ventana                                          |
 | `BufWipeout`               | Antes de que borrar un búfer                                                           |
-| `BufWrite` o `BufWritePre` | Antes de escribir el búfer entero en un archivo                                        |
-| `BufWritePost`             | Después de escribir el búfer entero en un archivo                                      |
+| `BufWrite` o `BufWritePre` | Antes de escribir el búfer entero a un archivo                                        |
+| `BufWritePost`             | Después de escribir el búfer entero a un archivo                                      |
 | `InsertChange`             | Cuando se intercambia entre el modo **Insertar** o **Reemplazo**                       |
 | `InsertCharPre`            | Cuando se escribe un carácter en el modo **Insertar**, antes de insertarlo en el búfer |
 | `InsertEnter`              | Antes de entrar en el modo **Insertar**, **Reemplazo** o **Reemplazo Virtual**         |
