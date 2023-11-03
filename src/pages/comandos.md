@@ -25,6 +25,8 @@ En las siguientes tablas hay una variedad de comandos agrupados por tipo.
 | `:tutor`                              | Carga el tutorial de **Neovim**, por si eres un **n00b** y no sabes dónde empezar |
 | `:options`                            | Muestra una lista de opciones que se pueden configurar en **Neovim**              |
 | `:echo [mensaje]`                     | Muestra un mensaje en la línea de comandos                                        |
+| `:call [función]`                     | Llama a una función y sus argumentos                                              |
+| `:let [variable]`                     | Declara una variable interna                                                      |
 
 > P.D.: Los [plugins](/guia-neovim/plugins) de terceros que se cargan en **Neovim** cuentan con su propia documentación y comandos.
 
@@ -48,19 +50,19 @@ En las siguientes tablas hay una variedad de comandos agrupados por tipo.
 
 ## Gestión de pestañas / búfers
 
-| Comando              | Descripción                                          |
-| -------------------- | ---------------------------------------------------- |
-| `:tabedit [archivo]` | Abre el archivo X en una nueva pestaña               |
-| `:tabnew [archivo]`  | Crea un nuevo archivo y lo abre en una nueva pestaña |
-| `:tabclose`          | Cierra la pestaña actual                             |
-| `:tabprevious`       | Cambia a la pestaña anterior                         |
-| `:tabnext`           | Cambia a la pestaña siguiente                        |
-| `:tabs`              | Muestra una lista de las pestañas                    |
-| `:bdelete`           | Cierra el búfer y lo quita de la lista de búfers     |
-| `:bclose`            | Cierra el búfer                                      |
-| `:bprevious`         | Cambia al búfer anterior                             |
-| `:bnext`             | Cambia al búfer siguiente                            |
-| `:buffers`           | Muestra una lista de los búferes                     |
+| Comando                       | Descripción                                          |
+| ----------------------------- | ---------------------------------------------------- |
+| `:tabedit [archivo]`          | Abre el archivo X en una nueva pestaña               |
+| `:tabnew [archivo]`           | Crea un nuevo archivo y lo abre en una nueva pestaña |
+| `:tabclose`                   | Cierra la pestaña actual                             |
+| `:tabprevious` o `:tprevious` | Cambia a la pestaña anterior                         |
+| `:tabnext` o `:tnext`         | Cambia a la pestaña siguiente                        |
+| `:tabs`                       | Muestra una lista de las pestañas                    |
+| `:bdelete` o `:bd`            | Cierra el búfer y lo quita de la lista de búfers     |
+| `:bclose` o `:bc`             | Cierra el búfer                                      |
+| `:bprevious` o `:bp`          | Cambia al búfer anterior                             |
+| `:bnext` o `:bn`              | Cambia al búfer siguiente                            |
+| `:buffers`                    | Muestra una lista de los búferes                     |
 
 ## Búsqueda y reemplazo
 
@@ -71,4 +73,4 @@ En las siguientes tablas hay una variedad de comandos agrupados por tipo.
 | `:/[palabra]`  | Busca las ocurrencias que coincidan con la palabra       |
 
 > P.D.: Se pueden usar también las **expresiones regulares**, aunque eso queda fuera de
-este sitio. No obstante, puedes echarle un ojo con el comando `:help pattern.txt`.
+> este sitio. No obstante, puedes echarle un ojo con el comando `:help pattern.txt`.
