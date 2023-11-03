@@ -88,6 +88,7 @@ Para hacer más amena la lectura, nos vamos a basar en la lista de los plugins m
 | [Trouble](https://github.com/folke/trouble.nvim)                           | Lista de diagnósticos de código y corrección de errores                                         |
 | [move.nvim](https://github.com/fedepujol/move.nvim)                        | Mover líneas y bloques de texto como en el **Visual Studio Code**                               |
 | [nvim-dashboard](https://github.com/nvimdev/dashboard-nvim)                | Pantalla de inicio personalizado                                                                |
+| [nvim-colorizer](https://github.com/norcalli/nvim-colorizer.lua)                | Resalta los colores en sus diferentes formatos                                                                |
 
 También hay mogollón de esquemas de colores que no han entrado en la tabla, pero que en esta [lista](https://dotfyle.com/neovim/colorscheme/top) se recogen los más utilizados por la comunidad. Pero esto ya queda a gusto del consumidor.
 
