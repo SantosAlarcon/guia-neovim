@@ -154,6 +154,8 @@ Guardamos los cambios, salimos de Neovim, volvemos a ejecutarlo y ...
 - Hay algunos plugins que cuando se activan, cargan su configuración por defecto. En
   otros hay que añadirle la configuración dentro de la función `setup()`.
 
+> Es muy importante actualizar los plugins para recibir nuevas características, mejoras de rendimiento y corrección de fallos.
+
 ## Cómo instalar, activar y configurar X plugins
 
 Pues ya que sabemos instalar y activar plugins, ahora es el momento de ponernos con
