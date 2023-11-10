@@ -80,6 +80,7 @@ Para hacer más amena la lectura, nos vamos a basar en la lista de los plugins m
 | [indent-blankline](https://github.com/lukas-reineke/indent-blankline.nvim) | Guías para resaltar la indentación/sangría                                                      |
 | [nvim-autopairs](https://github.com/windwp/nvim-autopairs)                 | Autoemparejamiento                                                                              |
 | [Nui](https://github.com/MunifTanjim/nui.nvim)                             | Librería de componentes para la IU de Neovim                                                    |
+| [nvim-ts-autotag](https://github.com/windwp/nvim-ts-autotag)               | Cierre automático de etiquetas (requiere Treesitter)                                            |
 | [nvim-notify](https://github.com/rcarriga/nvim-notify)                     | Gestor de notificaciones                                                                        |
 | [Noice](https://github.com/folke/noice.nvim)                               | Reemplaza la IU de Neovim por otra                                                              |
 | [WhichKey](https://github.com/folke/which-key.nvim)                        | Muestra un listado de los atajos de Neovim, y permite añadir otros nuevos                       |
@@ -90,7 +91,8 @@ Para hacer más amena la lectura, nos vamos a basar en la lista de los plugins m
 | [move.nvim](https://github.com/fedepujol/move.nvim)                        | Mover líneas y bloques de texto como en el **Visual Studio Code**                               |
 | [nvim-dashboard](https://github.com/nvimdev/dashboard-nvim)                | Pantalla de inicio personalizado                                                                |
 | [nvim-colorizer](https://github.com/norcalli/nvim-colorizer.lua)           | Resalta los colores en sus diferentes formatos                                                  |
-| [toggleterm](https://github.com/akinsho/toggleterm.nvim)               | Muestra una terminal dentro Neovim, util para desarrolladores                                   |
+| [toggleterm](https://github.com/akinsho/toggleterm.nvim)                   | Muestra una terminal dentro Neovim, util para desarrolladores                                   |
+| [Comment](https://github.com/numToStr/Comment.nvim)                        | Comentarios de código, tanto en línea como en bloque                                            |
 
 También hay mogollón de esquemas de colores que no han entrado en la tabla, pero que en esta [lista](https://dotfyle.com/neovim/colorscheme/top) se recogen los más utilizados por la comunidad. Pero esto ya queda a gusto del consumidor.
 
