@@ -447,6 +447,11 @@ return {
             indent = {
                 enable = true,
             },
+
+            -- Autoencerramiento (cierra las etiquetas HTML y los componentes)
+            autotag = {
+                enable = true,
+            }
         })
     end,
 }
