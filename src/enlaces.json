@@ -1,0 +1,58 @@
+[
+    {
+        "titulo": "Atajos",
+        "slug": "atajos",
+        "ruta": "/atajos",
+        "hijos": []
+    },
+    {
+        "titulo": "Comandos",
+        "slug": "comandos",
+        "ruta": "/comandos",
+        "hijos": []
+    },
+    {
+        "titulo": "Configuración",
+        "slug": "configuracion",
+        "ruta": "/configuracion",
+        "hijos": []
+    },
+    {
+        "titulo": "Plugins",
+        "slug": "plugins",
+        "ruta": "/plugins",
+        "hijos": [
+            {
+                "titulo": "NeoTree",
+                "slug": "neotree",
+                "ruta": "/plugins/neotree"
+            },
+            {
+                "titulo": "Lualine",
+                "slug": "lualine",
+                "ruta": "/plugins/lualine"
+            },
+            {
+                "titulo": "Esquema de colores Tokyodark",
+                "slug": "tokyodark",
+                "ruta": "/plugins/tokyodark"
+            },
+            {
+                "titulo": "Neovim a IDE",
+                "slug": "lsp",
+                "ruta": "/plugins/lsp"
+            },
+            {
+                "titulo": "Lazy",
+                "slug": "lazy",
+                "ruta": "/plugins/lazy"
+            }
+        ]
+    },
+    {
+        "titulo": "Configuraciones de Neovim",
+        "slug": "configuraciones-neovim",
+        "ruta": "/configuraciones-neovim",
+        "hijos": []
+    }
+]

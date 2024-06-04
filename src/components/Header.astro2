@@ -1,14 +1,10 @@
 ---
-import LogoNeovim from "./LogoNeovim.astro";
 import ThemeToggler from "./ThemeToggler";
+import LogoNeovim from "./LogoNeovim.astro";
 ---
 
 <header>
-    <div id="logo">
-        <a href="/guia-neovim/">
-            <LogoNeovim />
-        </a>
-    </div>
+    <div id="logo"><a href="/guia-neovim/"><LogoNeovim /></a></div>
     <ThemeToggler client:load />
 </header>
 <style>
@@ -17,9 +13,5 @@ import ThemeToggler from "./ThemeToggler";
         display: flex;
         justify-content: space-between;
         align-items: center;
-
-        & a {
-            color: inherit;
-        }
     }
 </style>

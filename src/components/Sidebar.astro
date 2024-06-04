@@ -1,0 +1,168 @@
+---
+import enlaces from "../enlaces.json";
+import LogoNeovim from "./LogoNeovim.astro";
+const { pathname } = Astro.url;
+---
+
+<aside>
+    <input id="sidebar-toggle" type="checkbox" />
+    <div id="sidebar-items">
+        <div id="logo">
+            <a href="/guia-neovim/">
+                <LogoNeovim />
+            </a>
+        </div>
+        <ul>
+            {
+                enlaces.map((enlace) => (
+                    <li
+                        class={
+                            `/guia-neovim${enlace.ruta}` === pathname &&
+                            "activo"
+                        }
+                    >
+                        <a href={`/guia-neovim${enlace.ruta}`}>
+                            {enlace.titulo}
+                        </a>
+                        <ul>
+                            {enlace.hijos.length > 0 &&
+                                enlace.hijos.map((hijo) => (
+                                    <li
+                                        class={
+                                            `/guia-neovim${hijo.ruta}` ===
+                                                pathname && "activo"
+                                        }
+                                    >
+                                        <a href={`/guia-neovim${hijo.ruta}`}>
+                                            {hijo.titulo}
+                                        </a>
+                                    </li>
+                                ))}
+                        </ul>
+                    </li>
+                ))
+            }
+        </ul>
+    </div>
+</aside>
+<style>
+    * {
+        list-style-type: none;
+        padding-left: 0;
+        z-index: 5;
+        user-select: none;
+    }
+
+    a {
+        color: inherit !important;
+    }
+
+    #sidebar-items {
+        display: flex;
+        flex-direction: column;
+        padding: 2em;
+        box-shadow: 0 0 2em #0006;
+        width: var(--sidebar-width);
+        backdrop-filter: blur(1em);
+
+        > ul {
+            border-top: 1px #666 solid;
+            > li,
+            > li > ul > li {
+                margin: 1.15em 0;
+            }
+
+            > li::before {
+                content: "";
+            }
+
+            > li > a {
+                width: 100%;
+            }
+
+            > li > ul {
+                padding-left: 1.25em;
+            }
+        }
+
+        > ul li.activo {
+            font-weight: 900;
+        }
+    }
+
+    aside {
+        display: flex;
+        flex-direction: row-reverse;
+        position: fixed;
+        top: 0;
+        left: -22.5em;
+        height: 100dvh;
+        transition: all 0.35s ease-in-out;
+
+        &.open {
+            left: 0;
+
+            ~ #post {
+                transform: translateX(calc(var(--sidebar-width) + 2em));
+                width: calc(100% - (var(--sidebar-width) + 2em));
+            }
+        }
+    }
+
+    #sidebar-toggle {
+        width: 48px;
+        height: 48px;
+        appearance: none;
+        background-color: var(--dark-bg);
+        border: 1px #666 solid;
+        border-radius: 1em;
+        cursor: pointer;
+        display: grid;
+        place-content: center;
+        padding: 2em;
+        margin: 0.5em 2.5em;
+
+        &::before {
+            width: 36px;
+            height: 36px;
+            content: "";
+            background-color: white;
+            transform-origin: center;
+            clip-path: polygon(
+                14% 44%,
+                0 65%,
+                50% 100%,
+                100% 16%,
+                80% 0%,
+                43% 62%
+            );
+            transform: scale(0);
+            transition: all 0.1s ease-in-out;
+        }
+
+        &:checked::before {
+            transform: scale(1);
+        }
+    }
+</style>
+<script is:inline>
+    const handleNavBar = () => {
+        const checkBtn = document.querySelector("#sidebar-toggle");
+        const aside = document.querySelector("aside");
+        checkBtn.addEventListener("click", () => {
+            aside.classList.toggle("open");
+        });
+    };
+
+    document.addEventListener(
+        "astro:page-load",
+        () => {
+            handleNavBar();
+        },
+        { once: true },
+    );
+
+    document.addEventListener("astro:after-swap", () => {
+        handleNavBar();
+    });
+</script>

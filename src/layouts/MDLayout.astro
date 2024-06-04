@@ -8,6 +8,7 @@ import { ViewTransitions } from "astro:transitions";
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
 import ScrollTop from "../components/ScrollTop";
+import Sidebar from "../components/Sidebar.astro";
 ---
 
 <!doctype html>
@@ -38,6 +39,7 @@ import ScrollTop from "../components/ScrollTop";
         <ViewTransitions />
     </head>
     <body>
+        <Sidebar />
         <Header />
         <main transition:animate="slide">
             <slot />
