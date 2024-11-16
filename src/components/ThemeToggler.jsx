@@ -1,6 +1,6 @@
-import { useEffect, useState } from "react"
 import IconoSol from "./IconoSol"
 import IconoLuna from "./IconoLuna"
+import { useEffect, useState } from "preact/hooks"
 
 const ThemeToggler = () => {
   const [mounted, setMounted] = useState(false)
