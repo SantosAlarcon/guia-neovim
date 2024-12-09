@@ -1,5 +1,11 @@
 [
     {
+        "titulo": "Inicio",
+        "slug": "inicio",
+        "ruta": "/",
+        "hijos": []
+    },
+    {
         "titulo": "Atajos",
         "slug": "atajos",
         "ruta": "/atajos",

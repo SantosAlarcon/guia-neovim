@@ -4,7 +4,7 @@ import LogoNeovim from "./LogoNeovim.astro";
 const { pathname } = Astro.url;
 ---
 
-<aside>
+<aside class="sidebar-container">
     <input id="sidebar-toggle" type="checkbox" />
     <div id="sidebar-items">
         <div id="logo">
@@ -12,35 +12,58 @@ const { pathname } = Astro.url;
                 <LogoNeovim />
             </a>
         </div>
-        <ul>
+        <ul class="sidebar-links">
             {
-                enlaces.map((enlace) => (
-                    <li
-                        class={
-                            `/guia-neovim${enlace.ruta}` === pathname &&
-                            "activo"
-                        }
-                    >
-                        <a href={`/guia-neovim${enlace.ruta}`}>
-                            {enlace.titulo}
-                        </a>
-                        <ul>
-                            {enlace.hijos.length > 0 &&
-                                enlace.hijos.map((hijo) => (
+                enlaces.map((enlace) => {
+                    if (enlace.hijos.length > 0) {
+                        return (
+                            <details class="sidebar-details">
+                                <summary class="sidebar-summary">
                                     <li
-                                        class={
-                                            `/guia-neovim${hijo.ruta}` ===
-                                                pathname && "activo"
-                                        }
+                                        class={`sidebar-link-item ${
+                                            pathname ===
+                                                `/guia-neovim${enlace.ruta}` &&
+                                            "activo"
+                                        }`}
                                     >
-                                        <a href={`/guia-neovim${hijo.ruta}`}>
-                                            {hijo.titulo}
+                                        <a href={`/guia-neovim${enlace.ruta}`}>
+                                            {enlace.titulo}
                                         </a>
                                     </li>
-                                ))}
-                        </ul>
-                    </li>
-                ))
+                                </summary>
+                                <ul>
+                                    {enlace.hijos.map((hijo) => (
+                                        <li
+                                            class={
+                                                `/guia-neovim${hijo.ruta}` ===
+                                                    pathname && "activo"
+                                            }
+                                        >
+                                            <a
+                                                href={`/guia-neovim${hijo.ruta}`}
+                                            >
+                                                {hijo.titulo}
+                                            </a>
+                                        </li>
+                                    ))}
+                                </ul>
+                            </details>
+                        );
+                    } else {
+                        return (
+                            <li
+                                class={`sidebar-link-item ${
+                                    pathname === `/guia-neovim${enlace.ruta}` &&
+                                    "activo"
+                                }`}
+                            >
+                                <a href={`/guia-neovim${enlace.ruta}`}>
+                                    {enlace.titulo}
+                                </a>
+                            </li>
+                        );
+                    }
+                })
             }
         </ul>
     </div>
@@ -57,6 +80,29 @@ const { pathname } = Astro.url;
         color: inherit !important;
     }
 
+    .sidebar {
+        border: 1px #666 solid;
+        border-radius: 1em;
+    }
+
+    .sidebar-links {
+        padding: 1rem 0;
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .sidebar-link-item {
+        background-color: hsl(247, 75%, 25%);
+        padding: 0.5rem 1rem;
+        cursor: pointer;
+        transition: all 0.25s ease-in-out;
+
+        &:hover {
+            background-color: hsl(247, 75%, 45%);
+        }
+    }
+
     #sidebar-items {
         display: flex;
         flex-direction: column;
@@ -69,7 +115,6 @@ const { pathname } = Astro.url;
             border-top: 1px #666 solid;
             > li,
             > li > ul > li {
-                margin: 1.15em 0;
             }
 
             > li::before {
@@ -90,7 +135,7 @@ const { pathname } = Astro.url;
         }
     }
 
-    aside {
+    .sidebar-container {
         display: flex;
         flex-direction: row-reverse;
         position: fixed;
@@ -110,8 +155,8 @@ const { pathname } = Astro.url;
     }
 
     #sidebar-toggle {
-        width: 48px;
-        height: 48px;
+        width: 8px;
+        height: 8px;
         appearance: none;
         background-color: var(--dark-bg);
         border: 1px #666 solid;
@@ -119,8 +164,8 @@ const { pathname } = Astro.url;
         cursor: pointer;
         display: grid;
         place-content: center;
-        padding: 2em;
-        margin: 0.5em 2.5em;
+        padding: 1.5rem;
+        margin: 1rem;
 
         &::before {
             width: 36px;
