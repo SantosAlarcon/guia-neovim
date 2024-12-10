@@ -20,7 +20,7 @@ const { pathname } = Astro.url;
                             <details class="sidebar-details">
                                 <summary class="sidebar-summary">
                                     <li
-                                        class={`sidebar-link-item ${
+                                        class={`sidebar-summary-item ${
                                             pathname ===
                                                 `/guia-neovim${enlace.ruta}` &&
                                             "activo"
@@ -31,15 +31,17 @@ const { pathname } = Astro.url;
                                         </a>
                                     </li>
                                 </summary>
-                                <ul>
+                                <ul class="sidebar-child-list">
                                     {enlace.hijos.map((hijo) => (
                                         <li
-                                            class={
-                                                `/guia-neovim${hijo.ruta}` ===
-                                                    pathname && "activo"
-                                            }
+                                            class={`sidebar-child-item ${
+                                                pathname ===
+                                                    `/guia-neovim${hijo.ruta}` &&
+                                                "activo"
+                                            }`}
                                         >
                                             <a
+                                                class="sidebar-child-link"
                                                 href={`/guia-neovim${hijo.ruta}`}
                                             >
                                                 {hijo.titulo}
@@ -97,9 +99,94 @@ const { pathname } = Astro.url;
         padding: 0.5rem 1rem;
         cursor: pointer;
         transition: all 0.25s ease-in-out;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
 
         &:hover {
             background-color: hsl(247, 75%, 45%);
+        }
+    }
+
+    .sidebar-summary-item {
+        padding: 0.5rem 1rem;
+        cursor: pointer;
+        transition: all 0.25s ease-in-out;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+
+        &:hover {
+            background-color: hsl(247, 75%, 55%);
+        }
+    }
+
+    .sidebar-details {
+        &[open] .sidebar-summary {
+            background-color: hsl(247, 75%, 45%);
+
+            &::after {
+                transform: rotate(0deg) translateY(0.25em);
+            }
+        }
+    }
+
+    .sidebar-summary {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        &::after {
+            content: url("/guia-neovim/chevron.svg");
+            transform: rotate(-90deg);
+            transition: all 0.25s ease-in-out;
+            display: block;
+            position: absolute;
+            z-index: 5;
+            right: 3rem;
+
+            @media (prefers-color-scheme: dark) {
+                filter: invert(1);
+            }
+        }
+
+        & .sidebar-details[open] {
+            background-color: #aa0 !important;
+        }
+    }
+
+    .sidebar-chevron {
+        width: 16px;
+        height: 16px;
+        transform: rotate(-90deg);
+        transition: all 0.25s ease-in-out;
+
+        @media (prefers-color-scheme: dark) {
+            filter: invert(1);
+        }
+    }
+
+    .sidebar-chevron .sidebar-details[open] {
+        transform: rotate(0deg);
+    }
+
+    .sidebar-child-list {
+        display: flex;
+        flex-direction: column;
+        gap: .25rem;
+        margin-top: .5rem;
+    }
+
+    .sidebar-child-item {
+        padding: .5rem 0 .5rem 2rem;
+        width: 100%;
+        background-color: #114;
+        transition: all .25s ease-in-out;
+
+        &:hover {
+            background-color: #228;
         }
     }
 

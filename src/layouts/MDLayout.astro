@@ -4,40 +4,17 @@ interface Props {
 }
 
 const { title } = Astro.props.content;
-import { ClientRouter } from "astro:transitions";
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
 import ScrollTop from "../components/ScrollTop";
 import Sidebar from "../components/Sidebar.astro";
 import "../styles/globals.css";
+import BaseHead from "../components/BaseHead.astro";
 ---
 
 <!doctype html>
 <html lang="es">
-    <head>
-        <base href="/guia-neovim/" />
-        <meta charset="UTF-8" />
-        <meta name="description" content="Astro description" />
-        <meta name="viewport" content="width=device-width" />
-        <link
-            rel="icon"
-            type="image/svg+xml"
-            href="/guia-neovim/neovim-favicon.svg"
-        />
-        <meta name="generator" content={Astro.generator} />
-        <title>{title}</title>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-        <link
-            href="https://fonts.googleapis.com/css2?family=Gabarito:wght@400;700;900&display=swap"
-            rel="stylesheet"
-        />
-        <link
-            href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700;900&display=swap"
-            rel="stylesheet"
-        />
-        <ClientRouter />
-    </head>
+    <BaseHead title={title} />
     <body>
         <Sidebar />
         <Header />

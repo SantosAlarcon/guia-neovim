@@ -11,6 +11,7 @@
     --accent-light: 224, 204, 250;
     --accent-dark: 49, 10, 101;
     --accent-gradient: linear-gradient(45deg, rgb(var(--accent)), rgb(var(--accent-light)) 30%, white 60%);
+    interpolate-size: allow-keywords;
 
     &[theme="light"] {
         background-color: var(--light-bg);
@@ -112,19 +113,19 @@
         & img {
             width: 100%;
         }
+
+        & details {
+            border: 1px #666 solid;
+            border-radius: 1em;
+            user-select: none;
+            cursor: pointer;
+            padding: 1em;
+            background-color: hsl(247, 75%, 45%);
+        }
     }
 
     #post {
         transition: transform .5s, width .5s;
-    }
-
-    details:not(aside) {
-        border: 1px #666 solid;
-        border-radius: 1em;
-        user-select: none;
-        cursor: pointer;
-        padding: 1em;
-        background-color: hsl(247, 75%, 45%);
     }
 
     summary {
@@ -335,4 +336,14 @@
         color: var(--dark-fg);
         border: 1px #fff3 solid;
     }
+}
+
+details::details-content {
+    transition: height 0.5s ease, content-visibility 0.5s ease allow-discrete;
+    height: 0;
+    overflow: clip;
+}
+
+details[open]::details-content {
+    height: auto;
 }
