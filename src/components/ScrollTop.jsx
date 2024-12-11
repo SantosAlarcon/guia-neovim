@@ -1,5 +1,5 @@
 import UpArrow from "./UpArrow";
-import "./ScrollTop.css";
+import "../styles/ScrollTop.css";
 import { useEffect, useState } from "preact/hooks";
 
 const ScrollTop = () => {

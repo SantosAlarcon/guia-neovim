@@ -12,32 +12,30 @@ const { pathname } = Astro.url;
                 <LogoNeovim />
             </a>
         </div>
-        <ul class="sidebar-links">
+        <div class="sidebar-links">
             {
                 enlaces.map((enlace) => {
                     if (enlace.hijos.length > 0) {
                         return (
                             <details class="sidebar-details">
                                 <summary class="sidebar-summary">
-                                    <li
+                                    <a
                                         class={`sidebar-summary-item ${
                                             pathname ===
                                                 `/guia-neovim${enlace.ruta}` &&
                                             "activo"
                                         }`}
                                     >
-                                        <a href={`/guia-neovim${enlace.ruta}`}>
-                                            {enlace.titulo}
-                                        </a>
-                                    </li>
+                                        {enlace.titulo}
+                                    </a>
                                 </summary>
                                 <ul class="sidebar-child-list">
                                     {enlace.hijos.map((hijo) => (
                                         <li
                                             class={`sidebar-child-item ${
-                                                pathname ===
-                                                    `/guia-neovim${hijo.ruta}` &&
+                                                pathname === `/guia-neovim${hijo.ruta}` &&
                                                 "activo"
+                                            }
                                             }`}
                                         >
                                             <a
@@ -53,21 +51,17 @@ const { pathname } = Astro.url;
                         );
                     } else {
                         return (
-                            <li
-                                class={`sidebar-link-item ${
-                                    pathname === `/guia-neovim${enlace.ruta}` &&
-                                    "activo"
-                                }`}
+                            <a
+                                href={`/guia-neovim${enlace.ruta}`}
+                                class={`sidebar-link-item ${pathname === `/guia-neovim${enlace.ruta}` && "activo"}`}
                             >
-                                <a href={`/guia-neovim${enlace.ruta}`}>
-                                    {enlace.titulo}
-                                </a>
-                            </li>
+                                {enlace.titulo}
+                            </a>
                         );
                     }
                 })
             }
-        </ul>
+        </div>
     </div>
 </aside>
 <style>
@@ -76,13 +70,13 @@ const { pathname } = Astro.url;
         padding-left: 0;
         z-index: 5;
         user-select: none;
-    }
 
-    a {
-        color: inherit !important;
+        & > a {
+            color: inherit !important;
 
-        &:hover {
-            text-shadow: none;
+            &:hover {
+                text-shadow: none;
+            }
         }
     }
 
@@ -107,6 +101,12 @@ const { pathname } = Astro.url;
             background-color: hsl(247, 75%, 45%);
             padding-left: 1.5rem;
         }
+
+        &.activo {
+            font-weight: 900;
+            border-left: 0.3rem #66e solid;
+        }
+
     }
 
     .sidebar-summary-item {
@@ -163,15 +163,15 @@ const { pathname } = Astro.url;
     .sidebar-child-list {
         display: flex;
         flex-direction: column;
-        gap: .25rem;
-        margin-top: .5rem;
+        gap: 0.25rem;
+        margin-top: 0.5rem;
     }
 
     .sidebar-child-item {
-        padding: .5rem 0 .5rem 2rem;
+        padding: 0.5rem 0 0.5rem 2rem;
         width: 100%;
         background-color: #114;
-        transition: all .25s ease-in-out;
+        transition: all 0.25s ease-in-out;
         cursor: pointer;
 
         &:hover {
@@ -209,11 +209,6 @@ const { pathname } = Astro.url;
             > li > ul {
                 padding-left: 1.25em;
             }
-        }
-
-        > ul li.activo {
-            font-weight: 900;
-            border-left: .3rem #66e solid;
         }
     }
 
@@ -272,6 +267,7 @@ const { pathname } = Astro.url;
         }
     }
 </style>
+
 <script is:inline>
     const handleNavBar = () => {
         const checkBtn = document.querySelector("#sidebar-toggle");
