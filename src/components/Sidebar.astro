@@ -80,11 +80,10 @@ const { pathname } = Astro.url;
 
     a {
         color: inherit !important;
-    }
 
-    .sidebar {
-        border: 1px #666 solid;
-        border-radius: 1em;
+        &:hover {
+            text-shadow: none;
+        }
     }
 
     .sidebar-links {
@@ -106,10 +105,12 @@ const { pathname } = Astro.url;
 
         &:hover {
             background-color: hsl(247, 75%, 45%);
+            padding-left: 1.5rem;
         }
     }
 
     .sidebar-summary-item {
+        background-color: hsl(247, 75%, 25%);
         padding: 0.5rem 1rem;
         cursor: pointer;
         transition: all 0.25s ease-in-out;
@@ -125,11 +126,13 @@ const { pathname } = Astro.url;
 
     .sidebar-details {
         &[open] .sidebar-summary {
-            background-color: hsl(247, 75%, 45%);
-
             &::after {
                 transform: rotate(0deg) translateY(0.25em);
             }
+        }
+
+        &[open] .sidebar-summary-item {
+            background-color: hsl(247, 75%, 65%) !important;
         }
     }
 
@@ -157,21 +160,6 @@ const { pathname } = Astro.url;
         }
     }
 
-    .sidebar-chevron {
-        width: 16px;
-        height: 16px;
-        transform: rotate(-90deg);
-        transition: all 0.25s ease-in-out;
-
-        @media (prefers-color-scheme: dark) {
-            filter: invert(1);
-        }
-    }
-
-    .sidebar-chevron .sidebar-details[open] {
-        transform: rotate(0deg);
-    }
-
     .sidebar-child-list {
         display: flex;
         flex-direction: column;
@@ -184,10 +172,16 @@ const { pathname } = Astro.url;
         width: 100%;
         background-color: #114;
         transition: all .25s ease-in-out;
+        cursor: pointer;
 
         &:hover {
             background-color: #228;
+            padding-left: 2.5rem;
         }
+    }
+
+    .sidebar-child-link {
+        width: 100%;
     }
 
     #sidebar-items {
@@ -219,6 +213,7 @@ const { pathname } = Astro.url;
 
         > ul li.activo {
             font-weight: 900;
+            border-left: .3rem #66e solid;
         }
     }
 
