@@ -29,24 +29,16 @@ const { pathname } = Astro.url;
                                         {enlace.titulo}
                                     </a>
                                 </summary>
-                                <ul class="sidebar-child-list">
+                                <div class="sidebar-child-list">
                                     {enlace.hijos.map((hijo) => (
-                                        <li
-                                            class={`sidebar-child-item ${
-                                                pathname === `/guia-neovim${hijo.ruta}` &&
-                                                "activo"
-                                            }
-                                            }`}
-                                        >
                                             <a
-                                                class="sidebar-child-link"
+                            class={`sidebar-child-item ${pathname === `/guia-neovim${hijo.ruta}` && "activo"}`}
                                                 href={`/guia-neovim${hijo.ruta}`}
                                             >
                                                 {hijo.titulo}
                                             </a>
-                                        </li>
                                     ))}
-                                </ul>
+                                </div>
                             </details>
                         );
                     } else {
@@ -165,6 +157,7 @@ const { pathname } = Astro.url;
         flex-direction: column;
         gap: 0.25rem;
         margin-top: 0.5rem;
+        margin-bottom: 0rem;
     }
 
     .sidebar-child-item {
@@ -178,6 +171,12 @@ const { pathname } = Astro.url;
             background-color: #228;
             padding-left: 2.5rem;
         }
+
+        &.activo {
+            font-weight: 900;
+            border-left: 0.3rem #66e solid;
+        }
+
     }
 
     .sidebar-child-link {
