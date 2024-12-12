@@ -1,4 +1,5 @@
 ---
+import { Image } from "astro:assets";
 import enlaces from "../enlaces.json";
 import LogoNeovim from "./LogoNeovim.astro";
 const { pathname } = Astro.url;
@@ -26,17 +27,23 @@ const { pathname } = Astro.url;
                                             "activo"
                                         }`}
                                     >
+                                        <Image
+                                            src={enlace.icono}
+                                            alt={enlace.titulo}
+                                            width={24}
+                                            height={24}
+                                        />
                                         {enlace.titulo}
                                     </a>
                                 </summary>
                                 <div class="sidebar-child-list">
                                     {enlace.hijos.map((hijo) => (
-                                            <a
-                            class={`sidebar-child-item ${pathname === `/guia-neovim${hijo.ruta}` && "activo"}`}
-                                                href={`/guia-neovim${hijo.ruta}`}
-                                            >
-                                                {hijo.titulo}
-                                            </a>
+                                        <a
+                                            class={`sidebar-child-item ${pathname === `/guia-neovim${hijo.ruta}` && "activo"}`}
+                                            href={`/guia-neovim${hijo.ruta}`}
+                                        >
+                                            {hijo.titulo}
+                                        </a>
                                     ))}
                                 </div>
                             </details>
@@ -47,6 +54,13 @@ const { pathname } = Astro.url;
                                 href={`/guia-neovim${enlace.ruta}`}
                                 class={`sidebar-link-item ${pathname === `/guia-neovim${enlace.ruta}` && "activo"}`}
                             >
+                                <Image
+                                    class="sidebar-link-item-icon"
+                                    src={enlace.icono}
+                                    alt={enlace.titulo}
+                                    width={24}
+                                    height={24}
+                                />
                                 {enlace.titulo}
                             </a>
                         );
@@ -85,7 +99,7 @@ const { pathname } = Astro.url;
         cursor: pointer;
         transition: all 0.25s ease-in-out;
         display: flex;
-        justify-content: space-between;
+        justify-content: flex-start;
         align-items: center;
         width: 100%;
 
@@ -98,7 +112,10 @@ const { pathname } = Astro.url;
             font-weight: 900;
             border-left: 0.3rem #66e solid;
         }
+    }
 
+    .sidebar-link-item-icon {
+        margin-right: 0.5rem;
     }
 
     .sidebar-summary-item {
@@ -107,7 +124,7 @@ const { pathname } = Astro.url;
         cursor: pointer;
         transition: all 0.25s ease-in-out;
         display: flex;
-        justify-content: space-between;
+        justify-content: flex-start;
         align-items: center;
         width: 100%;
 
@@ -176,7 +193,6 @@ const { pathname } = Astro.url;
             font-weight: 900;
             border-left: 0.3rem #66e solid;
         }
-
     }
 
     .sidebar-child-link {
