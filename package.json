@@ -11,8 +11,8 @@
   },
   "dependencies": {
     "@astrojs/preact": "4.0.0",
-    "astro": "5.0.3",
-    "preact": "^10.25.1",
+    "astro": "5.0.5",
+    "preact": "^10.25.2",
     "prettier-plugin-astro": "^0.14.1",
     "typescript": "^5.7.2"
   }
