@@ -339,11 +339,15 @@
 }
 
 details::details-content {
-    transition: height 0.5s ease, content-visibility 0.5s ease allow-discrete;
-    height: 0;
-    overflow: clip;
+    display: block;
+    block-size: 0;
+    transition-property: block-size, content-visibility;
+    transition-duration: 0.5s;
+    transition-behavior: allow-discrete;
+    transition-timing-function: ease;
+    overflow: hidden;
 }
 
 details[open]::details-content {
-    height: auto;
+    block-size: auto;
 }
