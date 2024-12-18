@@ -76,6 +76,7 @@ const { pathname } = Astro.url;
         padding-left: 0;
         z-index: 5;
         user-select: none;
+        font-size: 1.05rem;
 
         & > a {
             color: inherit !important;
@@ -83,6 +84,10 @@ const { pathname } = Astro.url;
             &:hover {
                 text-shadow: none;
             }
+        }
+
+        & > svg {
+            filter: invert(1);
         }
     }
 
@@ -250,7 +255,7 @@ const { pathname } = Astro.url;
         width: 8px;
         height: 8px;
         appearance: none;
-        background-color: var(--dark-bg);
+        background-color: light-dark(#eee, #111);
         border: 1px #666 solid;
         border-radius: 1em;
         cursor: pointer;
@@ -258,12 +263,13 @@ const { pathname } = Astro.url;
         place-content: center;
         padding: 1.5rem;
         margin: 1rem;
+        align-self: center;
 
         &::before {
             width: 36px;
             height: 36px;
             content: "";
-            background-color: white;
+            background-color: light-dark(#111, #eee);
             transform-origin: center;
             clip-path: polygon(
                 14% 44%,
