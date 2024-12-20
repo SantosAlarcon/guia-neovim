@@ -71,6 +71,19 @@ const { pathname } = Astro.url;
     </div>
 </aside>
 <style>
+    :root {
+        &[theme="light"] {
+            --sidebar-item-bg: hsl(247, 55%, 55%);
+            --sidebar-item-bg-hover: hsl(247, 75%, 25%);
+            --sidebar-item-bg-active: hsl(247, 75%, 75%);
+        }
+
+        &[theme="dark"] {
+            --sidebar-item-bg: hsl(247, 75%, 25%);
+            --sidebar-item-bg-hover: hsl(247, 75%, 65%);
+            --sidebar-item-bg-active: hsl(247, 75%, 55%);
+        }
+    }
     * {
         list-style-type: none;
         padding-left: 0;
@@ -96,10 +109,11 @@ const { pathname } = Astro.url;
         display: flex;
         flex-direction: column;
         gap: 0.5rem;
+        color: #eee;
     }
 
     .sidebar-link-item {
-        background-color: hsl(247, 75%, 25%);
+        background-color: var(--sidebar-item-bg);
         padding: 0.5rem 1rem;
         cursor: pointer;
         transition: all 0.25s ease-in-out;
@@ -109,7 +123,7 @@ const { pathname } = Astro.url;
         width: 100%;
 
         &:hover {
-            background-color: hsl(247, 75%, 45%);
+            background-color: var(--sidebar-item-bg-hover);
             padding-left: 1.5rem;
         }
 
@@ -124,7 +138,7 @@ const { pathname } = Astro.url;
     }
 
     .sidebar-summary-item {
-        background-color: hsl(247, 75%, 25%);
+        background-color: var(--sidebar-item-bg);
         padding: 0.5rem 1rem;
         cursor: pointer;
         transition: all 0.25s ease-in-out;
@@ -134,7 +148,7 @@ const { pathname } = Astro.url;
         width: 100%;
 
         &:hover {
-            background-color: hsl(247, 75%, 55%);
+            background-color: var(--sidebar-item-bg-hover);
         }
     }
 
@@ -146,7 +160,7 @@ const { pathname } = Astro.url;
         }
 
         &[open] .sidebar-summary-item {
-            background-color: hsl(247, 75%, 65%) !important;
+            background-color: var(--sidebar-item-bg-active) !important;
         }
     }
 
@@ -190,7 +204,7 @@ const { pathname } = Astro.url;
         cursor: pointer;
 
         &:hover {
-            background-color: #228;
+            background-color: var(--sidebar-item-bg-hover);
             padding-left: 2.5rem;
         }
 
@@ -269,7 +283,7 @@ const { pathname } = Astro.url;
             width: 36px;
             height: 36px;
             content: "";
-            background-color: light-dark(#111, #eee);
+            background-color: light-dark(#112, #dde);
             transform-origin: center;
             clip-path: polygon(
                 14% 44%,
