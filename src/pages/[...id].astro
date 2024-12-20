@@ -1,0 +1,18 @@
+---
+import MDLayout from "../layouts/MDLayout.astro";
+import { getCollection, render } from "astro:content";
+export async function getStaticPaths() {
+    const posts = await getCollection("posts");
+    return posts.map((post) => ({
+        params: { id: post.id },
+        props: { post },
+    }));
+}
+const { post } = Astro.props;
+console.log(Astro.props);
+const { Content } = await render(post);
+---
+
+<MDLayout title={post.data.title}>
+    <Content />
+</MDLayout>
