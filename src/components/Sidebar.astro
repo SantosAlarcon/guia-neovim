@@ -1,0 +1,326 @@
+---
+import { Image } from "astro:assets";
+import enlaces from "../enlaces.json";
+import LogoNeovim from "./LogoNeovim.astro";
+const { pathname } = Astro.url;
+---
+
+<aside class="sidebar-container">
+    <input id="sidebar-toggle" type="checkbox" />
+    <div id="sidebar-items">
+        <div id="logo">
+            <a href="/guia-neovim/">
+                <LogoNeovim />
+            </a>
+        </div>
+        <div class="sidebar-links">
+            {
+                enlaces.map((enlace) => {
+                    if (enlace.hijos.length > 0) {
+                        return (
+                            <details class="sidebar-details">
+                                <summary class="sidebar-summary">
+                                    <a
+                                        class={`sidebar-summary-item ${
+                                            pathname ===
+                                                `/guia-neovim${enlace.ruta}` &&
+                                            "activo"
+                                        }`}
+                                    >
+                                        <Image
+                                            src={enlace.icono}
+                                            alt={enlace.titulo}
+                                            width={24}
+                                            height={24}
+                                        />
+                                        {enlace.titulo}
+                                    </a>
+                                </summary>
+                                <div class="sidebar-child-list">
+                                    {enlace.hijos.map((hijo) => (
+                                        <a
+                                            class={`sidebar-child-item ${pathname === `/guia-neovim${hijo.ruta}` && "activo"}`}
+                                            href={`/guia-neovim${hijo.ruta}`}
+                                        >
+                                            {hijo.titulo}
+                                        </a>
+                                    ))}
+                                </div>
+                            </details>
+                        );
+                    } else {
+                        return (
+                            <a
+                                href={`/guia-neovim${enlace.ruta}`}
+                                class={`sidebar-link-item ${pathname === `/guia-neovim${enlace.ruta}` && "activo"}`}
+                            >
+                                <Image
+                                    class="sidebar-link-item-icon"
+                                    src={enlace.icono}
+                                    alt={enlace.titulo}
+                                    width={24}
+                                    height={24}
+                                />
+                                {enlace.titulo}
+                            </a>
+                        );
+                    }
+                })
+            }
+        </div>
+    </div>
+</aside>
+<style>
+    :root {
+        &[theme="light"] {
+            --sidebar-item-bg: hsl(247, 55%, 55%);
+            --sidebar-item-bg-hover: hsl(247, 75%, 25%);
+            --sidebar-item-bg-active: hsl(247, 75%, 75%);
+        }
+
+        &[theme="dark"] {
+            --sidebar-item-bg: hsl(247, 75%, 25%);
+            --sidebar-item-bg-hover: hsl(247, 75%, 65%);
+            --sidebar-item-bg-active: hsl(247, 75%, 55%);
+        }
+    }
+    * {
+        list-style-type: none;
+        padding-left: 0;
+        z-index: 5;
+        user-select: none;
+        font-size: 1.05rem;
+
+        & > a {
+            color: inherit !important;
+
+            &:hover {
+                text-shadow: none;
+            }
+        }
+
+        & > svg {
+            filter: invert(1);
+        }
+    }
+
+    .sidebar-links {
+        padding: 1rem 0;
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+        color: #eee;
+    }
+
+    .sidebar-link-item {
+        background-color: var(--sidebar-item-bg);
+        padding: 0.5rem 1rem;
+        cursor: pointer;
+        transition: all 0.25s ease-in-out;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        width: 100%;
+
+        &:hover {
+            background-color: var(--sidebar-item-bg-hover);
+            padding-left: 1.5rem;
+        }
+
+        &.activo {
+            font-weight: 900;
+            border-left: 0.3rem #66e solid;
+        }
+    }
+
+    .sidebar-link-item-icon {
+        margin-right: 0.5rem;
+    }
+
+    .sidebar-summary-item {
+        background-color: var(--sidebar-item-bg);
+        padding: 0.5rem 1rem;
+        cursor: pointer;
+        transition: all 0.25s ease-in-out;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        width: 100%;
+
+        &:hover {
+            background-color: var(--sidebar-item-bg-hover);
+        }
+    }
+
+    .sidebar-details {
+        &[open] .sidebar-summary {
+            &::after {
+                transform: rotate(0deg) translateY(0.25em);
+            }
+        }
+
+        &[open] .sidebar-summary-item {
+            background-color: var(--sidebar-item-bg-active) !important;
+        }
+    }
+
+    .sidebar-summary {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        &::after {
+            content: url("/guia-neovim/chevron.svg");
+            transform: rotate(-90deg);
+            transition: all 0.25s ease-in-out;
+            display: block;
+            position: absolute;
+            z-index: 5;
+            right: 3rem;
+
+            @media (prefers-color-scheme: dark) {
+                filter: invert(1);
+            }
+        }
+
+        & .sidebar-details[open] {
+            background-color: #aa0 !important;
+        }
+    }
+
+    .sidebar-child-list {
+        display: flex;
+        flex-direction: column;
+        gap: 0.25rem;
+        margin-top: 0.5rem;
+        margin-bottom: 0rem;
+    }
+
+    .sidebar-child-item {
+        padding: 0.5rem 0 0.5rem 2rem;
+        width: 100%;
+        background-color: #114;
+        transition: all 0.25s ease-in-out;
+        cursor: pointer;
+
+        &:hover {
+            background-color: var(--sidebar-item-bg-hover);
+            padding-left: 2.5rem;
+        }
+
+        &.activo {
+            font-weight: 900;
+            border-left: 0.3rem #66e solid;
+        }
+    }
+
+    .sidebar-child-link {
+        width: 100%;
+    }
+
+    #sidebar-items {
+        display: flex;
+        flex-direction: column;
+        padding: 2em;
+        box-shadow: 0 0 2em #0006;
+        width: var(--sidebar-width);
+        backdrop-filter: blur(1em);
+
+        > ul {
+            border-top: 1px #666 solid;
+            > li,
+            > li > ul > li {
+            }
+
+            > li::before {
+                content: "";
+            }
+
+            > li > a {
+                width: 100%;
+            }
+
+            > li > ul {
+                padding-left: 1.25em;
+            }
+        }
+    }
+
+    .sidebar-container {
+        display: flex;
+        flex-direction: row-reverse;
+        position: fixed;
+        top: 0;
+        left: -22.5em;
+        height: 100dvh;
+        transition: all 0.35s ease-in-out;
+
+        &.open {
+            left: 0;
+
+            ~ #post {
+                transform: translateX(calc(var(--sidebar-width) + 2em));
+                width: calc(100% - (var(--sidebar-width) + 2em));
+            }
+        }
+    }
+
+    #sidebar-toggle {
+        width: 8px;
+        height: 8px;
+        appearance: none;
+        background-color: light-dark(#eee, #111);
+        border: 1px #666 solid;
+        border-radius: 1em;
+        cursor: pointer;
+        display: grid;
+        place-content: center;
+        padding: 1.5rem;
+        margin: 1rem;
+        align-self: center;
+
+        &::before {
+            width: 36px;
+            height: 36px;
+            content: "";
+            background-color: light-dark(#112, #dde);
+            transform-origin: center;
+            clip-path: polygon(
+                14% 44%,
+                0 65%,
+                50% 100%,
+                100% 16%,
+                80% 0%,
+                43% 62%
+            );
+            transform: scale(0);
+            transition: all 0.1s ease-in-out;
+        }
+
+        &:checked::before {
+            transform: scale(1);
+        }
+    }
+</style>
+
+<script is:inline>
+    const handleNavBar = () => {
+        const checkBtn = document.querySelector("#sidebar-toggle");
+        const aside = document.querySelector("aside");
+        checkBtn.addEventListener("click", () => {
+            aside.classList.toggle("open");
+        });
+    };
+
+    document.addEventListener(
+        "astro:page-load",
+        () => {
+            handleNavBar();
+        },
+        { once: true },
+    );
+
+    document.addEventListener("astro:after-swap", () => {
+        handleNavBar();
+    });
+</script>
