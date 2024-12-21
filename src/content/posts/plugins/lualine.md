@@ -1,5 +1,4 @@
 ---
-layout: ../../layouts/MDLayout.astro
 title: Plugins - Lualine
 ---
 # :Lualine
