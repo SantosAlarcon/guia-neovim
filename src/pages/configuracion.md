@@ -4,13 +4,13 @@ title: "Neovim - Configuración"
 ---
 # :configuracion
 
-Tanto **Vim** como **Neovim** permiten a los usuarios guardar sus configuraciones en un archivo. Se pueden crear archivos de configuración en formato **.vim** (VIMScript) o en formato **.lua** (Lua). En esos archivos se guardan los **atajos de teclado personalizados**, [complementos](/guia-neovim/plugins), y las diferentes opciones que modifican el comportamiento del editor. En función del S.O. se guardan en:
+Tanto **Vim** como **Neovim** permiten a los usuarios guardar sus configuraciones en un archivo. Se pueden crear archivos de configuración en formato **.vim** (VIMScript) o en formato **.lua** (Lua). En esos archivos se guardan los **atajos de teclado personalizados**, [complementos](/plugins), y las diferentes opciones que modifican el comportamiento del editor. En función del S.O. se guardan en:
 
 - `$HOME/.config/nvim` en Linux / MacOS
 - `~/AppData/Local/nvim` en Windows
 
 <figure>
-        <img src="/guia-neovim/images/Inicio-Neovim.webp" alt="Inicio de Neovim" />
+        <img src="/images/Inicio-Neovim.webp" alt="Inicio de Neovim" />
         <figcaption>Neovim totalmente "pelado", sin plugins, ni configuración ni ná</figcaption>
 </figure>
 
@@ -22,7 +22,7 @@ A continuación vamos a ver diferentes formatos de configuración.
 
 Este formato se podría denominar "de legado", ya que pertenece a la época de **Vim**.
 El formato de este archivo es **.vim** y cuya sintaxis es muy sencilla. En la
-parte de [comandos](/guia-neovim/comandos) hemos visto el comando `:set` que permite activar y
+parte de [comandos](/comandos) hemos visto el comando `:set` que permite activar y
 asignar opciones, y que al guardarlo en un archivo permanecen al salir y arrancar
 **Neovim**.
 

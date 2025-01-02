@@ -6,12 +6,12 @@ title: Plugins - Lualine
 **Lualine** es una barra de estado muy personalizable y muy rápida, escrita en
 **Lua**.
 
-En el apartado de [plugins](/guia-neovim/plugins) habiamos instalado este plugin y lo
+En el apartado de [plugins](/plugins) habiamos instalado este plugin y lo
 habíamos activado, pero no habíamos profundizado bastante en cómo configurarlo.
 
 Pero antes de eso, veamos qué información nos muestra por defecto.
 
-<img src="/guia-neovim/images/lualine/lualine-por-defecto.webp" alt="Aspecto por defecto
+<img src="/images/lualine/lualine-por-defecto.webp" alt="Aspecto por defecto
 de Lualine" />
 
 Vamos por partes, como diría **Jack el Destripador**. En este caso de izquierda
@@ -98,7 +98,7 @@ tabline = {
 
 Cerramos Neovim, y lo volvemos a abrir.
 
-<img src="/guia-neovim/images/lualine/tabline.webp" alt="Tabline activado" />
+<img src="/images/lualine/tabline.webp" alt="Tabline activado" />
 
 En la imagen de arriba se muestran las pestañas o búferes que están abiertos, lo cuál
 está muy bien.
@@ -114,7 +114,7 @@ theme = "powerline_dark"
 
 Cerramos Neovim, y lo volvemos a abrir.
 
-<img src="/guia-neovim/images/lualine/powerline-dark.webp" alt="Cambiado al tema Powerline Dark" />
+<img src="/images/lualine/powerline-dark.webp" alt="Cambiado al tema Powerline Dark" />
 
 ¡Este tema es mucho mejor! **¡Claro que sí, guapi!**
 
@@ -130,7 +130,7 @@ section_separators = { left = '', right = '' },
 component_separators = { left = '', right = '' },
 ```
 
-<img src="/guia-neovim/images/lualine/bordes-cambiados.webp" alt="Bordes cambiados" />
+<img src="/images/lualine/bordes-cambiados.webp" alt="Bordes cambiados" />
 
 ¡No está mal, Manolo!
 
@@ -148,7 +148,7 @@ Abrimos el archivo `lualine-cfg.lua` y vamos a efectuar el siguiente cambio:
 
 Lo de siempre: cerramos Neovim y lo volvemos a abrir.
 
-<img src="/guia-neovim/images/lualine/estado-cambiado.webp" alt="Estado cambiado" />
+<img src="/images/lualine/estado-cambiado.webp" alt="Estado cambiado" />
 
 Ahora en la derecha solo sale el formato del archivo y la posición del cursor (número de línea y columna)
 
@@ -166,7 +166,7 @@ disabled_filetypes = {
 
 Cerramos Neovim y lo volvemos a abrir. Abrimos el NeoTree y...
 
-<img src="/guia-neovim/images/lualine/neotree-sin-lualine.webp" alt="NeoTree sin Lualine" />
+<img src="/images/lualine/neotree-sin-lualine.webp" alt="NeoTree sin Lualine" />
 
 ¡Ya no se ve la barra de estado en NeoTree!
 

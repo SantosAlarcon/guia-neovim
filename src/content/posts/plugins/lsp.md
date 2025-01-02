@@ -6,26 +6,26 @@ title: Plugins - LSP
 <details>
 <summary>Tabla de contenidos</summary>
 
-- [Introducción](/guia-neovim/plugins/lsp/#introducción)
-- [Instalar y configurar Lspconfig](/guia-neovim/plugins/lsp/#instalar-y-configurar-lspconfig)
-- [Instalar y configurar LuaSnip](/guia-neovim/plugins/lsp/#instalar-y-configurar-luasnip)
-- [Instalar y configurar el autocompletado](/guia-neovim/plugins/lsp/#instalar-y-configurar-el-autocompletado)
-- [Instalar y activar Mason](/guia-neovim/plugins/lsp/#instalar-y-activar-mason)
-- [Un apunte sobre Mason](/guia-neovim/plugins/lsp/#un-apunte-sobre-mason)
-- [Instalación, activación y configuración None-LS (Null-LS)](/guia-neovim/plugins/lsp/#instalación-activación-y-configuración-none-ls-null-ls)
-- [LSPs, linters y formateadores para cada lenguaje de programación](/guia-neovim/plugins/lsp/#lsps-linters-y-formateadores-para-cada-lenguaje-de-programación)
-  * [JavaScript/TypeScript](/guia-neovim/plugins/lsp/#javascripttypescript)
-  * [Python](/guia-neovim/plugins/lsp/#python)
-  * [Java](/guia-neovim/plugins/lsp/#java)
-  * [C / C++](/guia-neovim/plugins/lsp/#c--c)
-  * [PHP](/guia-neovim/plugins/lsp/#php)
-  * [Kotlin](/guia-neovim/plugins/lsp/#kotlin)
-  * [Rust](/guia-neovim/plugins/lsp/#rust)
-  * [Ruby](/guia-neovim/plugins/lsp/#ruby)
-  * [Go](/guia-neovim/plugins/lsp/#go)
-- [Instalación, activación y configuración de TreeSitter](/guia-neovim/plugins/lsp/#instalación-activación-y-configuración-de-treesitter)
-- [Autoemparejamiento y autoencerramiento](/guia-neovim/plugins/lsp/#autoemparejamiento-y-autoencerramiento)
-- [Final](/guia-neovim/plugins/lsp/#final)
+- [Introducción](/plugins/lsp/#introducción)
+- [Instalar y configurar Lspconfig](/plugins/lsp/#instalar-y-configurar-lspconfig)
+- [Instalar y configurar LuaSnip](/plugins/lsp/#instalar-y-configurar-luasnip)
+- [Instalar y configurar el autocompletado](/plugins/lsp/#instalar-y-configurar-el-autocompletado)
+- [Instalar y activar Mason](/plugins/lsp/#instalar-y-activar-mason)
+- [Un apunte sobre Mason](/plugins/lsp/#un-apunte-sobre-mason)
+- [Instalación, activación y configuración None-LS (Null-LS)](/plugins/lsp/#instalación-activación-y-configuración-none-ls-null-ls)
+- [LSPs, linters y formateadores para cada lenguaje de programación](/plugins/lsp/#lsps-linters-y-formateadores-para-cada-lenguaje-de-programación)
+  * [JavaScript/TypeScript](/plugins/lsp/#javascripttypescript)
+  * [Python](/plugins/lsp/#python)
+  * [Java](/plugins/lsp/#java)
+  * [C / C++](/plugins/lsp/#c--c)
+  * [PHP](/plugins/lsp/#php)
+  * [Kotlin](/plugins/lsp/#kotlin)
+  * [Rust](/plugins/lsp/#rust)
+  * [Ruby](/plugins/lsp/#ruby)
+  * [Go](/plugins/lsp/#go)
+- [Instalación, activación y configuración de TreeSitter](/plugins/lsp/#instalación-activación-y-configuración-de-treesitter)
+- [Autoemparejamiento y autoencerramiento](/plugins/lsp/#autoemparejamiento-y-autoencerramiento)
+- [Final](/plugins/lsp/#final)
 
 </details>
 
@@ -202,7 +202,7 @@ cosa:
 
 Después de los tecnicismos, vamos a cargar el **Mason** con el comando `:Mason`.
 
-<img src="/guia-neovim/images/lsp/mason-primera-vez.webp" alt="Primer arranque de Mason" />
+<img src="/images/lsp/mason-primera-vez.webp" alt="Primer arranque de Mason" />
 
 La primera vez que cargamos el Mason no hay instalado nada. Pero eso lo vamos a cambiar.
 
@@ -225,24 +225,24 @@ LSPs pulsando <kbd>i</kbd> sobre ellos:
 - `lua-language-server` - LSP de Lua
 - `json-lsp` - LSP de JSON
 
-<img src="/guia-neovim/images/lsp/mason-lsps-instalados.webp" alt="LSPs instalados" />
+<img src="/images/lsp/mason-lsps-instalados.webp" alt="LSPs instalados" />
 
 Cerramos Neovim y lo volvemos a abrirlo. Vamos a crear un archivo en formato
 JavaScript `.js`.
 
-<img src="/guia-neovim/images/lsp/autocompletado-funcionando.webp" alt="Autocompletado
+<img src="/images/lsp/autocompletado-funcionando.webp" alt="Autocompletado
 funcionando" />
 
 **¡POR FIN!** ¡El autocompletado ya está funcionando! ¿Pero y qué hay de los
 snippets? 🤔
 
-<img src="/guia-neovim/images/lsp/snippets-funcionando.webp" alt="Snippets funcionando" />
+<img src="/images/lsp/snippets-funcionando.webp" alt="Snippets funcionando" />
 
 **¡Hombre, también funcionan los snippets!** 
 
 Podemos consultar la información del LSP cargado en el en el archivo/búfer usando el comando `:LspInfo`.
 
-<img src="/guia-neovim/images/lsp/Lspinfo.webp" alt="LspInfo" />
+<img src="/images/lsp/Lspinfo.webp" alt="LspInfo" />
 
 Este comando nos viene de perlas para diagnosticar los posibles fallos del LSP,
 además de mostrarnos cuál es el LSP que se está usando y qué tipo de archivo está
@@ -282,29 +282,29 @@ return {
 Guardamos el archivo. Cerramos Neovim y lo volvemos a abrir. Ahora ya debería estar
 activado el plugin. Para comprobarlo escribimos el comando `:NullLsInfo`.
 
-<img src="/guia-neovim/images/lsp/nls-funcionando.webp" alt="NullLS funcionando" />
+<img src="/images/lsp/nls-funcionando.webp" alt="NullLS funcionando" />
 
 ¡Um, vaya! **NullLS** está activo pero no hay ningún linter ni formateador en este
 búfer, ya que estamos en un archivo vacío. Pero vamos a crear un archivo en formato
 JavaScript. Veamos qué pasa.
 
-<img src="/guia-neovim/images/lsp/nls-js-origenes.webp" alt="NullLS - Orígenes para
+<img src="/images/lsp/nls-js-origenes.webp" alt="NullLS - Orígenes para
 JavaScript" />
 
 Aquí ya va habiendo más cosas, porque nos dice cuales son los plugins que hay que
 instalar para tener formateado, linter y acciones de código. Como estamos usando un
 archivo escrito en JavaScript, vamos a instalarle `eslint_d` y `prettier` con Mason.
 
-<img src="/guia-neovim/images/lsp/mason-eslint-prettier-instalados.webp" alt="Eslint y Prettier instalados" />
+<img src="/images/lsp/mason-eslint-prettier-instalados.webp" alt="Eslint y Prettier instalados" />
 
 Cerramos Neovim y volvemos a abrir el archivo de JavaScript con Neovim.
 
-<img src="/guia-neovim/images/lsp/nls-origenes-javascript.webp" alt="NullLS - Origenes de JS cargados" />
+<img src="/images/lsp/nls-origenes-javascript.webp" alt="NullLS - Origenes de JS cargados" />
 
 **¡Esto ya tiene mejor pinta!** Nos está mostrando los origenes que están asociados
 al tipo de archivo.
 
-<img src="/guia-neovim/images/lsp/nls-linter-funcionando.webp" alt="NullLS - Eslint funcionando" />
+<img src="/images/lsp/nls-linter-funcionando.webp" alt="NullLS - Eslint funcionando" />
 
 Además, en la barra de estado nos muestra la cantidad de avisos y
 errores que hay en el código, lo cuál está genial.
@@ -313,11 +313,11 @@ Pero... ¿y qué pasa con el formateado? Pues resulta que no lo hace automática
 manualmente con el comando `:lua vim.lsp.buf.format()`. Vamos a hacer una indentación
 mala:
 
-<img src="/guia-neovim/images/lsp/mala-indentacion.webp" alt="Mala indentación" />
+<img src="/images/lsp/mala-indentacion.webp" alt="Mala indentación" />
 
 Ahora escribimos el comando anterior y ...
 
-<img src="/guia-neovim/images/lsp/prettier-funcionando.webp" alt="Prettier haciendo su
+<img src="/images/lsp/prettier-funcionando.webp" alt="Prettier haciendo su
 trabajo" />
 
 ¡Listo! Como ves, el amigo **Prettier** ha hecho un buen trabajo corrigiendo la
@@ -325,11 +325,11 @@ indentación, haciendola mucho más legible. ¡Un aplauso!
 
 Vamos a repetir lo mismo con un archivo en formato Lua
 
-<img src="/guia-neovim/images/lsp/mala-indentacion-lua.webp" alt="Mala indentación en Lua" />
+<img src="/images/lsp/mala-indentacion-lua.webp" alt="Mala indentación en Lua" />
 
 Repetimos el comando anterior.
 
-<img src="/guia-neovim/images/lsp/lua-buen-formato.webp" alt="Archivo Lua bien
+<img src="/images/lsp/lua-buen-formato.webp" alt="Archivo Lua bien
 formateado" />
 
 Sin comentarios. Un trabajo estupendo. 
@@ -460,17 +460,17 @@ Cerramos Neovim y lo volvemos a abrir. Ahora se van a instalar los "parsers" que
 hemos mencionado en el archivo de configuración. Podemos mirar que está dicho plugin
 en funcionamiento con el comando `:checkhealth`.
 
-<img src="/guia-neovim/images/lsp/ts-checkhealth.webp" alt="TreeSitter - Parsers instalados"  />
+<img src="/images/lsp/ts-checkhealth.webp" alt="TreeSitter - Parsers instalados"  />
 
 Vamos a ver un ejemplo de un archivo básico de HTML para ver cómo es antes y después.
 
 <figure>
-    <img src="/guia-neovim/images/lsp/ts-antes.webp" alt="Resaltado de TS desactivado"  />
+    <img src="/images/lsp/ts-antes.webp" alt="Resaltado de TS desactivado"  />
     <figcaption>Resaltado de Treesitter desactivado</figcaption>
 </figure>
 
 <figure>
-    <img src="/guia-neovim/images/lsp/ts-despues.webp" alt="Resaltado de TS activado"  />
+    <img src="/images/lsp/ts-despues.webp" alt="Resaltado de TS activado"  />
     <figcaption>Resaltado de Treesitter activado</figcaption>
 </figure>
 
@@ -506,7 +506,7 @@ return {
 Salimos de Neovim y vamos a crear un archivo HTML dentro de Neovim. Vamos a probar
 que los corchetes, paréntesis y etiquetas se cierran correctamente.
 
-<img src="/guia-neovim/images/lsp/autopairing-funcionando.webp" alt="Autotag funcionando"  />
+<img src="/images/lsp/autopairing-funcionando.webp" alt="Autotag funcionando"  />
 
 Pues sí que funciona, sí.
 

@@ -8,16 +8,16 @@ lector.
 
 ## Tabla de contenidos
 
-- [Atajos](https://santosalarcon.github.io/guia-neovim/atajos/)
-- [Comandos](https://santosalarcon.github.io/guia-neovim/comandos/)
-- [Configuración](https://santosalarcon.github.io/guia-neovim/configuracion/)
-- [Plugins](https://santosalarcon.github.io/guia-neovim/plugins/)
-  - [NeoTree](https://santosalarcon.github.io/guia-neovim/plugins/neotree)
-  - [Lualine](https://santosalarcon.github.io/guia-neovim/plugins/lualine)
-  - [Esquema de colores Tokyodark](https://santosalarcon.github.io/guia-neovim/plugins/tokyodark)
-  - [LSP, autocompletado y snippets](https://santosalarcon.github.io/guia-neovim/plugins/lsp)
-  - [Lazy](https://santosalarcon.github.io/guia-neovim/plugins/lazy)
-- [Configuraciones de Neovim](https://santosalarcon.github.io/guia-neovim/configuraciones-neovim)
+- [Atajos](https://www.guia-neovim.es/atajos/)
+- [Comandos](https://www.guia-neovim.es/comandos/)
+- [Configuración](https://www.guia-neovim.es/configuracion/)
+- [Plugins](https://www.guia-neovim.es/plugins/)
+  - [NeoTree](https://www.guia-neovim.es/plugins/neotree)
+  - [Lualine](https://www.guia-neovim.es/plugins/lualine)
+  - [Esquema de colores Tokyodark](https://www.guia-neovim.es/plugins/tokyodark)
+  - [LSP, autocompletado y snippets](https://www.guia-neovim.es/plugins/lsp)
+  - [Lazy](https://www.guia-neovim.es/plugins/lazy)
+- [Configuraciones de Neovim](https://www.guia-neovim.es/configuraciones-neovim)
  
 ## Características
 - 🌙 Modo oscuro/claro

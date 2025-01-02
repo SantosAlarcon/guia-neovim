@@ -6,17 +6,17 @@ title: Plugins - Lazy
 <details>
 <summary>Tabla de contenidos</summary>
 
-- [Atajos de teclado](/guia-neovim/plugins/lazy/#atajos-de-teclado)
-- [Pestaña Profile (Perfil)](/guia-neovim/plugins/lazy/#pestana-profile-perfil)
-- [Carga diferida de los plugins (Lazy load)](/guia-neovim/plugins/lazy/#carga-diferida-de-los-plugins-lazy-load)
-- [Eventos](/guia-neovim/plugins/lazy/#eventos)
-- [Aplicando los eventos a los plugins](/guia-neovim/plugins/lazy/#aplicando-los-eventos-a-los-plugins)
+- [Atajos de teclado](/plugins/lazy/#atajos-de-teclado)
+- [Pestaña Profile (Perfil)](/plugins/lazy/#pestana-profile-perfil)
+- [Carga diferida de los plugins (Lazy load)](/plugins/lazy/#carga-diferida-de-los-plugins-lazy-load)
+- [Eventos](/plugins/lazy/#eventos)
+- [Aplicando los eventos a los plugins](/plugins/lazy/#aplicando-los-eventos-a-los-plugins)
 
 </details>
 
 ![Captura de Lazy](https://user-images.githubusercontent.com/292349/208301737-68fb279c-ba70-43ef-a369-8c3e8367d6b1.png)
 
-En la sección de [plugins](/guia-neovim/plugins) hemos instalado un gestor de paquetes llamado **Lazy**, que cuenta con una interfaz de usuario muy intuitiva y
+En la sección de [plugins](/plugins) hemos instalado un gestor de paquetes llamado **Lazy**, que cuenta con una interfaz de usuario muy intuitiva y
 permite cargar según qué plugins de manera pasiva. De ahí el nombre de "lazy" (vago en _inglés_).
 
 En este artículo toca profundizar bastante sobre este plugin.
@@ -44,7 +44,7 @@ En este artículo toca profundizar bastante sobre este plugin.
 
 ## <a name="pestana-profile-perfil"></a> Pestaña Profile (Perfil)
 
-![Pestaña Perfil de Lazy](/guia-neovim/images/lazy/lazy-profile.webp)
+![Pestaña Perfil de Lazy](/images/lazy/lazy-profile.webp)
 
 Esta pestaña la vamos a visitar muy a menudo para comprobar el tiempo que tarda en arrancar Neovim tras instalar un buen puñado de plugins. No es lo mismo el tiempo de carga de Neovim en un búfer vacío sin nada, que un archivo de Python o de cualquier otro lenguaje, en el que ya tiene cargado el servidor de lenguaje, el linter y el formateador.
 
@@ -120,7 +120,7 @@ Antes habíamos visto el evento `'VeryLazy'`, que es exclusivo de Lazy. Pero Neo
 
 ## Aplicando los eventos a los plugins
 
-![Antes de los eventos](/guia-neovim/images/lazy/lazy-antes-eventos.webp)
+![Antes de los eventos](/images/lazy/lazy-antes-eventos.webp)
 
 Nuestra instalación de Neovim tiene 20 plugins, y ha tardado en iniciarse unos 120ms, lo cuál no está mal, pero se podría mejorar mucho más.
 
@@ -138,7 +138,7 @@ Vamos a ir por cada archivo de configuración (o de especificación) y vamos a c
 
 Tras aplicarle los eventos, vamos a ver cuál es el tiempo de carga.
 
-![Tras los eventos aplicados](/guia-neovim/images/lazy/lazy-profile2.webp)
+![Tras los eventos aplicados](/images/lazy/lazy-profile2.webp)
 
 **¡¡19.82 ms!!** ¡Ni tan mal, oye!
 

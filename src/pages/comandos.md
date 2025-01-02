@@ -28,7 +28,7 @@ En las siguientes tablas hay una variedad de comandos agrupados por tipo.
 | `:call [función]`                     | Llama a una función y sus argumentos                                              |
 | `:let [variable]`                     | Declara una variable interna                                                      |
 
-> P.D.: Los [plugins](/guia-neovim/plugins) de terceros que se cargan en **Neovim** cuentan con su propia documentación y comandos.
+> P.D.: Los [plugins](/plugins) de terceros que se cargan en **Neovim** cuentan con su propia documentación y comandos.
 
 ## Archivo / búfer
 

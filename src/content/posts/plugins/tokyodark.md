@@ -24,7 +24,7 @@ return {
 
 Cerramos Neovim y lo volvemos a abrir.
 
-<img src="/guia-neovim/images/tokyodark/lazy-tokyodark.webp" alt="Tokyodark instalado" />
+<img src="/images/tokyodark/lazy-tokyodark.webp" alt="Tokyodark instalado" />
 
 ## Activar Tokyodark
 
@@ -43,7 +43,7 @@ return {
 
 Guardamos el archivo, cerramos Neovim y volvemos a cargarlo.
 
-<img src="/guia-neovim/images/tokyodark/tokyodark-activado.webp" alt="Tokyodark activado" />
+<img src="/images/tokyodark/tokyodark-activado.webp" alt="Tokyodark activado" />
 
 A ver, vale que no sea el mejor tema del mundo, pero es mucho mejor que el que nos
 ofrecía Neovim por defecto.

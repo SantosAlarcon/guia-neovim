@@ -53,7 +53,7 @@ Para entrar a **Lazy** usaremos el comando `:Lazy` y aparecerá el susodicho ges
 plugins. Ahora mismo solo hay un plugin, que es el propio **Lazy**.
 
 <figure>
-  <img src="/guia-neovim/images/lazy.webp" alt="Lazy pelao" />
+  <img src="/images/lazy.webp" alt="Lazy pelao" />
   <figcaption>El gestor Lazy sin plugins</figcaption>
 </figure>
 
@@ -119,7 +119,7 @@ Vamos a desmenuzar el ejemplo anterior:
 
 Guardamos los cambios. Salimos de Neovim y cuando volvamos a arrancarlo, detectará los nuevos plugins y los instalará.
 
-<img src="/guia-neovim/images/instalacion-plugins.webp" alt="Instalando nuevos plugins con Lazy" />
+<img src="/images/instalacion-plugins.webp" alt="Instalando nuevos plugins con Lazy" />
 
 Pero... **¡¡OJO!!** Que se instalen los plugins no significa que estén activados por
 defecto. Para eso vamos a volver al archivo `lualine-cfg.lua` y vamos a modificarlo:
@@ -140,7 +140,7 @@ return {
 Guardamos los cambios, salimos de Neovim, volvemos a ejecutarlo y ...
 
 <figure>
-    <img src="/guia-neovim/images/lualine-activado.webp" alt="Lualine activado" />
+    <img src="/images/lualine-activado.webp" alt="Lualine activado" />
     <figcaption>
         <b>Voilá!!</b> Ya tenemos activado el <b>Lualine</b>.
     </figcaption>
@@ -168,8 +168,8 @@ cada plugin, con sus capturas y explicación.
 
 ### Enlaces
 
-- [NeoTree](/guia-neovim/plugins/neotree)
-- [Lualine](/guia-neovim/plugins/lualine)
-- [Esquema de colores Tokyodark](/guia-neovim/plugins/tokyodark)
-- [LSPs, autocompletado y snippets](/guia-neovim/plugins/lsp)
-- [Lazy](/guia-neovim/plugins/lazy)
+- [NeoTree](/plugins/neotree)
+- [Lualine](/plugins/lualine)
+- [Esquema de colores Tokyodark](/plugins/tokyodark)
+- [LSPs, autocompletado y snippets](/plugins/lsp)
+- [Lazy](/plugins/lazy)

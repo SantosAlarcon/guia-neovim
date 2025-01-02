@@ -3,35 +3,35 @@
         "titulo": "Inicio",
         "slug": "inicio",
         "ruta": "/",
-        "icono": "/guia-neovim/icons/home.svg",
+        "icono": "/icons/home.svg",
         "hijos": []
     },
     {
         "titulo": "Atajos",
         "slug": "atajos",
         "ruta": "/atajos",
-        "icono": "/guia-neovim/icons/keyboard.svg",
+        "icono": "/icons/keyboard.svg",
         "hijos": []
     },
     {
         "titulo": "Comandos",
         "slug": "comandos",
         "ruta": "/comandos",
-        "icono": "/guia-neovim/icons/terminal.svg",
+        "icono": "/icons/terminal.svg",
         "hijos": []
     },
     {
         "titulo": "Configuración",
         "slug": "configuracion",
         "ruta": "/configuracion",
-        "icono": "/guia-neovim/icons/config.svg",
+        "icono": "/icons/config.svg",
         "hijos": []
     },
     {
         "titulo": "Plugins",
         "slug": "plugins",
         "ruta": "/plugins",
-        "icono": "/guia-neovim/icons/plugin.svg",
+        "icono": "/icons/plugin.svg",
         "hijos": [
             {
                 "titulo": "NeoTree",
@@ -64,7 +64,7 @@
         "titulo": "Configuraciones de Neovim",
         "slug": "configuraciones-neovim",
         "ruta": "/configuraciones-neovim",
-        "icono": "/guia-neovim/icons/configs.svg",
+        "icono": "/icons/configs.svg",
         "hijos": []
     }
 ]

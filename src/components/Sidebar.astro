@@ -9,7 +9,7 @@ const { pathname } = Astro.url;
     <input id="sidebar-toggle" type="checkbox" />
     <div id="sidebar-items">
         <div id="logo">
-            <a href="/guia-neovim/">
+            <a href="/">
                 <LogoNeovim />
             </a>
         </div>
@@ -23,7 +23,7 @@ const { pathname } = Astro.url;
                                     <a
                                         class={`sidebar-summary-item ${
                                             pathname ===
-                                                `/guia-neovim${enlace.ruta}` &&
+                                                `${enlace.ruta}` &&
                                             "activo"
                                         }`}
                                     >
@@ -39,8 +39,8 @@ const { pathname } = Astro.url;
                                 <div class="sidebar-child-list">
                                     {enlace.hijos.map((hijo) => (
                                         <a
-                                            class={`sidebar-child-item ${pathname === `/guia-neovim${hijo.ruta}` && "activo"}`}
-                                            href={`/guia-neovim${hijo.ruta}`}
+                                            class={`sidebar-child-item ${pathname === `${hijo.ruta}` && "activo"}`}
+                                            href={`${hijo.ruta}`}
                                         >
                                             {hijo.titulo}
                                         </a>
@@ -51,8 +51,8 @@ const { pathname } = Astro.url;
                     } else {
                         return (
                             <a
-                                href={`/guia-neovim${enlace.ruta}`}
-                                class={`sidebar-link-item ${pathname === `/guia-neovim${enlace.ruta}` && "activo"}`}
+                                href={`${enlace.ruta}`}
+                                class={`sidebar-link-item ${pathname === `${enlace.ruta}` && "activo"}`}
                             >
                                 <Image
                                     class="sidebar-link-item-icon"
@@ -170,7 +170,7 @@ const { pathname } = Astro.url;
         align-items: center;
 
         &::after {
-            content: url("/guia-neovim/chevron.svg");
+            content: url("/chevron.svg");
             transform: rotate(-90deg);
             transition: all 0.25s ease-in-out;
             display: block;

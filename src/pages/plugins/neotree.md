@@ -26,7 +26,7 @@ Tras guardar el archivo, la barra de comandos nos avisa de que se han producido
 cambios en el archivo de las especificaciones. Salimos de Neovim y lo volvemos a
 ejecutar.
 
-<img src="/guia-neovim/images/neotree/instalacion-neotree2.webp" alt="NeoTree instalado" />
+<img src="/images/neotree/instalacion-neotree2.webp" alt="NeoTree instalado" />
 
 Se carga el gestor de Lazy y acto seguido instalará NeoTree y sus dependencias. Ahora
 solo hay que activar **NeoTree**.
@@ -50,7 +50,7 @@ return {
 Guardamos el archivo, salimos de Neovim y lo volvemos a cargar. De momento no sucede
 nada, pero si escribimos el comando `:Neotree`...
 
-<img src="/guia-neovim/images/neotree/neotree-activado.webp" alt="NeoTree activado" />
+<img src="/images/neotree/neotree-activado.webp" alt="NeoTree activado" />
 
 Nos aparece una barra lateral con la estructura del directorio actual. Esto viene bien cuando se trabaje con proyectos de
 programación organizados por directorios. Si volvemos a usar el comando no se cierra.
@@ -88,7 +88,7 @@ require("neo-tree").setup({
 Cerramos Neovim, volvemos a ejecutarlo, abrimos Neotree y seleccionamos un archivo.
 Al abrirlo, ahora se carga en una pestaña nueva.
 
-<img src="/guia-neovim/images/neotree/configuracion-neotree.webp" alt="Se abren nuevas pestañas al abrir archivos con Neotree" />
+<img src="/images/neotree/configuracion-neotree.webp" alt="Se abren nuevas pestañas al abrir archivos con Neotree" />
 
 Para más información sobre cómo configurar **NeoTree** a tu gusto, puedes dirigirte a
 la [documentación oficial de Github](https://github.com/nvim-neo-tree/neo-tree.nvim) o bien escribiendo el comando `:help neo-tree`. A mí personalmente me gusta que se abra como una ventana lateral, como si estuvieses trabajando en **Visual Studio Code** u otro IDE.
