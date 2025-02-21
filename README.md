@@ -1,6 +1,6 @@
 # Guía Neovim
 
-![Logo de Neovim](public/neovim.svg)
+<img src="public/LogoLight.svg" width="100%" />
 
 Esta es un guía para l@s novat@s que quieran dar sus primeros pasos con este editor.
 Se intentará que sea lo más completo posible y que cuya lectura resulte amena y divertida al
