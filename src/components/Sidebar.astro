@@ -4,6 +4,7 @@ import enlaces from "../enlaces.json";
 import LogoNeovim from "./LogoNeovim.astro";
 const { pathname } = Astro.url;
 ---
+
 <sidebar-element>
     <aside class="sidebar-container">
         <input id="sidebar-toggle" type="checkbox" />
@@ -22,8 +23,7 @@ const { pathname } = Astro.url;
                                     <summary class="sidebar-summary">
                                         <a
                                             class={`sidebar-summary-item ${
-                                                pathname ===
-                                                    `${enlace.ruta}` &&
+                                                pathname === `${enlace.ruta}` &&
                                                 "activo"
                                             }`}
                                         >
@@ -103,6 +103,37 @@ const { pathname } = Astro.url;
         & > svg {
             filter: invert(1);
         }
+    }
+
+    .sidebar-container {
+        display: flex;
+        flex-direction: row-reverse;
+        position: fixed;
+        top: 0;
+        left: -22.5em;
+        height: 100dvh;
+        transition: all 0.35s ease-in-out;
+        z-index: 10;
+
+        &.open {
+            left: 0;
+
+            ~ #post {
+                transform: translateX(calc(var(--sidebar-width) + 2em));
+                width: calc(100% - (var(--sidebar-width) + 2em));
+            }
+        }
+
+        &::backdrop {
+            backdrop-filter: blur(1rem);
+            background-color: hsl(247, 75%, 25%);
+        }
+
+    }
+
+    .sidebar-container::backdrop {
+        backdrop-filter: blur(1rem);
+        background-color: hsl(247, 75%, 25%);
     }
 
     .sidebar-links {
@@ -226,6 +257,7 @@ const { pathname } = Astro.url;
         box-shadow: 0 0 2em #0006;
         width: var(--sidebar-width);
         backdrop-filter: blur(1em);
+        overflow-y: auto;
 
         > ul {
             border-top: 1px #666 solid;
@@ -243,25 +275,6 @@ const { pathname } = Astro.url;
 
             > li > ul {
                 padding-left: 1.25em;
-            }
-        }
-    }
-
-    .sidebar-container {
-        display: flex;
-        flex-direction: row-reverse;
-        position: fixed;
-        top: 0;
-        left: -22.5em;
-        height: 100dvh;
-        transition: all 0.35s ease-in-out;
-
-        &.open {
-            left: 0;
-
-            ~ #post {
-                transform: translateX(calc(var(--sidebar-width) + 2em));
-                width: calc(100% - (var(--sidebar-width) + 2em));
             }
         }
     }
@@ -320,10 +333,18 @@ const { pathname } = Astro.url;
         }
 
         handleNavBar() {
+            const html = document.querySelector("html");
             const checkBtn = this.querySelector("#sidebar-toggle");
             const aside = this.querySelector("aside");
+
             checkBtn.addEventListener("click", () => {
                 aside.classList.toggle("open");
+
+                if (aside.classList.contains("open")) {
+                    html.style.overflowY = "hidden";
+                } else {
+                    html.style.overflowY = "scroll";
+                }
             });
         }
     }
