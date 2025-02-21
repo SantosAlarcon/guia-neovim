@@ -48,7 +48,7 @@ const ThemeToggler = () => {
     return (
         mounted && (
             <div id="theme-toggle" className={theme === "dark" ? "checked" : ""} onClick={changeTheme}>
-                <i title={theme === "dark" ? "Modo oscuro" : "Modo claro"} className={`dot ${theme === "dark" ? "checked" : ""}`}>
+                <i aria-label={theme === "dark" ? "Modo oscuro" : "Modo claro"} className={`dot ${theme === "dark" ? "checked" : ""}`}>
                     {theme === "light" ? <IconoSol /> : <IconoLuna />}
                 </i>
             </div>

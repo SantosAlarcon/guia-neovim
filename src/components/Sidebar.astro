@@ -6,23 +6,23 @@ const { pathname } = Astro.url;
 ---
 
 <sidebar-element>
-    <aside class="sidebar-container">
-        <input id="sidebar-toggle" type="checkbox" aria-label="Mostrar/Ocultar barra lateral" />
-        <div id="sidebar-items">
+    <aside class="sidebar__container">
+        <input class="sidebar__toggle" type="checkbox" aria-label="Mostrar/Ocultar barra lateral" />
+        <div class="sidebar__items">
             <div id="logo">
                 <a href="/" aria-label="Ir a la página principal">
                     <LogoNeovim />
                 </a>
             </div>
-            <div class="sidebar-links">
+            <div class="sidebar__links">
                 {
                     enlaces.map((enlace) => {
                         if (enlace.hijos.length > 0) {
                             return (
-                                <details class="sidebar-details">
-                                    <summary class="sidebar-summary">
+                                <details class="sidebar__details">
+                                    <summary class="sidebar__summary">
                                         <a
-                                            class={`sidebar-summary-item ${
+                                            class={`sidebar__summary-item ${
                                                 pathname === `${enlace.ruta}` &&
                                                 "activo"
                                             }`}
@@ -37,10 +37,10 @@ const { pathname } = Astro.url;
                                             {enlace.titulo}
                                         </a>
                                     </summary>
-                                    <div class="sidebar-child-list">
+                                    <div class="sidebar__child-list">
                                         {enlace.hijos.map((hijo) => (
                                             <a
-                                                class={`sidebar-child-item ${pathname === `${hijo.ruta}` && "activo"}`}
+                                                class={`sidebar__child-item ${pathname === `${hijo.ruta}` && "activo"}`}
                                                 href={`${hijo.ruta}`}
                                             >
                                                 {hijo.titulo}
@@ -53,10 +53,10 @@ const { pathname } = Astro.url;
                             return (
                                 <a
                                     href={`${enlace.ruta}`}
-                                    class={`sidebar-link-item ${pathname === `${enlace.ruta}` && "activo"}`}
+                                    class={`sidebar__link-item ${pathname === `${enlace.ruta}` && "activo"}`}
                                 >
                                     <Image
-                                        class="sidebar-link-item-icon"
+                                        class="sidebar__link-item-icon"
                                         src={enlace.icono}
                                         alt=""
                                         width={24}
@@ -106,7 +106,7 @@ const { pathname } = Astro.url;
         }
     }
 
-    .sidebar-container {
+    .sidebar__container {
         display: flex;
         flex-direction: row-reverse;
         position: fixed;
@@ -131,12 +131,7 @@ const { pathname } = Astro.url;
         }
     }
 
-    .sidebar-container::backdrop {
-        backdrop-filter: blur(1rem);
-        background-color: hsl(247, 75%, 25%);
-    }
-
-    .sidebar-links {
+    .sidebar__links {
         padding: 1rem 0;
         display: flex;
         flex-direction: column;
@@ -144,7 +139,7 @@ const { pathname } = Astro.url;
         color: #eee;
     }
 
-    .sidebar-link-item {
+    .sidebar__link-item {
         background-color: var(--sidebar-item-bg);
         padding: 0.5rem 1rem;
         cursor: pointer;
@@ -165,11 +160,11 @@ const { pathname } = Astro.url;
         }
     }
 
-    .sidebar-link-item-icon {
+    .sidebar__link-item-icon {
         margin-right: 0.5rem;
     }
 
-    .sidebar-summary-item {
+    .sidebar__summary-item {
         background-color: var(--sidebar-item-bg);
         padding: 0.5rem 1rem;
         cursor: pointer;
@@ -184,19 +179,19 @@ const { pathname } = Astro.url;
         }
     }
 
-    .sidebar-details {
-        &[open] .sidebar-summary {
+    .sidebar__details {
+        &[open] .sidebar__summary {
             &::after {
                 transform: rotate(0deg) translateY(0.25em);
             }
         }
 
-        &[open] .sidebar-summary-item {
+        &[open] .sidebar__summary-item {
             background-color: var(--sidebar-item-bg-active) !important;
         }
     }
 
-    .sidebar-summary {
+    .sidebar__summary {
         display: flex;
         justify-content: space-between;
         align-items: center;
@@ -215,12 +210,12 @@ const { pathname } = Astro.url;
             }
         }
 
-        & .sidebar-details[open] {
+        & .sidebar__details[open] {
             background-color: #aa0 !important;
         }
     }
 
-    .sidebar-child-list {
+    .sidebar__child-list {
         display: flex;
         flex-direction: column;
         gap: 0.25rem;
@@ -228,7 +223,7 @@ const { pathname } = Astro.url;
         margin-bottom: 0rem;
     }
 
-    .sidebar-child-item {
+    .sidebar__child-item {
         padding: 0.5rem 0 0.5rem 2rem;
         width: 100%;
         background-color: #114;
@@ -246,11 +241,11 @@ const { pathname } = Astro.url;
         }
     }
 
-    .sidebar-child-link {
+    .sidebar__child-link {
         width: 100%;
     }
 
-    #sidebar-items {
+    .sidebar__items {
         display: flex;
         flex-direction: column;
         padding: 2em;
@@ -277,9 +272,14 @@ const { pathname } = Astro.url;
                 padding-left: 1.25em;
             }
         }
+
+        &::backdrop {
+            backdrop-filter: blur(1rem);
+            background-color: hsl(247, 75%, 25%);
+        }
     }
 
-    #sidebar-toggle {
+    .sidebar__toggle {
         width: 8px;
         height: 8px;
         appearance: none;
@@ -334,8 +334,8 @@ const { pathname } = Astro.url;
 
         handleNavBar() {
             const html = document.querySelector("html");
-            const checkBtn = this.querySelector("#sidebar-toggle");
-            const aside = this.querySelector("aside");
+            const checkBtn = this.querySelector(".sidebar__toggle");
+            const aside = this.querySelector(".sidebar__container");
 
             checkBtn.addEventListener("click", () => {
                 aside.classList.toggle("open");
