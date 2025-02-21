@@ -53,7 +53,7 @@ documentación, y dice además cuáles son los plugins que están instalados.
 
 ## NvChad
 
-![NvChad](https://camo.githubusercontent.com/c6c38eef47a0cfa9a5a46505a77da416b2ca724e71543f85c97a0cc3dba769ad/68747470733a2f2f6e76636861642e636f6d2f62616e6e65722e77656270)
+![NvChad](https://nvchad.com/banner.webp)
 
 El nombre tiene bastante tela, y además puede sonar que es Neovim pero "mamadísimo".
 Y **efectiviwonder**, es que está **MAMADÍSIMO**. En cuanto mencione sus
@@ -76,7 +76,7 @@ te convence.
 
 ## AstroNvim
 
-![AstroNvim](https://camo.githubusercontent.com/1aac7859f40a71189a6655d69f5871ba60744ee0c821b046851d7fc95a8de038/68747470733a2f2f617374726f6e76696d2e636f6d2f7468656d65732f6f766572766965772e706e67)
+![AstroNvim](https://astronvim.com/_astro/astrodark.CdHFd1a7_eiWC4.webp)
 
 Esta configuración incorpora un montón de características interesantes, aunque la
 estética no es mejor que las dos anteriores. Vamos a ver qué nos ofrece.

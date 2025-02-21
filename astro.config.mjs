@@ -9,4 +9,14 @@ export default defineConfig({
 	output: "static",
 	publicDir: "./public",
 	integrations: [preact(), sitemap()],
+    prefetch: {
+        prefetchAll: true,
+    },
+    images: {
+        remotePatterns: [
+            {
+                protocol: "https",
+            },
+        ],
+    }
 });

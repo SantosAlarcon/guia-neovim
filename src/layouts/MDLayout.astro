@@ -17,6 +17,7 @@ import BaseHead from "../components/BaseHead.astro";
     <BaseHead title={title} />
     <body>
         <Header />
+        <Sidebar />
         <main transition:animate="slide">
             <slot />
         </main>
@@ -24,7 +25,6 @@ import BaseHead from "../components/BaseHead.astro";
         <ScrollTop client:load />
         <script is:inline src="/script-sonido.js" />
     </body>
-    <Sidebar />
 </html>
 <style>
 </style>
