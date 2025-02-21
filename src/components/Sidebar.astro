@@ -7,10 +7,10 @@ const { pathname } = Astro.url;
 
 <sidebar-element>
     <aside class="sidebar-container">
-        <input id="sidebar-toggle" type="checkbox" />
+        <input id="sidebar-toggle" type="checkbox" aria-label="Mostrar/Ocultar barra lateral" />
         <div id="sidebar-items">
             <div id="logo">
-                <a href="/">
+                <a href="/" aria-label="Ir a la página principal">
                     <LogoNeovim />
                 </a>
             </div>
@@ -26,10 +26,11 @@ const { pathname } = Astro.url;
                                                 pathname === `${enlace.ruta}` &&
                                                 "activo"
                                             }`}
+                                            aria-label={enlace.titulo}
                                         >
                                             <Image
                                                 src={enlace.icono}
-                                                alt={enlace.titulo}
+                                                alt=""
                                                 width={24}
                                                 height={24}
                                             />
@@ -57,7 +58,7 @@ const { pathname } = Astro.url;
                                     <Image
                                         class="sidebar-link-item-icon"
                                         src={enlace.icono}
-                                        alt={enlace.titulo}
+                                        alt=""
                                         width={24}
                                         height={24}
                                     />
@@ -128,7 +129,6 @@ const { pathname } = Astro.url;
             backdrop-filter: blur(1rem);
             background-color: hsl(247, 75%, 25%);
         }
-
     }
 
     .sidebar-container::backdrop {
