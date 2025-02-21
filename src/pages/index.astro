@@ -4,7 +4,7 @@ import LogoNeovim from "../components/LogoNeovim.astro";
 ---
 
 <Layout title="Guía Neovim">
-    <main>
+    <main class="main__container">
         <LogoNeovim height="330" />
         <p>
             <b>Neovim</b> es un editor de textos muy potente y <b
@@ -22,7 +22,7 @@ import LogoNeovim from "../components/LogoNeovim.astro";
             El primer paso es descargarte la última versión de este editor en tu
             sistema operativo e instalarla en tu equipo.
         </p>
-        <div id="botones">
+        <div class="main__botones">
             <a href="/atajos">Atajos</a>
             <a href="/comandos">Comandos</a>
             <a href="/configuracion">Configuración</a>
@@ -35,7 +35,7 @@ import LogoNeovim from "../components/LogoNeovim.astro";
 </Layout>
 
 <style>
-    main {
+    .main__container {
         margin: auto;
         padding: 1rem;
         width: 96%;
@@ -45,9 +45,10 @@ import LogoNeovim from "../components/LogoNeovim.astro";
         text-align: center;
     }
 
-    #botones {
+    .main__botones {
         margin-top: 2em;
         display: flex;
+        flex-wrap: wrap;
         justify-content: center;
         color: var(--dark-fg);
 

@@ -7,6 +7,13 @@
         "hijos": []
     },
     {
+        "titulo": "Instalación",
+        "slug": "instalacion",
+        "ruta": "/instalacion",
+        "icono": "/icons/install.svg",
+        "hijos": []
+    },
+    {
         "titulo": "Atajos",
         "slug": "atajos",
         "ruta": "/atajos",

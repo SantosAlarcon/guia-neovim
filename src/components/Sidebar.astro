@@ -4,72 +4,73 @@ import enlaces from "../enlaces.json";
 import LogoNeovim from "./LogoNeovim.astro";
 const { pathname } = Astro.url;
 ---
-
-<aside class="sidebar-container">
-    <input id="sidebar-toggle" type="checkbox" />
-    <div id="sidebar-items">
-        <div id="logo">
-            <a href="/">
-                <LogoNeovim />
-            </a>
-        </div>
-        <div class="sidebar-links">
-            {
-                enlaces.map((enlace) => {
-                    if (enlace.hijos.length > 0) {
-                        return (
-                            <details class="sidebar-details">
-                                <summary class="sidebar-summary">
-                                    <a
-                                        class={`sidebar-summary-item ${
-                                            pathname ===
-                                                `${enlace.ruta}` &&
-                                            "activo"
-                                        }`}
-                                    >
-                                        <Image
-                                            src={enlace.icono}
-                                            alt={enlace.titulo}
-                                            width={24}
-                                            height={24}
-                                        />
-                                        {enlace.titulo}
-                                    </a>
-                                </summary>
-                                <div class="sidebar-child-list">
-                                    {enlace.hijos.map((hijo) => (
+<sidebar-element>
+    <aside class="sidebar-container">
+        <input id="sidebar-toggle" type="checkbox" />
+        <div id="sidebar-items">
+            <div id="logo">
+                <a href="/">
+                    <LogoNeovim />
+                </a>
+            </div>
+            <div class="sidebar-links">
+                {
+                    enlaces.map((enlace) => {
+                        if (enlace.hijos.length > 0) {
+                            return (
+                                <details class="sidebar-details">
+                                    <summary class="sidebar-summary">
                                         <a
-                                            class={`sidebar-child-item ${pathname === `${hijo.ruta}` && "activo"}`}
-                                            href={`${hijo.ruta}`}
+                                            class={`sidebar-summary-item ${
+                                                pathname ===
+                                                    `${enlace.ruta}` &&
+                                                "activo"
+                                            }`}
                                         >
-                                            {hijo.titulo}
+                                            <Image
+                                                src={enlace.icono}
+                                                alt={enlace.titulo}
+                                                width={24}
+                                                height={24}
+                                            />
+                                            {enlace.titulo}
                                         </a>
-                                    ))}
-                                </div>
-                            </details>
-                        );
-                    } else {
-                        return (
-                            <a
-                                href={`${enlace.ruta}`}
-                                class={`sidebar-link-item ${pathname === `${enlace.ruta}` && "activo"}`}
-                            >
-                                <Image
-                                    class="sidebar-link-item-icon"
-                                    src={enlace.icono}
-                                    alt={enlace.titulo}
-                                    width={24}
-                                    height={24}
-                                />
-                                {enlace.titulo}
-                            </a>
-                        );
-                    }
-                })
-            }
+                                    </summary>
+                                    <div class="sidebar-child-list">
+                                        {enlace.hijos.map((hijo) => (
+                                            <a
+                                                class={`sidebar-child-item ${pathname === `${hijo.ruta}` && "activo"}`}
+                                                href={`${hijo.ruta}`}
+                                            >
+                                                {hijo.titulo}
+                                            </a>
+                                        ))}
+                                    </div>
+                                </details>
+                            );
+                        } else {
+                            return (
+                                <a
+                                    href={`${enlace.ruta}`}
+                                    class={`sidebar-link-item ${pathname === `${enlace.ruta}` && "activo"}`}
+                                >
+                                    <Image
+                                        class="sidebar-link-item-icon"
+                                        src={enlace.icono}
+                                        alt={enlace.titulo}
+                                        width={24}
+                                        height={24}
+                                    />
+                                    {enlace.titulo}
+                                </a>
+                            );
+                        }
+                    })
+                }
+            </div>
         </div>
-    </div>
-</aside>
+    </aside>
+</sidebar-element>
 <style>
     :root {
         &[theme="light"] {
@@ -303,24 +304,28 @@ const { pathname } = Astro.url;
     }
 </style>
 
-<script is:inline>
-    const handleNavBar = () => {
-        const checkBtn = document.querySelector("#sidebar-toggle");
-        const aside = document.querySelector("aside");
-        checkBtn.addEventListener("click", () => {
-            aside.classList.toggle("open");
-        });
-    };
+<script>
+    class Sidebar extends HTMLElement {
+        constructor() {
+            super();
+            this.handleNavBar = this.handleNavBar.bind(this);
+        }
 
-    document.addEventListener(
-        "astro:page-load",
-        () => {
-            handleNavBar();
-        },
-        { once: true },
-    );
+        connectedCallback() {
+            this.handleNavBar();
+        }
 
-    document.addEventListener("astro:after-swap", () => {
-        handleNavBar();
-    });
+        disconnectedCallback() {
+            this.handleNavBar();
+        }
+
+        handleNavBar() {
+            const checkBtn = this.querySelector("#sidebar-toggle");
+            const aside = this.querySelector("aside");
+            checkBtn.addEventListener("click", () => {
+                aside.classList.toggle("open");
+            });
+        }
+    }
+    customElements.define("sidebar-element", Sidebar);
 </script>

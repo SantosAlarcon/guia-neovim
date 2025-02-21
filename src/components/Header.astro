@@ -3,7 +3,7 @@ import ThemeToggler from "./ThemeToggler";
 import LogoNeovimHorizontal from "./LogoNeovimHorizontal.astro";
 ---
 
-<header>
+<header class="header__container">
     <div id="logo">
         <a href="/">
             <LogoNeovimHorizontal />
@@ -12,14 +12,18 @@ import LogoNeovimHorizontal from "./LogoNeovimHorizontal.astro";
     <ThemeToggler client:load />
 </header>
 <style>
-    header {
-        padding: 2em;
+    .header__container {
+        padding: 2rem;
         display: flex;
         justify-content: space-between;
         align-items: center;
 
         & a {
             color: inherit;
+        }
+
+        @media (width <= 861px) {
+            padding: 1.5rem;
         }
     }
 </style>
