@@ -3,9 +3,11 @@
 	--dark-bg: hsl(198, 100%, 10%);
 	--dark-bga: hsla(198, 100%, 10%, 0.8);
 	--dark-fg: #eee;
+	--dark-fga: #eee6;
 	--light-bg: #eee;
 	--light-bga: #eeed;
 	--light-fg: #222;
+	--light-fga: #2226;
 	--sidebar-width: 335px;
 	--accent: 136, 58, 234;
 	--accent-light: 224, 204, 250;
@@ -283,8 +285,9 @@
 
 #logo {
 	width: auto;
+    align-self: normal;
 
-	> a:hover {
+	& > a:hover {
 		color: inherit;
 
 		&[theme="light"] {
@@ -292,7 +295,7 @@
 		}
 	}
 
-	svg {
+	& svg {
 		&[theme="light"] {
 			color: blue;
 

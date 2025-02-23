@@ -4,10 +4,35 @@ import LogoNeovimHorizontal from "./LogoNeovimHorizontal.astro";
 ---
 
 <header class="header__container">
-    <div id="logo">
-        <a href="/" aria-label="Ir a la página principal">
-            <LogoNeovimHorizontal />
-        </a>
+    <div class="header__left">
+        <sidebar-button>
+            <button
+                aria-label="Abrir la barra lateral"
+                class="sidebar__open__button"
+            >
+                <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    class="feather feather-menu"
+                >
+                    <line x1="3" y1="12" x2="21" y2="12"></line>
+                    <line x1="3" y1="6" x2="21" y2="6"></line>
+                    <line x1="3" y1="18" x2="21" y2="18"></line>
+                </svg>
+            </button>
+        </sidebar-button>
+        <div id="logo">
+            <a href="/" aria-label="Ir a la página principal">
+                <LogoNeovimHorizontal />
+            </a>
+        </div>
     </div>
     <ThemeToggler client:load />
 </header>
@@ -20,10 +45,51 @@ import LogoNeovimHorizontal from "./LogoNeovimHorizontal.astro";
 
         & a {
             color: inherit;
+            align-self: normal;
         }
 
         @media (width <= 861px) {
-            padding: 1.5rem;
+            padding: 1rem;
+        }
+    }
+
+    .header__left {
+        display: flex;
+        align-items: center;
+        gap: .5rem;
+    }
+
+    .sidebar__open__button {
+        width: 36px;
+        height: 36px;
+        cursor: pointer;
+        outline: none;
+        border: 1px solid light-dark(var(--light-fga), var(--dark-fga));
+        border-radius: .5rem;
+        background-color: light-dark(var(--light-bga), var(--dark-bga));
+        transition: all .2s ease-in-out;
+
+        &:hover {
+            box-shadow: inset 0 0 .5rem light-dark(var(--light-fga), var(--dark-fga)), 0 0 .5rem light-dark(var(--light-fga), var(--dark-fga));
         }
     }
 </style>
+
+<script>
+    class SidebarButton extends HTMLElement {
+        constructor() {
+            super();
+            const html = document.querySelector("html");
+            const sidebarBgContainer = document.querySelector(".sidebar__bg__container");
+            const sidebarContainer = document.querySelector(".sidebar__container");
+            const openSidebarBtn = document.querySelector(".sidebar__open__button");
+
+            openSidebarBtn.addEventListener("click", () => {
+                html.style.overflowY = "hidden";
+                sidebarBgContainer.classList.add("show");
+                sidebarContainer.classList.add("open");
+            });
+        }
+    }
+    customElements.define("sidebar-button", SidebarButton);
+</script>
