@@ -31,7 +31,7 @@ const { pathname } = Astro.url;
                         </svg>
                     </button>
                 </div>
-                <div id="logo">
+                <div id="logo" class="sidebar__logo">
                     <a href="/" aria-label="Ir a la página principal">
                         <LogoNeovim />
                     </a>
@@ -110,6 +110,7 @@ const { pathname } = Astro.url;
             --sidebar-item-bg-active: hsl(247, 75%, 55%);
         }
     }
+
     * {
         list-style-type: none;
         padding-left: 0;
@@ -124,10 +125,6 @@ const { pathname } = Astro.url;
                 text-shadow: none;
             }
         }
-
-        & > svg {
-            filter: invert(1);
-        }
     }
 
     .sidebar__bg__container {
@@ -137,28 +134,45 @@ const { pathname } = Astro.url;
         backdrop-filter: blur(1em);
         background-color: #0006;
         display: none;
-        transition: all .35s ease-in-out allow-discrete;
+	transition: display .35s ease-in-out allow-discrete, opacity .15s ease-in-out allow-discrete;
+	opacity: 0;
 
-        &.show {
+	&.show {
+	    opacity: 1;
             display: block;
         }
     }
 
+    @starting-style {
+	.sidebar__bg__container.show {
+	    opacity: 0;
+	}
+    }
+
     .sidebar__container {
         display: flex;
-        position: fixed;
+	position: fixed;
+	transition: transform 0.2s ease-in;
         top: 0;
-        left: -22.5em;
-        height: 100dvh;
-        transition: all 0.35s ease-in-out;
+        left: 0;
         z-index: 10;
         inset: 0;
         border: 1px solid light-dark(var(--light-fga), var(--dark-fga));
-        width: fit-content;
+	width: fit-content;
+	margin: .5rem;
+	border-radius: 1rem;
+	transform: translateX(-110%);
 
-        &.open {
-            left: 0;
-        }
+	&.open {
+	    transform: translateX(0%);
+	    transition: transform 0.15s ease-out;
+	}
+    }
+
+    @starting-style {
+	.sidebar__container.open {
+	    transform: translateX(-110%);
+	}
     }
 
     .sidebar__close {
@@ -177,16 +191,65 @@ const { pathname } = Astro.url;
         width: 36px;
         height: 36px;
         cursor: pointer;
-        outline: none;
+	outline: none;
+	padding: 0;
         border: 1px solid light-dark(var(--light-fga), var(--dark-fga));
         border-radius: .5rem;
         background-color: light-dark(var(--light-bga), var(--dark-bga));
-        transition: all .2s ease-in-out;
+	transition: all .2s ease-in-out;
+	color: light-dark(var(--light-fg), var(--dark-fg));
+	display: grid;
+	place-items: center;
 
         &:hover {
             box-shadow: inset 0 0 .5rem light-dark(var(--light-fga), var(--dark-fga)), 0 0 .5rem light-dark(var(--light-fga), var(--dark-fga));
         }
     }
+
+    .sidebar__items {
+        display: flex;
+        flex-direction: column;
+        padding: 2em;
+        box-shadow: 0 0 2em #0006;
+        width: var(--sidebar-width);
+        backdrop-filter: blur(1em);
+	overflow-y: auto;
+	border-radius: 1rem;
+	scrollbar-color: light-dark(var(--light-fga), var(--dark-fga)) transparent;
+
+        > ul {
+            border-top: 1px #666 solid;
+            > li,
+            > li > ul > li {
+            }
+
+            > li::before {
+                content: "";
+            }
+
+            > li > a {
+                width: 100%;
+            }
+
+            > li > ul {
+                padding-left: 1.25em;
+            }
+	}
+
+	&::-webkit-scrollbar-track {
+		background-color: transparent;
+	}
+
+	&::-webkit-scrollbar {
+		width: 0.5rem;
+		background-color: transparent;
+	}
+
+	&::-webkit-scrollbar-thumb {
+		background-color: light-dark(var(--light-fga), var(--dark-fga));
+		border-radius: 0.5rem;
+	}
+    } 
 
     .sidebar__link-item {
         background-color: var(--sidebar-item-bg);
@@ -292,41 +355,7 @@ const { pathname } = Astro.url;
 
     .sidebar__child-link {
         width: 100%;
-    }
-
-    .sidebar__items {
-        display: flex;
-        flex-direction: column;
-        padding: 2em;
-        box-shadow: 0 0 2em #0006;
-        width: var(--sidebar-width);
-        backdrop-filter: blur(1em);
-        overflow-y: auto;
-
-        > ul {
-            border-top: 1px #666 solid;
-            > li,
-            > li > ul > li {
-            }
-
-            > li::before {
-                content: "";
-            }
-
-            > li > a {
-                width: 100%;
-            }
-
-            > li > ul {
-                padding-left: 1.25em;
-            }
-        }
-
-        &::backdrop {
-            backdrop-filter: blur(1rem);
-            background-color: hsl(247, 75%, 25%);
-        }
-    }
+    } 
 </style>
 
 <script>
@@ -341,7 +370,7 @@ const { pathname } = Astro.url;
             closeBtn.addEventListener("click", () => {
                 sidebarBgContainer.classList.remove("show");
                 sidebarContainer.classList.remove("open");
-                html.style.overflowY = "scroll";
+		html.style.removeProperty("overflow-y");
             });
         }
     }

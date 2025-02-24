@@ -28,7 +28,7 @@ import LogoNeovimHorizontal from "./LogoNeovimHorizontal.astro";
                 </svg>
             </button>
         </sidebar-button>
-        <div id="logo">
+        <div class="header__logo" id="logo">
             <a href="/" aria-label="Ir a la página principal">
                 <LogoNeovimHorizontal />
             </a>
@@ -36,9 +36,9 @@ import LogoNeovimHorizontal from "./LogoNeovimHorizontal.astro";
     </div>
     <ThemeToggler client:load />
 </header>
-<style>
+<style is:global>
     .header__container {
-        padding: 2rem;
+        padding: 1rem 2rem;
         display: flex;
         justify-content: space-between;
         align-items: center;
@@ -67,11 +67,20 @@ import LogoNeovimHorizontal from "./LogoNeovimHorizontal.astro";
         border: 1px solid light-dark(var(--light-fga), var(--dark-fga));
         border-radius: .5rem;
         background-color: light-dark(var(--light-bga), var(--dark-bga));
-        transition: all .2s ease-in-out;
+	transition: all .2s ease-in-out;
+	padding: 0;
+	display: grid;
+	place-items: center;
 
         &:hover {
             box-shadow: inset 0 0 .5rem light-dark(var(--light-fga), var(--dark-fga)), 0 0 .5rem light-dark(var(--light-fga), var(--dark-fga));
         }
+    }
+
+    .header__logo svg {
+	@media (width <= 861px) {
+	    width: 50% !important;
+	}
     }
 </style>
 
