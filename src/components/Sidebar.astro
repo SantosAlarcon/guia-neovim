@@ -173,6 +173,21 @@ const { pathname } = Astro.url;
         color: #eee;
     }
 
+    .sidebar__close__button {
+        width: 36px;
+        height: 36px;
+        cursor: pointer;
+        outline: none;
+        border: 1px solid light-dark(var(--light-fga), var(--dark-fga));
+        border-radius: .5rem;
+        background-color: light-dark(var(--light-bga), var(--dark-bga));
+        transition: all .2s ease-in-out;
+
+        &:hover {
+            box-shadow: inset 0 0 .5rem light-dark(var(--light-fga), var(--dark-fga)), 0 0 .5rem light-dark(var(--light-fga), var(--dark-fga));
+        }
+    }
+
     .sidebar__link-item {
         background-color: var(--sidebar-item-bg);
         padding: 0.5rem 1rem;
