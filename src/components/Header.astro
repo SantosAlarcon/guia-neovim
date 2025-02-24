@@ -28,7 +28,7 @@ import LogoNeovimHorizontal from "./LogoNeovimHorizontal.astro";
                 </svg>
             </button>
         </sidebar-button>
-        <div class="header__logo" id="logo">
+        <div class="header__logo">
             <a href="/" aria-label="Ir a la página principal">
                 <LogoNeovimHorizontal />
             </a>
@@ -56,7 +56,7 @@ import LogoNeovimHorizontal from "./LogoNeovimHorizontal.astro";
     .header__left {
         display: flex;
         align-items: center;
-        gap: .5rem;
+        gap: 0.5rem;
     }
 
     .sidebar__open__button {
@@ -65,22 +65,28 @@ import LogoNeovimHorizontal from "./LogoNeovimHorizontal.astro";
         cursor: pointer;
         outline: none;
         border: 1px solid light-dark(var(--light-fga), var(--dark-fga));
-        border-radius: .5rem;
+        border-radius: 0.5rem;
         background-color: light-dark(var(--light-bga), var(--dark-bga));
-	transition: all .2s ease-in-out;
-	padding: 0;
-	display: grid;
-	place-items: center;
+        transition: all 0.2s ease-in-out;
+        padding: 0;
+        display: grid;
+        place-items: center;
 
         &:hover {
-            box-shadow: inset 0 0 .5rem light-dark(var(--light-fga), var(--dark-fga)), 0 0 .5rem light-dark(var(--light-fga), var(--dark-fga));
+            box-shadow:
+                inset 0 0 0.5rem light-dark(var(--light-fga), var(--dark-fga)),
+                0 0 0.5rem light-dark(var(--light-fga), var(--dark-fga));
+        }
+
+        &:focus {
+            outline: 2px solid light-dark(var(--light-fg), var(--dark-fg));
         }
     }
 
     .header__logo svg {
-	@media (width <= 861px) {
-	    width: 50% !important;
-	}
+        @media (width <= 861px) {
+            width: 50% !important;
+        }
     }
 </style>
 
@@ -89,9 +95,15 @@ import LogoNeovimHorizontal from "./LogoNeovimHorizontal.astro";
         constructor() {
             super();
             const html = document.querySelector("html");
-            const sidebarBgContainer = document.querySelector(".sidebar__bg__container");
-            const sidebarContainer = document.querySelector(".sidebar__container");
-            const openSidebarBtn = document.querySelector(".sidebar__open__button");
+            const sidebarBgContainer = document.querySelector(
+                ".sidebar__bg__container",
+            );
+            const sidebarContainer = document.querySelector(
+                ".sidebar__container",
+            );
+            const openSidebarBtn = document.querySelector(
+                ".sidebar__open__button",
+            );
 
             openSidebarBtn.addEventListener("click", () => {
                 html.style.overflowY = "hidden";

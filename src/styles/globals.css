@@ -29,7 +29,7 @@
             color: #44b;
         }
 
-        & #logo a:hover {
+        & .header__logo a:hover, & .sidebar__logo a:hover {
             filter: drop-shadow(0 0 0.5em #44b);
         }
 
@@ -47,7 +47,7 @@
         color: var(--dark-fg);
         color-scheme: dark;
 
-        & #logo a:hover {
+        & .header__logo a:hover, & .sidebar__logo a:hover {
             filter: drop-shadow(0 0 0.5em #ff0);
         }
 
@@ -283,7 +283,7 @@
     }
 }
 
-#logo {
+.header__logo, .sidebar__logo {
     width: auto;
     align-self: normal;
 
