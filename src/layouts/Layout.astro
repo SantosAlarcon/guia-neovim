@@ -7,7 +7,7 @@ const { title } = Astro.props;
 import BaseHead from "../components/BaseHead.astro";
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
-import ScrollTop from "../components/ScrollTop";
+import ScrollTop from "../components/ScrollTop.astro";
 import Sidebar from "../components/Sidebar.astro";
 import "../styles/globals.css";
 import OffCanvas from "../components/OffCanvas.astro";
@@ -24,7 +24,7 @@ import OffCanvas from "../components/OffCanvas.astro";
             <slot />
             <Footer />
         </section>
-        <ScrollTop client:load />
+        <ScrollTop />
         <script is:inline src="/script-sonido.js"></script>
     </body>
 </html>

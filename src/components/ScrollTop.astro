@@ -2,11 +2,13 @@
 import UpArrow from "./UpArrow";
 ---
 
-<div id="scroll-top">
-    <UpArrow />
-</div>
+<scroll-top>
+    <button class="scroll__top__button hidden" aria-label="Ir hacia arriba">
+        <UpArrow />
+    </button>
+</scroll-top>
 <style>
-    #scroll-top {
+    .scroll__top__button {
         position: fixed;
         bottom: 2em;
         right: 2em;
@@ -14,8 +16,7 @@ import UpArrow from "./UpArrow";
         border-radius: 100%;
         padding: 0.65em;
         background-color: #00a8;
-        color: white;
-        user-select: none;
+        color: #eee;
         cursor: pointer;
         display: grid;
         place-items: center;
@@ -29,26 +30,33 @@ import UpArrow from "./UpArrow";
         }
     }
 </style>
+
 <script>
-    const scrollTop = document.querySelector("#scroll-top");
+    class ScrollTop extends HTMLElement {
+        constructor() {
+            super();
+            const scrollTopBtn = this.querySelector(".scroll__top__button");
+            this.addEventListener("click", () => {
+                window.scrollTo(0, 0);
+            });
 
-    scrollTop.addEventListener("click", () => {
-        window.scrollTo(0, 0);
-    });
+            window.addEventListener("scroll", () => {
+                if (window.scrollY < 350) {
+                    scrollTopBtn.classList.add("hidden");
+                } else {
+                    scrollTopBtn.classList.remove("hidden");
+                }
+            });
 
-    window.addEventListener("scroll", () => {
-        if (window.scrollY < 350) {
-            scrollTop.classList.add("hidden");
-        } else {
-            scrollTop.classList.remove("hidden");
+            window.addEventListener("DOMContentLoaded", () => {
+                if (window.scrollY < 350) {
+                    scrollTopBtn.classList.add("hidden");
+                } else {
+                    scrollTopBtn.classList.remove("hidden");
+                }
+            });
         }
-    });
+    }
 
-    window.addEventListener("DOMContentLoaded", () => {
-        if (window.scrollY < 350) {
-            scrollTop.classList.add("hidden");
-        } else {
-            scrollTop.classList.remove("hidden");
-        }
-    });
+    customElements.define("scroll-top", ScrollTop);
 </script>
