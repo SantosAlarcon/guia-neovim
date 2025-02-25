@@ -1,6 +1,5 @@
 ---
-layout: ../layouts/MDLayout.astro
-title: "Neovim - Configuración"
+title: "Configuración"
 ---
 # :configuracion
 

@@ -1,6 +1,5 @@
 ---
-layout: ../layouts/MDLayout.astro
-title: Neovim - Plugins
+title: Plugins
 ---
 
 # :plugins

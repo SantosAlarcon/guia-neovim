@@ -1,6 +1,5 @@
 ---
-layout: ../layouts/MDLayout.astro
-title: Neovim - Comandos
+title: Comandos
 ---
 
 # :comandos
