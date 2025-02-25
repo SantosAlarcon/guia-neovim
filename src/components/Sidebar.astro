@@ -363,9 +363,9 @@ const { pathname } = Astro.url;
             const closeSidebar = () => {
                 offCanvas.removeAttribute("show");
                 sidebarContainer.classList.remove("open");
-                sidebarContainer.setAttribute("inert", "");
                 sidebarContainer.ariaHidden = "true";
                 sidebarContainer.ariaExpanded = "false";
+                sidebarContainer.setAttribute("inert", "");
                 html.style.removeProperty("overflow-y");
                 header.removeAttribute("inert");
                 footer.removeAttribute("inert");
