@@ -1,0 +1,124 @@
+---
+
+---
+
+<theme-toggler>
+    <div class="theme__toggler__container">
+        <svg role="img">
+            <use href="/icons/sol.svg#sol"></use>
+        </svg>
+        <svg role="img">
+            <use href="/icons/luna.svg#luna"></use>
+        </svg>
+        <button class="theme__toggler" />
+    </div>
+</theme-toggler>
+<style>
+
+    .theme__toggler__container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 1rem;
+        border-radius: 1rem;
+        position: relative;
+        background-color: light-dark(#44c, #cc0);
+        color: light-dark(var(--dark-fg), var(--light-fg));
+        border: 1px solid light-dark(var(--light-fga), var(--dark-fga));
+        padding: .5rem .7rem;
+        box-shadow: inset 0 0 0.5em #0006;
+
+        & svg {
+            width: 20px;
+            height: 20px;
+            fill: currentColor;
+            transition: all 0.2s ease-in-out;
+        }
+    }
+
+    .theme__toggler {
+        width: 24px;
+        height: 24px;
+        cursor: pointer;
+        outline: none;
+        border: 1px solid light-dark(var(--light-fga), var(--dark-fga));
+        border-radius: 100%;
+        background-color: light-dark(var(--dark-fg), var(--light-fg));
+        transition: all 0.2s ease-in-out;
+        position: absolute;
+        left: 0;
+        margin: .3rem;
+
+        &:hover {
+            box-shadow:
+                inset 0 0 0.5rem light-dark(var(--light-fga), var(--dark-fga)),
+                0 0 0.5rem light-dark(var(--light-fga), var(--dark-fga));
+        }
+
+        &:focus {
+            outline: 2px solid light-dark(var(--light-fg), var(--dark-fg));
+        }
+    }
+
+    html[theme="dark"] .theme__toggler {
+        transform: translateX(175%);
+    }
+
+
+    html[theme="light"] .theme__toggler {
+        transform: translateX(10%);
+    }
+</style>
+
+<script>
+    class ThemeToggler extends HTMLElement {
+        constructor() {
+            super();
+            const html = document.documentElement;
+            const themeToggler = this.querySelector(".theme__toggler");
+            const theme = localStorage.getItem("theme");
+
+            // Se comprueba si hay una clave en el LocalStorage. En caso de que la haya
+            // recupera el valor.
+            if (theme) {
+                html.setAttribute("theme", theme);
+
+                switch (theme) {
+                    case "dark":
+                        themeToggler.ariaLabel = "Cambiar al modo claro";
+                        break;
+                    case "light":
+                        themeToggler.ariaLabel = "Cambiar al modo oscuro";
+                        break;
+                }
+            } else {
+                if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+                    themeToggler.ariaLabel = "Cambiar al modo claro";
+                    localStorage.setItem("theme", "dark");
+                } else {
+                    themeToggler.ariaLabel = "Cambiar al modo oscuro";
+                    localStorage.setItem("theme", "light");
+                }
+            }
+
+            html.setAttribute("theme", localStorage.getItem("theme"));
+
+            const switchTheme = () => {
+                const isDark = html.getAttribute("theme") === "dark";
+
+                if (isDark) {
+                    themeToggler.ariaLabel = "Cambiar al modo oscuro";
+                    html.setAttribute("theme", "light");
+                    localStorage.setItem("theme", "light");
+                } else {
+                    themeToggler.ariaLabel = "Cambiar al modo claro";
+                    html.setAttribute("theme", "dark");
+                    localStorage.setItem("theme", "dark");
+                }
+            };
+
+            themeToggler.addEventListener("click", switchTheme);
+        }
+    }
+    customElements.define("theme-toggler", ThemeToggler);
+</script>

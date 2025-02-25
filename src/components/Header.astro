@@ -1,5 +1,5 @@
 ---
-import ThemeToggler from "./ThemeToggler";
+import ThemeToggler from "./ThemeToggler.astro";
 import LogoNeovimHorizontal from "./LogoNeovimHorizontal.astro";
 ---
 
@@ -34,7 +34,7 @@ import LogoNeovimHorizontal from "./LogoNeovimHorizontal.astro";
             </a>
         </div>
     </div>
-    <ThemeToggler client:load />
+    <ThemeToggler />
 </header>
 <style is:global>
     .header__container {
@@ -80,6 +80,12 @@ import LogoNeovimHorizontal from "./LogoNeovimHorizontal.astro";
 
         &:focus {
             outline: 2px solid light-dark(var(--light-fg), var(--dark-fg));
+        }
+    }
+
+    .header__logo {
+        & a {
+            color: inherit !important;
         }
     }
 
