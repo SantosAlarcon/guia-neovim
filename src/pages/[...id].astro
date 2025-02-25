@@ -12,6 +12,6 @@ const { post } = Astro.props;
 const { Content } = await render(post);
 ---
 
-<MDLayout title={post.data.title}>
+<MDLayout title={`${post.data.title} | Guía Neovim`}>
     <Content />
 </MDLayout>

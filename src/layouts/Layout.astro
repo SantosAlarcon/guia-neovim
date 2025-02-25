@@ -10,12 +10,14 @@ import Footer from "../components/Footer.astro";
 import ScrollTop from "../components/ScrollTop";
 import Sidebar from "../components/Sidebar.astro";
 import "../styles/globals.css";
+import OffCanvas from "../components/OffCanvas.astro";
 ---
 
 <!doctype html>
 <html lang="es">
     <BaseHead title={title} />
     <body>
+        <OffCanvas />
         <Sidebar />
         <section id="post">
             <Header />
@@ -26,4 +28,3 @@ import "../styles/globals.css";
         <script is:inline src="/script-sonido.js"></script>
     </body>
 </html>
-<style></style>

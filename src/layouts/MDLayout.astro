@@ -10,15 +10,17 @@ import ScrollTop from "../components/ScrollTop";
 import Sidebar from "../components/Sidebar.astro";
 import "../styles/globals.css";
 import BaseHead from "../components/BaseHead.astro";
+import OffCanvas from "../components/OffCanvas.astro";
 ---
 
 <!doctype html>
 <html lang="es">
     <BaseHead title={title} />
     <body>
-        <Header />
+        <OffCanvas />
         <Sidebar />
-        <main transition:animate="slide">
+        <Header />
+        <main class="main__container" transition:animate="slide">
             <slot />
         </main>
         <Footer />
@@ -26,5 +28,3 @@ import BaseHead from "../components/BaseHead.astro";
         <script is:inline src="/script-sonido.js" />
     </body>
 </html>
-<style>
-</style>

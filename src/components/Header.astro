@@ -95,8 +95,12 @@ import LogoNeovimHorizontal from "./LogoNeovimHorizontal.astro";
         constructor() {
             super();
             const html = document.querySelector("html");
-            const sidebarBgContainer = document.querySelector(
-                ".sidebar__bg__container",
+            const header = document.querySelector(".header__container");
+            const main = document.querySelector(".main__container")
+            const footer = document.querySelector(".footer__container");
+
+            const offCanvas = document.querySelector(
+                ".offcanvas__container",
             );
             const sidebarContainer = document.querySelector(
                 ".sidebar__container",
@@ -106,9 +110,15 @@ import LogoNeovimHorizontal from "./LogoNeovimHorizontal.astro";
             );
 
             openSidebarBtn.addEventListener("click", () => {
-                html.style.overflowY = "hidden";
-                sidebarBgContainer.classList.add("show");
+                header.setAttribute("inert", "");
+                footer.setAttribute("inert", "");
+                main.setAttribute("inert", "");
+                sidebarContainer.removeAttribute("inert");
                 sidebarContainer.classList.add("open");
+                sidebarContainer.ariaHidden = "false";
+                sidebarContainer.ariaExpanded = "true";
+                html.style.overflowY = "hidden";
+                offCanvas.setAttribute("show", "");
             });
         }
     }

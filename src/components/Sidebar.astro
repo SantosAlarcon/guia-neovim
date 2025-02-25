@@ -5,98 +5,95 @@ const { pathname } = Astro.url;
 ---
 
 <sidebar-element>
-    <div class="sidebar__bg__container">
-        <aside class="sidebar__container">
-            <div class="sidebar__items">
-                <div class="sidebar__close">
-                    <button
-                        aria-label="Cerrar la barra lateral"
-                        class="sidebar__close__button"
-                        tabindex="1"
+    <aside class="sidebar__container" inert aria-hidden="true" aria-expanded="false">
+        <div class="sidebar__items">
+            <div class="sidebar__close">
+                <button
+                    aria-label="Cerrar la barra lateral"
+                    class="sidebar__close__button"
+                    tabindex="1"
+                >
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="24"
+                        height="24"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        class="feather feather-x"
                     >
-                        <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            width="24"
-                            height="24"
-                            viewBox="0 0 24 24"
-                            fill="none"
-                            stroke="currentColor"
-                            stroke-width="2"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            class="feather feather-x"
-                        >
-                            <line x1="18" y1="6" x2="6" y2="18"></line>
-                            <line x1="6" y1="6" x2="18" y2="18"></line>
-                        </svg>
-                    </button>
-                </div>
-                <div class="sidebar__logo">
-                    <a href="/" aria-label="Ir a la página principal" tabindex="0">
-                        <svg role="img" aria-label="Logo" title="guia-neovim-logo">
-                            <use href="/LogoVertical.svg#guia-neovim-logo"></use>
-                        </svg>
-                    </a>
-                </div>
-                <div class="sidebar__links">
-                    {
-                        enlaces.map((enlace) => {
-                            if (enlace.hijos.length > 0) {
-                                return (
-                                    <details class="sidebar__details">
-                                        <summary class="sidebar__summary">
-                                            <a
-                                                class={`sidebar__summary-item ${
-                                                    pathname ===
-                                                        `${enlace.ruta}` &&
-                                                    "activo"
-                                                }`}
-                                                aria-label={enlace.titulo}
-                                            >
-                                                <Image
-                                                    src={enlace.icono}
-                                                    alt=""
-                                                    width={24}
-                                                    height={24}
-                                                />
-                                                {enlace.titulo}
-                                            </a>
-                                        </summary>
-                                        <div class="sidebar__child-list">
-                                            {enlace.hijos.map((hijo) => (
-                                                <a
-                                                    class={`sidebar__child-item ${pathname === `${hijo.ruta}` && "activo"}`}
-                                                    href={`${hijo.ruta}`}
-                                                >
-                                                    {hijo.titulo}
-                                                </a>
-                                            ))}
-                                        </div>
-                                    </details>
-                                );
-                            } else {
-                                return (
-                                    <a
-                                        href={`${enlace.ruta}`}
-                                        class={`sidebar__link-item ${pathname === `${enlace.ruta}` && "activo"}`}
-                                    >
-                                        <Image
-                                            class="sidebar__link-item-icon"
-                                            src={enlace.icono}
-                                            alt=""
-                                            width={24}
-                                            height={24}
-                                        />
-                                        {enlace.titulo}
-                                    </a>
-                                );
-                            }
-                        })
-                    }
-                </div>
+                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                    </svg>
+                </button>
             </div>
-        </aside>
-    </div>
+            <div class="sidebar__logo">
+                <a href="/" aria-label="Ir a la página principal" tabindex="0">
+                    <svg role="img" aria-label="Logo" title="guia-neovim-logo">
+                        <use href="/LogoVertical.svg#guia-neovim-logo"></use>
+                    </svg>
+                </a>
+            </div>
+            <div class="sidebar__links">
+                {
+                    enlaces.map((enlace) => {
+                        if (enlace.hijos.length > 0) {
+                            return (
+                                <details class="sidebar__details">
+                                    <summary class="sidebar__summary">
+                                        <a
+                                            class={`sidebar__summary-item ${
+                                                pathname === `${enlace.ruta}` &&
+                                                "activo"
+                                            }`}
+                                            aria-label={enlace.titulo}
+                                        >
+                                            <Image
+                                                src={enlace.icono}
+                                                alt=""
+                                                width={24}
+                                                height={24}
+                                            />
+                                            {enlace.titulo}
+                                        </a>
+                                    </summary>
+                                    <div class="sidebar__child-list">
+                                        {enlace.hijos.map((hijo) => (
+                                            <a
+                                                class={`sidebar__child-item ${pathname === `${hijo.ruta}` && "activo"}`}
+                                                href={`${hijo.ruta}`}
+                                            >
+                                                {hijo.titulo}
+                                            </a>
+                                        ))}
+                                    </div>
+                                </details>
+                            );
+                        } else {
+                            return (
+                                <a
+                                    href={`${enlace.ruta}`}
+                                    class={`sidebar__link-item ${pathname === `${enlace.ruta}` && "activo"}`}
+                                >
+                                    <Image
+                                        class="sidebar__link-item-icon"
+                                        src={enlace.icono}
+                                        alt=""
+                                        width={24}
+                                        height={24}
+                                    />
+                                    {enlace.titulo}
+                                </a>
+                            );
+                        }
+                    })
+                }
+            </div>
+        </div>
+    </aside>
 </sidebar-element>
 <style>
     :root {
@@ -126,30 +123,6 @@ const { pathname } = Astro.url;
             &:hover {
                 text-shadow: none;
             }
-        }
-    }
-
-    .sidebar__bg__container {
-        width: 100%;
-        height: 100dvh;
-        position: fixed;
-        backdrop-filter: blur(1em);
-        background-color: #0006;
-        display: none;
-        transition:
-            display 0.35s ease-in-out allow-discrete,
-            opacity 0.15s ease-in-out allow-discrete;
-        opacity: 0;
-
-        &.show {
-            opacity: 1;
-            display: block;
-        }
-    }
-
-    @starting-style {
-        .sidebar__bg__container.show {
-            opacity: 0;
         }
     }
 
@@ -214,7 +187,6 @@ const { pathname } = Astro.url;
         &:focus {
             outline: 2px solid light-dark(var(--light-fg), var(--dark-fg));
         }
-
     }
 
     .sidebar__logo {
@@ -380,16 +352,25 @@ const { pathname } = Astro.url;
         constructor() {
             super();
             const html = document.querySelector("html");
+            const header = document.querySelector(".header__container");
+            const footer = document.querySelector(".footer__container");
+            const main = document.querySelector(".main__container");
             const closeBtn = this.querySelector(".sidebar__close__button");
-            const sidebarBgContainer = this.querySelector(
-                ".sidebar__bg__container",
+            const offCanvas = document.querySelector(
+                ".offcanvas__container",
             );
             const sidebarContainer = this.querySelector(".sidebar__container");
 
             closeBtn.addEventListener("click", () => {
-                sidebarBgContainer.classList.remove("show");
+                offCanvas.removeAttribute("show");
                 sidebarContainer.classList.remove("open");
+                sidebarContainer.setAttribute("inert", "");
+                sidebarContainer.ariaHidden = "true";
+                sidebarContainer.ariaExpanded = "false";
                 html.style.removeProperty("overflow-y");
+                header.removeAttribute("inert");
+                footer.removeAttribute("inert");
+                main.removeAttribute("inert");
             });
         }
     }
