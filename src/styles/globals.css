@@ -248,6 +248,7 @@
 
     blockquote {
         margin: 1.5em 0;
+        color: var(--dark-fg);
 
         & p {
             border-left: 0.5em #55f solid;
