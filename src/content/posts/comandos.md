@@ -33,6 +33,7 @@ En las siguientes tablas hay una variedad de comandos agrupados por tipo.
 
 | Comando        | Descripción                                                      |
 | -------------- | ---------------------------------------------------------------- |
+| `:e`           | Abre un archivo en un nuevo búfer |
 | `:w`           | Guarda los cambios del archivo                                   |
 | `:wq`          | Guarda los cambios del archivo y lo cierra                       |
 | `:q!`          | Fuerza el cierre del archivo pero no guarda los cambios          |
@@ -56,12 +57,12 @@ En las siguientes tablas hay una variedad de comandos agrupados por tipo.
 | `:tabclose`                   | Cierra la pestaña actual                             |
 | `:tabprevious` o `:tprevious` | Cambia a la pestaña anterior                         |
 | `:tabnext` o `:tnext`         | Cambia a la pestaña siguiente                        |
-| `:tabs`                       | Muestra una lista de las pestañas                    |
+| `:tabs`                       | Muestra una lista de las pestañas abiertas  |
 | `:bdelete` o `:bd`            | Cierra el búfer y lo quita de la lista de búfers     |
 | `:bclose` o `:bc`             | Cierra el búfer                                      |
 | `:bprevious` o `:bp`          | Cambia al búfer anterior                             |
 | `:bnext` o `:bn`              | Cambia al búfer siguiente                            |
-| `:buffers`                    | Muestra una lista de los búferes                     |
+| `:buffers`                    | Muestra una lista de los búferes abiertos              |
 
 ## Búsqueda y reemplazo
 
