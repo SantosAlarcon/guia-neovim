@@ -8,4 +8,11 @@ const posts = defineCollection({
     }),
 });
 
-export const collections = { posts };
+const plugins = defineCollection({
+    loader: glob({ base: "./content/posts/plugins", pattern: "**/*.md{x}" }),
+    schema: z.object({
+        title: z.string(),
+    }),
+});
+
+export const collections = { posts, plugins };
