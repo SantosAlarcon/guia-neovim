@@ -92,6 +92,7 @@ Para hacer más amena la lectura, nos vamos a basar en la lista de los plugins m
 | [nvim-colorizer](https://github.com/norcalli/nvim-colorizer.lua)           | Resalta los colores en sus diferentes formatos                                                  |
 | [toggleterm](https://github.com/akinsho/toggleterm.nvim)                   | Muestra una terminal dentro Neovim, util para desarrolladores                                   |
 | [Comment](https://github.com/numToStr/Comment.nvim)                        | Comentarios de código, tanto en línea como en bloque                                            |
+| [Mini.nvim](https://www.github.com/echasnovski/mini.nvim) | Colección de más de 40 utilidades |
 
 También hay mogollón de esquemas de colores que no han entrado en la tabla, pero que en esta [lista](https://dotfyle.com/neovim/colorscheme/top) se recogen los más utilizados por la comunidad. Pero esto ya queda a gusto del consumidor.
 
@@ -99,9 +100,17 @@ También hay mogollón de esquemas de colores que no han entrado en la tabla, pe
 
 Esta vez sí que sí... ¡vamos al turrón!
 
-Antes de proceder a la instalación de un plugin, primero tenemos que saber el **autor de ese plugin** y el **nombre del repositorio** de GitHub del que pertenece. Para este ejemplo vamos a usar **Lualine**, una barra de estado rápida y alternativa para Neovim.
+Antes mencioné (o no) que vamos a realizar una **configuración modular**, de modo que cada plugin estará en un archivo diferente (o módulo).
 
-Vamos a crear el archivo `lualine.lua` dentro de nuestro directorio `lua/plugins` de la configuración de Neovim. Dentro del archivo `plugins.lua` escribimos esto:
+Cada archivo se denomina un **plugin spec file** (*archivo de especificación de plugin*), y que consta de una **tabla de Lua** (un objeto, vamos) que es devuelta/retornada a Lazy.
+
+En dicha tabla se recoge la información del plugin, como el **autor y el nombre del repositorio**, las **dependencias** y las **opciones del mismo plugin**.
+
+Antes de proceder a la instalación de un plugin, primero tenemos que saber el **autor de ese plugin** y el **nombre del repositorio** de GitHub del que pertenece. 
+
+Para este ejemplo vamos a usar **Lualine**, una barra de estado rápida y alternativa para Neovim.
+
+Vamos a crear el archivo de especificación `lualine.lua` dentro de nuestro directorio `lua/plugins` de la configuración de Neovim. Dentro del archivo `plugins.lua` escribimos esto:
 
 ```lua
 return {
@@ -112,7 +121,7 @@ return {
 
 Vamos a desmenuzar el ejemplo anterior:
 
-- La palabra clave `return` significa que devuelve un valor. Esto lo necesitaremos para más adelante.
+- La palabra clave `return` significa que devuelve un valor, que en este caso es la tabla anteriormente dicha. Esto lo necesitaremos para más adelante.
 - Lo que hay entre corchetes es el nombre del repositorio del plugin (formado por el nombre del autor y el repositorio).
 - Lo de `dependencies` es opcional, ya que le estamos indicando que instale además la dependencia de ese plugin.
 
@@ -134,7 +143,7 @@ return {
 }
 ```
 
-> La propiedad `config` de Lazy carga una función anónima, en la que dentro se activa el plugin.
+> La propiedad `config` de Lazy carga una función anónima, en la que dentro se activa el plugin, y se realiza la configuración del mismo.
 
 Guardamos los cambios, salimos de Neovim, volvemos a ejecutarlo y ...
 
@@ -148,16 +157,17 @@ Guardamos los cambios, salimos de Neovim, volvemos a ejecutarlo y ...
 ## Consideraciones especiales
 
 - Encontrar el plugin que más se ajuste a nuestras necesidades es una tarea que puede llevarnos horas. Por eso hay que escoger tal plugin para X propósito.
-- También hay que recordar que instalar demasiados plugins puede **afectar al tiempo de inicio** de Neovim y también puede perjudicar el funcionamiento del editor. En **Lazy** podemos configurar X plugin para que cargue después o cuando se haya abierto un archivo.
+- También hay que recordar que instalar demasiados plugins puede **afectar al tiempo de inicio** de Neovim y también puede perjudicar el funcionamiento del editor. En **Lazy** podemos configurar X plugin para que cargue después o cuando se haya abierto un archivo mediante la propiedad *'event'*.
 - A la hora de crear un archivo de configuración para un plugin en especifico, no hay
   que poner el nombre del plugin porque luego a la hora de cargarlo, Lua se quejará
-  porque ya no sabe si está llamando al módulo o al archivo de configuración. Por lo
+  porque ya no sabe si está llamando al módulo o al archivo de especificación. Por lo
   tanto es aconsejable añadir el `-cfg` en el nombre del archivo para que "no se haga
   la picha un lío".
 - Hay algunos plugins que cuando se activan, cargan su configuración por defecto. En
   otros hay que añadirle la configuración dentro de la función `setup()`.
+- Se puede consultar la documentación de cada plugin usando el comando **:help** seguido del nombre del plugin. Dicha documentación es la misma que está en su repositorio de GitHub, y con su sección de configuración.
 
-> Es muy importante actualizar los plugins para recibir nuevas características, mejoras de rendimiento y corrección de fallos.
+>> Es muy importante actualizar los plugins para recibir nuevas características, mejoras de rendimiento y corrección de fallos.
 
 ## Cómo instalar, activar y configurar X plugins
 
