@@ -44,7 +44,7 @@ const { pathname } = Astro.url;
             </div>
             <div class="sidebar__links">
                 {
-                    enlaces.map((enlace) => {
+		enlaces.map((enlace) => {
                         if (enlace.hijos.length > 0) {
                             return (
                                 <details class="sidebar__details">
