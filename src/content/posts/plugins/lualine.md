@@ -1,5 +1,5 @@
 ---
-title: Plugins - Lualine
+title: Plugins > Lualine
 ---
 # :Lualine
 

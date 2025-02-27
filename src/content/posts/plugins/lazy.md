@@ -1,5 +1,5 @@
 ---
-title: Plugins - Lazy
+title: Plugins > Lazy
 ---
 # :Lazy
 

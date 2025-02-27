@@ -1,5 +1,5 @@
 ---
-title: "Plugins - Tokyodark"
+title: "Plugins > Tokyodark"
 ---
 
 # :tokyodark

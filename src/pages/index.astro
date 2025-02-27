@@ -1,9 +1,16 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import LogoNeovim from "../components/LogoNeovim.astro";
+
+const postJSONLd = {
+    "@context": "https://schema.org",
+    "@type": "Thing",
+    name: "Inicio | Guía Neovim",
+    url: Astro.url,
+};
 ---
 
-<Layout title="Guía Neovim">
+<Layout title="Inicio | Guía Neovim">
     <main class="main__container">
         <LogoNeovim height="330" />
 	<h1>¿Qué es Neovim?</h1>
@@ -87,3 +94,6 @@ import LogoNeovim from "../components/LogoNeovim.astro";
         margin-bottom: 1em;
     }
 </style>
+
+<script type="application/ld+json" set:html={JSON.stringify(postJSONLd)}>
+</script>

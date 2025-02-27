@@ -1,5 +1,5 @@
 ---
-title: Plugins - LSP
+title: Plugins > LSP
 ---
 # :LSP
 

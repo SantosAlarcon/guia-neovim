@@ -1,5 +1,5 @@
 ---
-title: "Plugins - Neotree"
+title: "Plugins > Neotree"
 ---
 
 # :NeoTree

@@ -9,9 +9,20 @@ export async function getStaticPaths() {
     }));
 }
 const { post } = Astro.props;
+
+const postJSONLd = {
+    "@context": "https://schema.org",
+    "@type": "Thing",
+    name: post.data.title,
+    url: Astro.url,
+};
+
 const { Content } = await render(post);
 ---
 
 <MDLayout title={`${post.data.title} | Guía Neovim`}>
     <Content />
 </MDLayout>
+
+<script type="application/ld+json" set:html={JSON.stringify(postJSONLd)}>
+</script>
