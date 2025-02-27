@@ -7,7 +7,7 @@ const { title } = Astro.props;
     <base href="/" />
     <meta charset="UTF-8" />
     <meta name="description" content="Guía de Neovim en castellano dirigida a todos los usuarios que se quieren iniciar o mejorar en el uso de este editor de texto multiplataforma." />
-    <meta name="viewport" content="width=device-width" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
     <meta name="color-scheme" content="light dark" />
     <meta
         name="keywords"
@@ -21,8 +21,10 @@ const { title } = Astro.props;
     <meta name="og:description" content="Guía de Neovim en castellano dirigida a todos los usuarios que se quieren iniciar o mejorar en el uso de este editor de texto multiplataforma." />
     <meta name="og:url" content={Astro.url} />
     <meta name="og:image" content="/LogoDark.svg" />
+    <meta name="og:type" content="article" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content="Guía de Neovim en castellano dirigida a todos los usuarios que se quieren iniciar o mejorar en el uso de este editor de texto multiplataforma." />
     <meta name="twitter:url" content={Astro.url} />
     <meta name="twitter:image" content="/LogoDark.svg" />
     <title>{title}</title>
