@@ -1,10 +1,10 @@
 ---
-import UpArrow from "./UpArrow";
+import { Image } from "astro:assets";
 ---
 
 <scroll-top>
     <button class="scroll__top__button hidden" aria-label="Ir hacia arriba">
-        <UpArrow />
+        <Image src="/icons/UpArrow.svg" alt="Ir hacia arriba" width="32" height="32" />
     </button>
 </scroll-top>
 <style>
