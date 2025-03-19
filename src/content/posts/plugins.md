@@ -1,5 +1,6 @@
 ---
 title: Plugins
+description: En esta sección se detalla el funcionamiento de los plugins de Neovim
 ---
 
 # :plugins

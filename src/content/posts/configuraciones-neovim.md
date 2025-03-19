@@ -1,5 +1,6 @@
 ---
 title: Configuraciones de Neovim
+description: En esta sección se muestran algunas de las configuraciones de Neovim más populares, listas para funcionar.
 ---
 
 # Configuraciones de Neovim

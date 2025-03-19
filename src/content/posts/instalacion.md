@@ -1,5 +1,6 @@
 ---
 title: Instalación de Neovim
+description: Explicación de cómo instalar Neovim en diferentes sistemas operativos
 ---
 
 # Instalación

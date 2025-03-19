@@ -1,5 +1,6 @@
 ---
 title: "Configuración"
+description: "Aquí se muestran algunos de los comandos que se pueden utilizar en el editor de texto."
 ---
 # :configuracion
 

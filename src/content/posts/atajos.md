@@ -1,5 +1,6 @@
 ---
 title: Atajos
+description: Aquí se muestran los atajos de teclado que se pueden utilizar en el editor de texto.
 ---
 
 # Atajos de teclado

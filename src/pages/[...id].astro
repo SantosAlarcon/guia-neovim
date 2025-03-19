@@ -20,7 +20,7 @@ const postJSONLd = {
 const { Content } = await render(post);
 ---
 
-<MDLayout title={`${post.data.title} | Guía Neovim`}>
+<MDLayout title={`${post.data.title} | Guía Neovim`} description={post.data.description}>
     <Content />
 </MDLayout>
 

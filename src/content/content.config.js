@@ -5,6 +5,7 @@ const posts = defineCollection({
     loader: glob({ base: "./content/posts", pattern: "*.md{x}" }),
     schema: z.object({
         title: z.string(),
+		description: z.string(),
     }),
 });
 
@@ -12,6 +13,7 @@ const plugins = defineCollection({
     loader: glob({ base: "./content/posts/plugins", pattern: "**/*.md{x}" }),
     schema: z.object({
         title: z.string(),
+		description: z.string(),
     }),
 });
 
