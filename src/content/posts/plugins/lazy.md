@@ -1,5 +1,6 @@
 ---
 title: Plugins > Lazy
+description: En esta sección se profundiza en el gestor de plugins de Lazy y cómo sacarle el mayor partido
 ---
 # :Lazy
 

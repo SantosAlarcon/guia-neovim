@@ -1,5 +1,6 @@
 ---
 title: "Plugins > Neotree"
+description: En esta sección se profundiza en el gestor de archivos Neotree y cómo configurarlo a nuestro gusto
 ---
 
 # :NeoTree

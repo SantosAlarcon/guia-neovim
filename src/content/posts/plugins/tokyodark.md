@@ -1,5 +1,6 @@
 ---
 title: "Plugins > Tokyodark"
+description: En esta sección se profundiza en el esquema de colores Tokyodark y cómo configurarlo a nuestro gusto
 ---
 
 # :tokyodark

@@ -1,5 +1,6 @@
 ---
 title: Plugins > Lualine
+description: En esta sección se profundiza en la barra de estado Lualine y cómo configurarla a nuestro gusto
 ---
 # :Lualine
 

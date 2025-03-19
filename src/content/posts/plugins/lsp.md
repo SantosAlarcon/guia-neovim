@@ -1,5 +1,6 @@
 ---
 title: Plugins > LSP
+description: En esta sección se muestra los plugins necesarios para convertir Neovim en un IDE con todas las de la Ley
 ---
 # :LSP
 
