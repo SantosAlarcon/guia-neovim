@@ -12,7 +12,7 @@
   "dependencies": {
     "prettier-plugin-astro": "latest",
     "@astrojs/sitemap": "latest",
-    "astro": "5.16.9",
+    "astro": "5.17.3",
     "typescript": "^5.9.3"
   }
 }
