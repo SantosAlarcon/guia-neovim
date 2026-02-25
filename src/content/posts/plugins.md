@@ -3,7 +3,7 @@ title: Plugins
 description: En esta sección se detalla el funcionamiento de los plugins de Neovim
 ---
 
-# :plugins
+# Plugins
 
 Uno de los puntos fuertes de Neovim, aparte de la **configuración y personalización**, es la capacidad de instalar "plugins" que permiten **dotarles de muchas funcionalidades**, hasta el punto de convertirlo en un IDE (Entorno de desarrollo integrado). La cantidad de "plugins" que hay es tan inmensa, y además cuentan con su **documentación**, que es un plus adicional.
 

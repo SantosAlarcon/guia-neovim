@@ -3,7 +3,7 @@ title: Comandos
 description: Aquí se muestran algunos de los comandos que se pueden utilizar en el editor de texto.
 ---
 
-# :comandos
+# Comandos
 
 NeoVim, además de contar con diferentes **modos de edición**, también dispone de un modo para introducir **comandos**, y que le otorga al usuario todo un mundo de posibilidades a su alcance. Para acceder a este modo hay que pulsar la tecla de <kbd>:</kbd> seguido del comando.
 

@@ -2,7 +2,7 @@
 title: "Configuración"
 description: "Aquí se muestran algunos de los comandos que se pueden utilizar en el editor de texto."
 ---
-# :configuracion
+# Configuración
 
 Tanto **Vim** como **Neovim** permiten a los usuarios guardar sus configuraciones en un archivo. Se pueden crear archivos de configuración en formato **.vim** (VIMScript) o en formato **.lua** (Lua). En esos archivos se guardan los **atajos de teclado personalizados**, [complementos](/plugins), y las diferentes opciones que modifican el comportamiento del editor. En función del S.O. se guardan en:
 
