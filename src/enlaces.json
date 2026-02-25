@@ -1,77 +1,84 @@
 [
-    {
-        "titulo": "Inicio",
-        "slug": "inicio",
-        "ruta": "/",
-        "icono": "/icons/home.svg",
-        "hijos": []
-    },
-    {
-        "titulo": "Instalación",
-        "slug": "instalacion",
-        "ruta": "/instalacion",
-        "icono": "/icons/install.svg",
-        "hijos": []
-    },
-    {
-        "titulo": "Atajos",
-        "slug": "atajos",
-        "ruta": "/atajos",
-        "icono": "/icons/keyboard.svg",
-        "hijos": []
-    },
-    {
-        "titulo": "Comandos",
-        "slug": "comandos",
-        "ruta": "/comandos",
-        "icono": "/icons/terminal.svg",
-        "hijos": []
-    },
-    {
-        "titulo": "Configuración",
-        "slug": "configuracion",
-        "ruta": "/configuracion",
-        "icono": "/icons/config.svg",
-        "hijos": []
-    },
-    {
-        "titulo": "Plugins",
-        "slug": "plugins",
-        "ruta": "/plugins",
-        "icono": "/icons/plugin.svg",
-        "hijos": [
-            {
-                "titulo": "NeoTree",
-                "slug": "neotree",
-                "ruta": "/plugins/neotree"
-            },
-            {
-                "titulo": "Lualine",
-                "slug": "lualine",
-                "ruta": "/plugins/lualine"
-            },
-            {
-                "titulo": "Esquema de colores Tokyodark",
-                "slug": "tokyodark",
-                "ruta": "/plugins/tokyodark"
-            },
-            {
-                "titulo": "Neovim a IDE",
-                "slug": "lsp",
-                "ruta": "/plugins/lsp"
-            },
-            {
-                "titulo": "Lazy",
-                "slug": "lazy",
-                "ruta": "/plugins/lazy"
-            }
-        ]
-    },
-    {
-        "titulo": "Configuraciones de Neovim",
-        "slug": "configuraciones-neovim",
-        "ruta": "/configuraciones-neovim",
-        "icono": "/icons/configs.svg",
-        "hijos": []
-    }
+	{
+		"titulo": "Inicio",
+		"slug": "inicio",
+		"ruta": "/",
+		"icono": "/icons/home.svg",
+		"hijos": []
+	},
+	{
+		"titulo": "Instalación",
+		"slug": "instalacion",
+		"ruta": "/instalacion",
+		"icono": "/icons/install.svg",
+		"hijos": []
+	},
+	{
+		"titulo": "Atajos",
+		"slug": "atajos",
+		"ruta": "/atajos",
+		"icono": "/icons/keyboard.svg",
+		"hijos": []
+	},
+	{
+		"titulo": "Comandos",
+		"slug": "comandos",
+		"ruta": "/comandos",
+		"icono": "/icons/terminal.svg",
+		"hijos": []
+	},
+	{
+		"titulo": "Configuración",
+		"slug": "configuracion",
+		"ruta": "/configuracion",
+		"icono": "/icons/config.svg",
+		"hijos": []
+	},
+	{
+		"titulo": "LSP",
+		"slug": "lsp",
+		"ruta": "/lsp",
+		"icono": "/icons/lsp.svg",
+		"hijos": []
+	},
+	{
+		"titulo": "Plugins",
+		"slug": "plugins",
+		"ruta": "/plugins",
+		"icono": "/icons/plugin.svg",
+		"hijos": [
+			{
+				"titulo": "NeoTree",
+				"slug": "plugins-neotree",
+				"ruta": "/plugins/neotree"
+			},
+			{
+				"titulo": "Lualine",
+				"slug": "plugins-lualine",
+				"ruta": "/plugins/lualine"
+			},
+			{
+				"titulo": "Esquema de colores Tokyodark",
+				"slug": "plugins-tokyodark",
+				"ruta": "/plugins/tokyodark"
+			},
+			{
+				"titulo": "Neovim a IDE",
+				"slug": "plugins-lsp",
+				"ruta": "/plugins/lsp"
+			},
+			{
+				"titulo": "Lazy",
+				"slug": "plugins-lazy",
+				"ruta": "/plugins/lazy"
+			}
+		]
+	},
+	{
+		"titulo": "Configuraciones de Neovim",
+		"slug": "configuraciones-neovim",
+		"ruta": "/configuraciones-neovim",
+		"icono": "/icons/configs.svg",
+		"hijos": []
+	}
 ]

@@ -1,385 +1,388 @@
 ---
 import { Image } from "astro:assets";
 import enlaces from "../enlaces.json";
+const isDev = import.meta.env.MODE === "development";
 const { pathname } = Astro.url;
 ---
 
 <sidebar-element>
-    <aside
-        class="sidebar__container"
-        inert
-        aria-hidden="true"
-        aria-expanded="false"
-    >
-        <div class="sidebar__items">
-            <div class="sidebar__close">
-                <button
-                    aria-label="Cerrar la barra lateral"
-                    class="sidebar__close__button"
-                    tabindex="1"
-                >
-                    <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="24"
-                        height="24"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        stroke-width="2"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        class="feather feather-x"
-                    >
-                        <line x1="18" y1="6" x2="6" y2="18"></line>
-                        <line x1="6" y1="6" x2="18" y2="18"></line>
-                    </svg>
-                </button>
-            </div>
-            <div class="sidebar__logo">
-                <a href="/" aria-label="Ir a la página principal" tabindex="0">
-                    <svg role="img">
-                        <use href="/LogoVertical.svg#guia-neovim-logo"></use>
-                    </svg>
-                </a>
-            </div>
-            <div class="sidebar__links">
-                {
-		enlaces.map((enlace) => {
-                        if (enlace.hijos.length > 0) {
-                            return (
-                                <details class="sidebar__details">
-                                    <summary class="sidebar__summary">
-                                        <a
-                                            class={`sidebar__summary-item ${
-                                                pathname === `${enlace.ruta}` &&
-                                                "activo"
-                                            }`}
-                                            aria-label={enlace.titulo}
-                                        >
-                                            <Image
-                                                src={enlace.icono}
-                                                alt=""
-                                                width={24}
-                                                height={24}
-                                            />
-                                            {enlace.titulo}
-                                        </a>
-                                    </summary>
-                                    <div class="sidebar__child-list">
-                                        {enlace.hijos.map((hijo) => (
-                                            <a
-                                                class={`sidebar__child-item ${pathname === `${hijo.ruta}` && "activo"}`}
-                                                href={`${hijo.ruta}`}
-                                            >
-                                                {hijo.titulo}
-                                            </a>
-                                        ))}
-                                    </div>
-                                </details>
-                            );
-                        } else {
-                            return (
-                                <a
-                                    href={`${enlace.ruta}`}
-                                    class={`sidebar__link-item ${pathname === `${enlace.ruta}` && "activo"}`}
-                                >
-                                    <Image
-                                        class="sidebar__link-item-icon"
-                                        src={enlace.icono}
-                                        alt=""
-                                        width={24}
-                                        height={24}
-                                    />
-                                    {enlace.titulo}
-                                </a>
-                            );
-                        }
-                    })
-                }
-            </div>
-        </div>
-    </aside>
+	<aside
+		class="sidebar__container"
+		inert
+		aria-hidden="true"
+		aria-expanded="false"
+	>
+		<div class="sidebar__items">
+			<div class="sidebar__close">
+				<button
+					aria-label="Cerrar la barra lateral"
+					class="sidebar__close__button"
+					tabindex="1"
+				>
+					<svg
+						xmlns="http://www.w3.org/2000/svg"
+						width="24"
+						height="24"
+						viewBox="0 0 24 24"
+						fill="none"
+						stroke="currentColor"
+						stroke-width="2"
+						stroke-linecap="round"
+						stroke-linejoin="round"
+						class="feather feather-x"
+					>
+						<line x1="18" y1="6" x2="6" y2="18"></line>
+						<line x1="6" y1="6" x2="18" y2="18"></line>
+					</svg>
+				</button>
+			</div>
+			<div class="sidebar__logo">
+				<a href="/" aria-label="Ir a la página principal" tabindex="0">
+					<svg role="img">
+						<use href="/LogoVertical.svg#guia-neovim-logo"></use>
+					</svg>
+				</a>
+			</div>
+			<div class="sidebar__links">
+				{
+					enlaces.map((enlace) => {
+						if (enlace.hijos.length > 0) {
+							return (
+								<details class="sidebar__details">
+									<summary class="sidebar__summary">
+										<a
+											class={`sidebar__summary-item`}
+											aria-label={enlace.titulo}
+										>
+											<Image
+												src={enlace.icono}
+												alt=""
+												width={24}
+												height={24}
+											/>
+											{enlace.titulo}
+										</a>
+									</summary>
+									{/* Aquí se renderizan los enlaces hijos */}
+									<div class="sidebar__child-list">
+										{enlace.hijos.map((hijo) => (
+											<a
+												class={`sidebar__child-item ${hijo.ruta.concat(!isDev ? "/" : "") === pathname && "activo"}`}
+												href={hijo.ruta}
+											>
+												{hijo.titulo} -{" "}
+												{hijo.ruta.concat(
+													!isDev ? "/" : "",
+												)}
+											</a>
+										))}
+									</div>
+								</details>
+							);
+						} else {
+							/* Se renderiza los elementos que no tienen hijos */
+							return (
+								<a
+									href={enlace.ruta}
+									class={`sidebar__link-item ${enlace.ruta === pathname.slice(0, !isDev ? -1 : pathname.length) && "activo"}`}
+								>
+									<Image
+										class="sidebar__link-item-icon"
+										src={enlace.icono}
+										alt=""
+										width={24}
+										height={24}
+									/>
+									{enlace.titulo}
+								</a>
+							);
+						}
+					})
+				}
+			</div>
+		</div>
+	</aside>
 </sidebar-element>
 <style>
-    :root {
-        &[theme="light"] {
-            --sidebar-item-bg: hsl(247, 55%, 55%);
-            --sidebar-item-bg-hover: hsl(247, 75%, 25%);
-            --sidebar-item-bg-active: hsl(247, 75%, 75%);
-        }
+	:root {
+		&[theme="light"] {
+			--sidebar-item-bg: hsl(247, 55%, 55%);
+			--sidebar-item-bg-hover: hsl(247, 75%, 25%);
+			--sidebar-item-bg-active: hsl(247, 75%, 75%);
+		}
 
-        &[theme="dark"] {
-            --sidebar-item-bg: hsl(247, 75%, 25%);
-            --sidebar-item-bg-hover: hsl(247, 75%, 65%);
-            --sidebar-item-bg-active: hsl(247, 75%, 55%);
-        }
-    }
+		&[theme="dark"] {
+			--sidebar-item-bg: hsl(247, 75%, 25%);
+			--sidebar-item-bg-hover: hsl(247, 75%, 65%);
+			--sidebar-item-bg-active: hsl(247, 75%, 55%);
+		}
+	}
 
-    * {
-        list-style-type: none;
-        padding-left: 0;
-        z-index: 5;
-        user-select: none;
-        font-size: 1.05rem;
+	* {
+		list-style-type: none;
+		padding-left: 0;
+		z-index: 5;
+		user-select: none;
+		font-size: 1.05rem;
 
-        & > a {
-            color: inherit !important;
+		& > a {
+			color: inherit !important;
 
-            &:hover {
-                text-shadow: none;
-            }
-        }
-    }
+			&:hover {
+				text-shadow: none;
+			}
+		}
+	}
 
-    .sidebar__container {
-        display: flex;
-        position: fixed;
-        transition: transform 0.2s ease-in;
-        top: 0;
-        left: 0;
-        z-index: 10;
-        inset: 0;
-        border: 1px solid light-dark(var(--light-fga), var(--dark-fga));
-        width: fit-content;
-        margin: 0.5rem;
-        border-radius: 1rem;
-        transform: translateX(-110%);
+	.sidebar__container {
+		display: flex;
+		position: fixed;
+		transition: transform 0.2s ease-in;
+		top: 0;
+		left: 0;
+		z-index: 10;
+		inset: 0;
+		border: 1px solid light-dark(var(--light-fga), var(--dark-fga));
+		width: fit-content;
+		margin: 0.5rem;
+		border-radius: 1rem;
+		transform: translateX(-110%);
 
-        &.open {
-            transform: translateX(0%);
-            transition: transform 0.15s ease-out;
-        }
-    }
+		&.open {
+			transform: translateX(0%);
+			transition: transform 0.15s ease-out;
+		}
+	}
 
-    @starting-style {
-        .sidebar__container.open {
-            transform: translateX(-110%);
-        }
-    }
+	@starting-style {
+		.sidebar__container.open {
+			transform: translateX(-110%);
+		}
+	}
 
-    .sidebar__links {
-        padding: 1rem 0;
-        display: flex;
-        flex-direction: column;
-        gap: 0.5rem;
-        color: #eee;
-    }
+	.sidebar__links {
+		padding: 1rem 0;
+		display: flex;
+		flex-direction: column;
+		gap: 0.5rem;
+		color: #eee;
+	}
 
-    .sidebar__close__button {
-        width: 36px;
-        height: 36px;
-        cursor: pointer;
-        outline: none;
-        padding: 0;
-        border: 1px solid light-dark(var(--light-fga), var(--dark-fga));
-        border-radius: 0.5rem;
-        background-color: light-dark(var(--light-bga), var(--dark-bga));
-        transition: all 0.2s ease-in-out;
-        color: light-dark(var(--light-fg), var(--dark-fg));
-        display: grid;
-        place-items: center;
+	.sidebar__close__button {
+		width: 36px;
+		height: 36px;
+		cursor: pointer;
+		outline: none;
+		padding: 0;
+		border: 1px solid light-dark(var(--light-fga), var(--dark-fga));
+		border-radius: 0.5rem;
+		background-color: light-dark(var(--light-bga), var(--dark-bga));
+		transition: all 0.2s ease-in-out;
+		color: light-dark(var(--light-fg), var(--dark-fg));
+		display: grid;
+		place-items: center;
 
-        &:hover {
-            box-shadow:
-                inset 0 0 0.5rem light-dark(var(--light-fga), var(--dark-fga)),
-                0 0 0.5rem light-dark(var(--light-fga), var(--dark-fga));
-        }
+		&:hover {
+			box-shadow:
+				inset 0 0 0.5rem light-dark(var(--light-fga), var(--dark-fga)),
+				0 0 0.5rem light-dark(var(--light-fga), var(--dark-fga));
+		}
 
-        &:focus {
-            outline: 2px solid light-dark(var(--light-fg), var(--dark-fg));
-        }
-    }
+		&:focus {
+			outline: 2px solid light-dark(var(--light-fg), var(--dark-fg));
+		}
+	}
 
-    .sidebar__logo {
-        display: flex;
-        justify-content: center;
-    }
+	.sidebar__logo {
+		display: flex;
+		justify-content: center;
+	}
 
-    .sidebar__items {
-        display: flex;
-        flex-direction: column;
-        padding: 2em;
-        box-shadow: 0 0 2em #0006;
-        width: var(--sidebar-width);
-        backdrop-filter: blur(1em);
-        overflow-y: auto;
-        border-radius: 1rem;
-        scrollbar-color: light-dark(var(--light-fga), var(--dark-fga))
-            transparent;
+	.sidebar__items {
+		display: flex;
+		flex-direction: column;
+		padding: 2em;
+		box-shadow: 0 0 2em #0006;
+		width: var(--sidebar-width);
+		backdrop-filter: blur(1em);
+		overflow-y: auto;
+		border-radius: 1rem;
+		scrollbar-color: light-dark(var(--light-fga), var(--dark-fga))
+			transparent;
 
-        > ul {
-            border-top: 1px #666 solid;
-            > li,
-            > li > ul > li {
-            }
+		> ul {
+			border-top: 1px #666 solid;
+			> li,
+			> li > ul > li {
+			}
 
-            > li::before {
-                content: "";
-            }
+			> li::before {
+				content: "";
+			}
 
-            > li > a {
-                width: 100%;
-            }
+			> li > a {
+				width: 100%;
+			}
 
-            > li > ul {
-                padding-left: 1.25em;
-            }
-        }
+			> li > ul {
+				padding-left: 1.25em;
+			}
+		}
 
-        &::-webkit-scrollbar-track {
-            background-color: transparent;
-        }
+		&::-webkit-scrollbar-track {
+			background-color: transparent;
+		}
 
-        &::-webkit-scrollbar {
-            width: 0.5rem;
-            background-color: transparent;
-        }
+		&::-webkit-scrollbar {
+			width: 0.5rem;
+			background-color: transparent;
+		}
 
-        &::-webkit-scrollbar-thumb {
-            background-color: light-dark(var(--light-fga), var(--dark-fga));
-            border-radius: 0.5rem;
-        }
-    }
+		&::-webkit-scrollbar-thumb {
+			background-color: light-dark(var(--light-fga), var(--dark-fga));
+			border-radius: 0.5rem;
+		}
+	}
 
-    .sidebar__link-item {
-        background-color: var(--sidebar-item-bg);
-        padding: 0.5rem 1rem;
-        cursor: pointer;
-        transition: all 0.25s ease-in-out;
-        display: flex;
-        justify-content: flex-start;
-        align-items: center;
-        width: 100%;
+	.sidebar__link-item {
+		background-color: var(--sidebar-item-bg);
+		padding: 0.5rem 1rem;
+		cursor: pointer;
+		transition: all 0.25s ease-in-out;
+		display: flex;
+		justify-content: flex-start;
+		align-items: center;
+		width: 100%;
 
-        &:hover {
-            background-color: var(--sidebar-item-bg-hover);
-            padding-left: 1.5rem;
-        }
+		&:hover {
+			background-color: var(--sidebar-item-bg-hover);
+			padding-left: 1.5rem;
+		}
 
-        &.activo {
-            font-weight: 900;
-            border-left: 0.3rem #66e solid;
-        }
-    }
+		&.activo {
+			font-weight: 900;
+			border-left: 0.3rem #66e solid;
+		}
+	}
 
-    .sidebar__link-item-icon {
-        margin-right: 0.5rem;
-    }
+	.sidebar__link-item-icon {
+		margin-right: 0.5rem;
+	}
 
-    .sidebar__summary-item {
-        background-color: var(--sidebar-item-bg);
-        padding: 0.5rem 1rem;
-        cursor: pointer;
-        transition: all 0.25s ease-in-out;
-        display: flex;
-        justify-content: flex-start;
-        align-items: center;
-        width: 100%;
+	.sidebar__summary-item {
+		background-color: var(--sidebar-item-bg);
+		padding: 0.5rem 1rem;
+		cursor: pointer;
+		transition: all 0.25s ease-in-out;
+		display: flex;
+		justify-content: flex-start;
+		align-items: center;
+		width: 100%;
 
-        &:hover {
-            background-color: var(--sidebar-item-bg-hover);
-        }
-    }
+		&:hover {
+			background-color: var(--sidebar-item-bg-hover);
+		}
+	}
 
-    .sidebar__details {
-        &[open] .sidebar__summary {
-            &::after {
-                transform: rotate(0deg) translateY(0.25em);
-            }
-        }
+	.sidebar__details {
+		&[open] .sidebar__summary {
+			&::after {
+				transform: rotate(0deg) translateY(0.25em);
+			}
+		}
 
-        &[open] .sidebar__summary-item {
-            background-color: var(--sidebar-item-bg-active) !important;
-        }
-    }
+		&[open] .sidebar__summary-item {
+			background-color: var(--sidebar-item-bg-active) !important;
+		}
+	}
 
-    .sidebar__summary {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
+	.sidebar__summary {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
 
-        &::after {
-            content: url("/icons/chevron.svg");
-            transform: rotate(-90deg);
-            transition: all 0.25s ease-in-out;
-            display: block;
-            position: absolute;
-            z-index: 5;
-            right: 3rem;
+		&::after {
+			content: url("/icons/chevron.svg");
+			transform: rotate(-90deg);
+			transition: all 0.25s ease-in-out;
+			display: block;
+			position: absolute;
+			z-index: 5;
+			right: 3rem;
 
-            @media (prefers-color-scheme: dark) {
-                filter: invert(1);
-            }
-        }
+			@media (prefers-color-scheme: dark) {
+				filter: invert(1);
+			}
+		}
 
-        & .sidebar__details[open] {
-            background-color: #aa0 !important;
-        }
-    }
+		& .sidebar__details[open] {
+			background-color: #aa0 !important;
+		}
+	}
 
-    .sidebar__child-list {
-        display: flex;
-        flex-direction: column;
-        gap: 0.25rem;
-        margin-top: 0.5rem;
-        margin-bottom: 0rem;
-    }
+	.sidebar__child-list {
+		display: flex;
+		flex-direction: column;
+		gap: 0.25rem;
+		margin-top: 0.5rem;
+		margin-bottom: 0rem;
+	}
 
-    .sidebar__child-item {
-        padding: 0.5rem 0 0.5rem 2rem;
-        width: 100%;
-        background-color: #114;
-        transition: all 0.25s ease-in-out;
-        cursor: pointer;
+	.sidebar__child-item {
+		padding: 0.5rem 0 0.5rem 2rem;
+		width: 100%;
+		background-color: #114;
+		transition: all 0.25s ease-in-out;
+		cursor: pointer;
 
-        &:hover {
-            background-color: var(--sidebar-item-bg-hover);
-            padding-left: 2.5rem;
-        }
+		&:hover {
+			background-color: var(--sidebar-item-bg-hover);
+			padding-left: 2.5rem;
+		}
 
-        &.activo {
-            font-weight: 900;
-            border-left: 0.3rem #66e solid;
-        }
-    }
+		&.activo {
+			font-weight: 900;
+			border-left: 0.3rem #66e solid;
+		}
+	}
 
-    .sidebar__child-link {
-        width: 100%;
-    }
+	.sidebar__child-link {
+		width: 100%;
+	}
 </style>
 
 <script>
-    class Sidebar extends HTMLElement {
-        constructor() {
-            super();
-            const html = document.querySelector("html");
-            const header = document.querySelector(".header__container");
-            const footer = document.querySelector(".footer__container");
-            const main = document.querySelector(".main__container");
-            const closeBtn = this.querySelector(".sidebar__close__button");
-            const offCanvas = document.querySelector(".offcanvas__container");
-            const sidebarContainer = this.querySelector(".sidebar__container");
+	class Sidebar extends HTMLElement {
+		constructor() {
+			super();
+			const html = document.querySelector("html");
+			const header = document.querySelector(".header__container");
+			const footer = document.querySelector(".footer__container");
+			const main = document.querySelector(".main__container");
+			const closeBtn = this.querySelector(".sidebar__close__button");
+			const offCanvas = document.querySelector(".offcanvas__container");
+			const sidebarContainer = this.querySelector(".sidebar__container");
 
-            const closeSidebar = () => {
-                offCanvas.removeAttribute("show");
-                sidebarContainer.classList.remove("open");
-                sidebarContainer.ariaHidden = "true";
-                sidebarContainer.ariaExpanded = "false";
-                sidebarContainer.setAttribute("inert", "");
-                html.style.removeProperty("overflow-y");
-                header.removeAttribute("inert");
-                footer.removeAttribute("inert");
-                main.removeAttribute("inert");
-            };
+			const closeSidebar = () => {
+				offCanvas.removeAttribute("show");
+				sidebarContainer.classList.remove("open");
+				sidebarContainer.ariaHidden = "true";
+				sidebarContainer.ariaExpanded = "false";
+				sidebarContainer.setAttribute("inert", "");
+				html.style.removeProperty("overflow-y");
+				header.removeAttribute("inert");
+				footer.removeAttribute("inert");
+				main.removeAttribute("inert");
+			};
 
-            closeBtn.addEventListener("click", () => {
-                closeSidebar();
-            });
+			closeBtn.addEventListener("click", () => {
+				closeSidebar();
+			});
 
-            offCanvas.addEventListener("click", () => {
-                closeSidebar();
-            });
-        }
-    }
-    customElements.define("sidebar-element", Sidebar);
+			offCanvas.addEventListener("click", () => {
+				closeSidebar();
+			});
+		}
+	}
+	customElements.define("sidebar-element", Sidebar);
 </script>
