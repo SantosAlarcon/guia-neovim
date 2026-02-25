@@ -1,12 +1,5 @@
 [
 	{
-		"titulo": "Inicio",
-		"slug": "inicio",
-		"ruta": "/",
-		"icono": "/icons/home.svg",
-		"hijos": []
-	},
-	{
 		"titulo": "Instalación",
 		"slug": "instalacion",
 		"ruta": "/instalacion",
