@@ -70,10 +70,7 @@ const { pathname } = Astro.url;
 												class={`sidebar__child-item ${hijo.ruta.concat(!isDev ? "/" : "") === pathname && "activo"}`}
 												href={hijo.ruta}
 											>
-												{hijo.titulo} -{" "}
-												{hijo.ruta.concat(
-													!isDev ? "/" : "",
-												)}
+												{hijo.titulo}
 											</a>
 										))}
 									</div>
