@@ -279,8 +279,22 @@
 		}
 	}
 
+	blockquote>blockquote {
+		margin: 1.5em 0;
+		color: var(--dark-fg);
+
+		& p {
+			border-left: 0.5em #aa0 solid;
+			padding: 0.75em;
+			box-shadow: 4px 4px 2em #0006;
+			border-radius: 0.25em;
+			background-color: hsl(72deg, 56%, 30%);
+		}
+	}
+
+
 	blockquote>blockquote>blockquote {
-		margin: 0 1em;
+		margin: 1.5em 0;
 		width: 100%;
 
 		& p {
