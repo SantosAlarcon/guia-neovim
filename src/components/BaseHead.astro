@@ -4,40 +4,30 @@ const { title, description } = Astro.props;
 ---
 
 <head>
-    <base href="/" />
-    <meta charset="UTF-8" />
-    <meta name="description" content={description} />
-    <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <meta name="color-scheme" content="light dark" />
-    <meta
-        name="keywords"
-	content="neovim, guia neovim, guia neovim en español, guia neovim en castellano, plugins neovim, configuracion neovim"
-    />
-    <meta name="title" content={title} />
-    <link rel="icon" type="image/svg+xml" href="/neovim-favicon.svg" />
-    <link rel="canonical" href={Astro.url} />
-    <meta name="generator" content={Astro.generator} />
-    <meta name="og:title" content={title} />
-    <meta name="og:site_name" content={title} />
+	<base href="/" />
+	<meta charset="UTF-8" />
+	<meta name="description" content={description} />
+	<meta name="viewport" content="width=device-width,initial-scale=1" />
+	<meta name="color-scheme" content="light dark" />
+	<meta
+		name="keywords"
+		content="neovim, guia neovim, guia neovim en español, guia neovim en castellano, plugins neovim, configuracion neovim"
+	/>
+	<meta name="title" content={title} />
+	<link rel="icon" type="image/svg+xml" href="/neovim-favicon.svg" />
+	<link rel="canonical" href={Astro.url} />
+	<meta name="generator" content={Astro.generator} />
+	<meta name="og:title" content={title} />
+	<meta name="og:site_name" content={title} />
 	<meta name="og:description" content={description} />
-    <meta name="og:url" content={Astro.url} />
-    <meta name="og:image" content="/LogoDark.svg" />
-    <meta name="og:type" content="article" />
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content={title} />
+	<meta name="og:url" content={Astro.url} />
+	<meta name="og:image" content="/LogoDark.svg" />
+	<meta name="og:type" content="article" />
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta name="twitter:title" content={title} />
 	<meta name="twitter:description" content={description} />
-    <meta name="twitter:url" content={Astro.url} />
-    <meta name="twitter:image" content="/LogoDark.svg" />
-    <title>{title}</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-        href="https://fonts.googleapis.com/css2?family=Afacad:wght@400;700;900&display=swap"
-        rel="stylesheet"
-    />
-    <link
-        href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700;900&display=swap"
-        rel="stylesheet"
-    />
-    <ClientRouter />
+	<meta name="twitter:url" content={Astro.url} />
+	<meta name="twitter:image" content="/LogoDark.svg" />
+	<title>{title}</title>
+	<ClientRouter />
 </head>
