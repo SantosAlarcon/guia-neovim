@@ -206,7 +206,7 @@
         font-family: VictorMono;
 
         color: #bbf;
-        font-size: 0.8em;
+        font-size: clamp(0.3rem, 2vw, 0.8rem)
     }
 
     pre {
@@ -402,4 +402,11 @@ details::details-content {
 
 details[open]::details-content {
     block-size: auto;
+}
+
+.main__container {
+    @media (width < 1024px) {
+        width: 94%;
+        font-size: clamp(1rem, 2vw, 2rem);
+    }
 }
