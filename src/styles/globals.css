@@ -206,7 +206,7 @@
 		font-family: VictorMono;
 
 		color: light-dark(#33f, #bbf);
-		font-size: clamp(0.45rem, 2vw, 1rem);
+		font-size: clamp(0.45rem, 2vw, .8rem);
 		font-weight: 900;
 	}
 
@@ -244,7 +244,7 @@
 
 	th {
 		text-align: left;
-		padding: 0.5em 1em;
+		padding: 0.5em 0.75em;
 		background-color: hsl(204.94deg 81.05% 40%);
 	}
 
@@ -259,6 +259,7 @@
 
 		& td {
 			padding: 0.75em;
+			line-height: 1;
 		}
 
 		& td:first-child {
@@ -407,17 +408,18 @@ details[open]::details-content {
 
 .main__container {
 	line-height: 1.5rem;
+	font-size: clamp(1rem, 2vw, 1.25rem);
 
 	@media (width < 1024px) {
 		width: 94%;
 		line-height: 1.3rem;
-		font-size: clamp(1rem, 2vw, 2rem);
 	}
 }
 
 .astro-code {
 	line-height: 1.5rem;
 	padding: .75rem;
+	border: 1.5px #66f solid;
 
 	@media (width < 1024px) {
 		line-height: 1rem;
