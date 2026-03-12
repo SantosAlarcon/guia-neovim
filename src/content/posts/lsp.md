@@ -26,9 +26,9 @@ En [este enlace](https://github.com/neovim/nvim-lspconfig/blob/master/doc/config
 
 Una vez que ya tengamos claro los lenguajes, lo siguiente es instalar dichos LSPs en el sistema. 
 
-Dependendiendo de si estás en Windows, Linux o MacOS, el método de instalación de los LSPs puede variar. En el caso de Linux, hay distribuciones que cuentan con algunos LSPs en sus repositorios. En caso contrario, había que instalar **Node** y **NPM** para instalar el LSP que necesites.
+Dependiendo de si estás en Windows, Linux o MacOS, el método de instalación de los LSPs puede variar. En el caso de Linux, hay distribuciones que cuentan con algunos LSPs en sus repositorios. En caso contrario, había que instalar **Node** y **NPM** para instalar el LSP que necesites.
 
-Para esta sección vamos a instalar los LSPs de **Lua** ([ lua-language-server ](https://github.com/luals/lua-language-server)) y de **JavaScript/TypeScript** ([ typescript-language-server ](https://github.com/typescript-language-server/typescript-language-server)).
+Para esta sección vamos a instalar los LSPs de **Lua** ([lua-language-server](https://github.com/luals/lua-language-server)) y de **JavaScript/TypeScript** ([typescript-language-server](https://github.com/typescript-language-server/typescript-language-server)).
 
 Partimos en el supuesto de que ya están instalados los LSPs en el equipo. Ahora sólo hay que configurarlos para que Neovim los cargue.
 

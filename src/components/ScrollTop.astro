@@ -3,60 +3,65 @@ import { Image } from "astro:assets";
 ---
 
 <scroll-top>
-    <button class="scroll__top__button hidden" aria-label="Ir hacia arriba">
-        <Image src="/icons/UpArrow.svg" alt="Ir hacia arriba" width="32" height="32" />
-    </button>
+	<button class="scroll__top__button hidden" aria-label="Ir hacia arriba">
+		<Image
+			src="/icons/UpArrow.svg"
+			alt="Ir hacia arriba"
+			width="16"
+			height="16"
+		/>
+	</button>
 </scroll-top>
 <style>
-    .scroll__top__button {
-        position: fixed;
-        bottom: 2em;
-        right: 2em;
-        border: 1px #666 solid;
-        border-radius: 100%;
-        padding: 0.65em;
-        background-color: #00a8;
-        color: #eee;
-        cursor: pointer;
-        display: grid;
-        place-items: center;
-        backdrop-filter: blur(5px);
-        transition: all 0.2s ease-in-out;
-        transform: translateX(0%);
+	.scroll__top__button {
+		position: fixed;
+		bottom: 2em;
+		right: 2em;
+		border: 1px #666 solid;
+		border-radius: 100%;
+		padding: 1.2em;
+		background-color: #00a8;
+		color: #eee;
+		cursor: pointer;
+		display: grid;
+		place-items: center;
+		backdrop-filter: blur(5px);
+		transition: all 0.2s ease-in-out;
+		transform: translateX(0%);
 
-        &.hidden {
-            transform: translateX(200%);
-            visibility: hidden;
-        }
-    }
+		&.hidden {
+			transform: translateX(200%);
+			visibility: hidden;
+		}
+	}
 </style>
 
 <script>
-    class ScrollTop extends HTMLElement {
-        constructor() {
-            super();
-            const scrollTopBtn = this.querySelector(".scroll__top__button");
-            this.addEventListener("click", () => {
-                window.scrollTo(0, 0);
-            });
+	class ScrollTop extends HTMLElement {
+		constructor() {
+			super();
+			const scrollTopBtn = this.querySelector(".scroll__top__button");
+			this.addEventListener("click", () => {
+				window.scrollTo(0, 0);
+			});
 
-            window.addEventListener("scroll", () => {
-                if (window.scrollY < 350) {
-                    scrollTopBtn.classList.add("hidden");
-                } else {
-                    scrollTopBtn.classList.remove("hidden");
-                }
-            });
+			window.addEventListener("scroll", () => {
+				if (window.scrollY < 350) {
+					scrollTopBtn.classList.add("hidden");
+				} else {
+					scrollTopBtn.classList.remove("hidden");
+				}
+			});
 
-            window.addEventListener("DOMContentLoaded", () => {
-                if (window.scrollY < 350) {
-                    scrollTopBtn.classList.add("hidden");
-                } else {
-                    scrollTopBtn.classList.remove("hidden");
-                }
-            });
-        }
-    }
+			window.addEventListener("DOMContentLoaded", () => {
+				if (window.scrollY < 350) {
+					scrollTopBtn.classList.add("hidden");
+				} else {
+					scrollTopBtn.classList.remove("hidden");
+				}
+			});
+		}
+	}
 
-    customElements.define("scroll-top", ScrollTop);
+	customElements.define("scroll-top", ScrollTop);
 </script>
