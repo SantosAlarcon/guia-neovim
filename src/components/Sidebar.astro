@@ -17,7 +17,6 @@ const { pathname } = Astro.url;
 				<button
 					aria-label="Cerrar la barra lateral"
 					class="sidebar__close__button"
-					tabindex="1"
 				>
 					<svg
 						xmlns="http://www.w3.org/2000/svg"
@@ -37,20 +36,20 @@ const { pathname } = Astro.url;
 				</button>
 			</div>
 			<div class="sidebar__logo">
-				<a href="/" aria-label="Ir a la página principal" tabindex="0">
+				<a href="/" aria-label="Ir a la página principal">
 					<svg role="img">
 						<use href="/LogoVertical.svg#guia-neovim-logo"></use>
 					</svg>
 				</a>
 			</div>
-			<div class="sidebar__links">
+			<nav class="sidebar__links" aria-label="Navegación lateral">
 				{
 					enlaces.map((enlace) => {
 						if (enlace.hijos.length > 0) {
 							return (
 								<details class="sidebar__details">
 									<summary class="sidebar__summary">
-										<a
+										<span
 											class={`sidebar__summary-item`}
 											aria-label={enlace.titulo}
 										>
@@ -61,7 +60,7 @@ const { pathname } = Astro.url;
 												height={24}
 											/>
 											{enlace.titulo}
-										</a>
+										</span>
 									</summary>
 									{/* Aquí se renderizan los enlaces hijos */}
 									<div class="sidebar__child-list">
@@ -96,7 +95,7 @@ const { pathname } = Astro.url;
 						}
 					})
 				}
-			</div>
+			</nav>
 		</div>
 	</aside>
 </sidebar-element>
@@ -363,8 +362,8 @@ const { pathname } = Astro.url;
 			const closeSidebar = () => {
 				offCanvas.removeAttribute("show");
 				sidebarContainer.classList.remove("open");
-				sidebarContainer.ariaHidden = "true";
-				sidebarContainer.ariaExpanded = "false";
+				sidebarContainer.setAttribute("aria-hidden", "true");
+				sidebarContainer.setAttribute("aria-expanded", "false");
 				sidebarContainer.setAttribute("inert", "");
 				html.style.removeProperty("overflow-y");
 				header.removeAttribute("inert");

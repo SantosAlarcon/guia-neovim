@@ -19,11 +19,11 @@ import OffCanvas from "../components/OffCanvas.astro";
     <body>
         <OffCanvas />
         <Sidebar />
-        <section id="post">
+        <main id="post" class="main__container">
             <Header />
             <slot />
             <Footer />
-        </section>
+        </main>
         <ScrollTop />
         <script is:inline src="/script-sonido.js"></script>
     </body>
