@@ -136,7 +136,7 @@
 	main {
 		margin: auto;
 		padding: 1rem;
-		width: 1200px;
+		width: 100%;
 		font-size: 1.2rem;
 		line-height: 1.6;
 
@@ -160,6 +160,8 @@
 	}
 
 	#post {
+		width: 100%;
+		padding: 0;
 		transition:
 			transform 0.5s,
 			width 0.5s;
@@ -206,7 +208,7 @@
 		font-family: VictorMono;
 
 		color: light-dark(#33f, #bbf);
-		font-size: clamp(0.45rem, 2vw, .8rem);
+		font-size: clamp(0.6rem, 2vw, .9rem);
 		font-weight: 900;
 	}
 
@@ -407,8 +409,10 @@ details[open]::details-content {
 }
 
 .main__container {
+	width: 100%;
 	line-height: 1.5rem;
-	font-size: clamp(1rem, 2vw, 1.25rem);
+	font-size: clamp(1.1rem, 2vw, 1.25rem);
+	transition: none;
 
 	@media (width < 1024px) {
 		width: 94%;
