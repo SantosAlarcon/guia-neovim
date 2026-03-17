@@ -12,12 +12,20 @@ export async function getStaticPaths() {
 }
 const { post } = Astro.props;
 
-const postJSONLd = {
-    "@context": "https://schema.org",
-    "@type": "Thing",
-    name: post.data.title,
-    url: Astro.url,
-	};
+const articleSchema = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": post.data.title,
+  "description": post.data.description,
+  "publisher": {
+    "@type": "Organization",
+    "name": "Guía Neovim",
+    "logo": {
+      "@type": "ImageObject",
+	  "url": `${Astro.site}/images/neovim-favicon.svg`
+    }
+  }
+};
 
 const { Content } = await render(post);
 ---
@@ -26,5 +34,5 @@ const { Content } = await render(post);
     <Content />
 </MDLayout>
 
-<script type="application/ld+json" set:html={JSON.stringify(postJSONLd)}>
+<script type="application/ld+json" set:html={JSON.stringify(articleSchema)}>
 </script>
