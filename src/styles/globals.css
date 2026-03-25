@@ -413,10 +413,12 @@ details[open]::details-content {
 	line-height: 1.5rem;
 	font-size: clamp(1.1rem, 2vw, 1.25rem);
 	transition: none;
+	padding: 0 5rem;
 
 	@media (width < 1024px) {
 		width: 94%;
 		line-height: 1.3rem;
+		padding: 0 1rem;
 	}
 }
 
