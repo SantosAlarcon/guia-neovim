@@ -39,7 +39,7 @@ Lo primero es crear el directorio **"lsp"** en el directorio raíz de la configu
 Vamos a empezar primero con el LSP de Lua. Creamos el archivo **"lua_ls.lua"** dentro de ese directorio y escribimos esto:
 
 ```lua
-vim.lsp.config["lua_ls"] = {
+vim.lsp.config("lua_ls", = {
     cmd = {"lua-language-server", "--stdio"},
     filetypes = {"lua"},
     root_markers = { {".luarc.json", ".luarc.jsonc"}, { ".git" }, { ".stylua.toml", "stylua.toml", "selene.toml" } },
@@ -61,7 +61,7 @@ vim.lsp.config["lua_ls"] = {
             }
         }
     }
-}
+})
 ```
 
 Vamos a desmenuzar el contenido de este archivo. 
@@ -76,11 +76,11 @@ Lo primero que hemos definido una nueva clave para la tabla de Lua de la configu
 Ahora vamos a repetir la operación pero con el LSP de JavaScript/TypeScript. Para ello creamos el archivo **"ts_ls.lua"** dentro del directorio **lsp** e introducimos esto:
 
 ```lua
-vim.lsp.config["ts_ls"] = {
+vim.lsp.config("ts_ls", = {
     cmd = {"typescript-language-server", "--stdio"},
     filetypes = {"javascript", "javascriptreact", "typescript", "typescriptreact" },
     root_markers = {{".git"}, {"package.json", "tsconfig.json", "jsconfig.json"}}
-}
+})
 ```
 
 Pero aún no hemos acabado porque toca lo más importante, que es activar los LSPs e inyectar las capacidades del cliente LSP.
