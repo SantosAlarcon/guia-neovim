@@ -1,6 +1,6 @@
 ---
 title: LSP
-description: Aquí se aborda cómo funciona los LSPs en Neovim a partir de la versión 0.11
+description: Aquí se aborda cómo funciona los LSPs en Neovim a partir de la versión 0.12
 ---
 
 # LSP
@@ -39,7 +39,7 @@ Lo primero es crear el directorio **"lsp"** en el directorio raíz de la configu
 Vamos a empezar primero con el LSP de Lua. Creamos el archivo **"lua_ls.lua"** dentro de ese directorio y escribimos esto:
 
 ```lua
-vim.lsp.config("lua_ls", = {
+return {
     cmd = {"lua-language-server", "--stdio"},
     filetypes = {"lua"},
     root_markers = { {".luarc.json", ".luarc.jsonc"}, { ".git" }, { ".stylua.toml", "stylua.toml", "selene.toml" } },
@@ -61,12 +61,12 @@ vim.lsp.config("lua_ls", = {
             }
         }
     }
-})
+}
 ```
 
 Vamos a desmenuzar el contenido de este archivo. 
 
-Lo primero que hemos definido una nueva clave para la tabla de Lua de la configuración de LSP (**vim.lsp.config**). Y dentro de dicha tabla se encuentran los siguientes campos:
+Lo primero es que estamos devolviendo una tabla de Lua de la configuración del mismo LSP. Y dentro de dicha tabla se encuentran los siguientes campos:
 
 + **cmd:** - el comando que se ejecutará cuando Neovim cargue el LSP
 + **filetypes:** - los tipos de archivo con los que el cliente LSP funcionará
@@ -76,11 +76,11 @@ Lo primero que hemos definido una nueva clave para la tabla de Lua de la configu
 Ahora vamos a repetir la operación pero con el LSP de JavaScript/TypeScript. Para ello creamos el archivo **"ts_ls.lua"** dentro del directorio **lsp** e introducimos esto:
 
 ```lua
-vim.lsp.config("ts_ls", = {
+return {
     cmd = {"typescript-language-server", "--stdio"},
     filetypes = {"javascript", "javascriptreact", "typescript", "typescriptreact" },
     root_markers = {{".git"}, {"package.json", "tsconfig.json", "jsconfig.json"}}
-})
+}
 ```
 
 Pero aún no hemos acabado porque toca lo más importante, que es activar los LSPs e inyectar las capacidades del cliente LSP.
@@ -116,11 +116,13 @@ Vamos a abrir un archivo de TypeScript para ver lo que pasa...
 
 **¡Bravo!** **¡El LSP está funcionando muy bien!** 👏👏👏
 
-Y para comprobar que ha cargado muy bien el LSP, utilizarémos el comando <code>:checkhealth vim.lsp</code>.
+Y para comprobar que ha cargado muy bien el LSP, utilizaremos el comando <code>:checkhealth vim.lsp</code>.
 
 ![Comprobación del funcionamiento de los LSP con :checkhealth](/images/lsp-checkhealth.webp)
 
 En la captura anterior se muestran los LSPs que están activados en el búfer actual, y qué configuraciones de LSP están activadas.
+
+Al final Neovim carga todas las configuraciones del directorio `lsp` y lo junta todo como si fuese un único archivo.
 
 ## Funciones de LSP a nivel de búfer
 
@@ -154,6 +156,6 @@ En la captura anterior se ha mostrado el módulo "completion" de **mini.nvim**, 
 
 ## Conclusión
 
-Ya hemos visto cómo se configura y se activan los LSPs en Neovim de forma nativa en la **versión 0.11** de Neovim. Y todo eso sin necesidad de usar plugins de terceros.
+Ya hemos visto cómo se configura y se activan los LSPs en Neovim de forma nativa en la **versión 0.12** de Neovim. Y todo eso sin necesidad de usar plugins de terceros.
 
 Si quieres ir más allá sobre el manejo nativo del LSP, puedes echarle un ojo a la sección de LSP de la [ documentación oficial de Neovim ](https://neovim.io/doc/user/lsp/).
