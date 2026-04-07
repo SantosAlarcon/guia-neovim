@@ -474,9 +474,9 @@ return {
             "FileType",
             {
                 callback = function()
-                    -- Enable treesitter highlighting and disable regex syntax
+                    -- Activar el resaltado del treesitter y desactivar la sintáxis de regex
                     pcall(vim.treesitter.start)
-                    -- Enable treesitter-based indentation
+                    -- Activar la indentación basada en treesitter-based
                     vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
                 end
             }
@@ -487,7 +487,7 @@ return {
 
 Cerramos Neovim y lo volvemos a abrir. Ahora se van a instalar los "parsers" que
 hemos mencionado en el archivo de configuración. Podemos mirar que está dicho plugin
-en funcionamiento con el comando `:checkhealth`.
+en funcionamiento con el comando `:checkhealth nvim-treesitter`.
 
 <img src="/images/lsp/ts-checkhealth.webp" alt="TreeSitter - Parsers instalados"  />
 
