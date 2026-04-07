@@ -431,3 +431,20 @@ details[open]::details-content {
 		line-height: 1rem;
 	}
 }
+
+pre button.rehype-pretty-copy {
+	right: 1px;
+	padding: 0;
+	width: 1.6rem !important;
+	height: 1.6rem !important;
+	display: flex;
+	margin-top: 2px;
+	margin-right: 8px;
+	position: absolute;
+	border-radius: 25%;
+	backdrop-filter: blur(3px);
+	background: none;
+	border: none;
+	top: 1rem;
+	cursor: pointer;
+}
