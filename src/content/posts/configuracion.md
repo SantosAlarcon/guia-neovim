@@ -4,6 +4,20 @@ description: "Aquí se muestran algunos de los comandos que se pueden utilizar e
 ---
 # Configuración
 
+<details>
+<summary>Tabla de contenidos</summary>
+
+- [Formatos de configuración](/configuracion/#formatos-de-configuración)
+    * [Formato VIMScript](/configuracion/#formato-vimscript)
+    * [Formato Lua](/configuracion/#formato-lua)
+- [Configuración monoarchivo / multiarchivo](/configuracion/#configuración-monoarchivo-multiarchivo)
+- [Tecla líder](/configuracion/#tecla-líder)
+- [Opciones](/configuracion/#opciones)
+- [Anotación de tipos](/configuracion/#anotación-de-tipos)
+- [Diagnósticos](/configuracion/#diagnósticos)
+
+</details>
+
 Tanto **Vim** como **Neovim** permiten a los usuarios guardar sus configuraciones en un archivo. Se pueden crear archivos de configuración en formato **.vim** (VIMScript) o en formato **.lua** (Lua). En esos archivos se guardan los **atajos de teclado personalizados**, [complementos](/plugins), y las diferentes opciones que modifican el comportamiento del editor. En función del S.O. se guardan en:
 
 - `$HOME/.config/nvim` en Linux / MacOS
@@ -140,8 +154,7 @@ que facilita su mantenimiento y diagnóstico.
 ## Tecla líder
 
 Una característica de Vim/Neovim es que podemos asignarle una **tecla líder**, que
-viene a ser lo mismo que la tecla Windows, o Comando de Mac. No se puede usar simultáneamente con
-otras teclas, sino que hay que tocar dicha tecla y luego una combinación.
+viene a ser lo mismo que la tecla **Windows**, o **Comando** de Mac, con la salvedad de que en vez de pulsarse al mismo tiempo, hay que tocar dicha tecla y luego una combinación.
 
 A continuación veremos cómo se configura la **tecla líder** tanto en VIMScript como
 en Lua.
@@ -198,3 +211,62 @@ opciones se puede consultar con el comando `:options`.
 | `swapfile` | Permite crear un archivo de intercambio |
 
 > Hay algunas opciones que no tienen su variante en Lua, por lo que hay que usar `vim.cmd("inserta aquí la opción")` para poder usarlas en Lua.
+
+## Anotación de tipos
+
+Neovim trae de forma nativa la posibilidad de mostrar la definición de los tipos y clases en el **autocompletado**. La definición de tipos y clases es como una documentación en sí misma, 
+donde se enumeran las propiedades y una descripción de las mismas. El lenguaje **Lua** tiene la desventaja de ser un lenguaje de programación sin tipar (como **JavaScript**), y la anotación de tipos es una
+forma de añadir tipado a cierto bloque de código.
+
+Para este cometido vamos a utilizar el ejemplo de abajo:
+
+```lua
+---@type filetype
+vim.filetype.add({
+
+})
+```
+
+Hemos utilizado la anotación **@type** y seguidamente el nombre de la clase o tipo para añadir la definición de tipo en este bloque de código. Si ahora escribimos la propiedad o campo, se muestra 
+la referencia en el **autocompletado**. 
+
+![Anotación de tipos en funcionamiento](/images/anotacion-tipos.webp)
+
+## Diagnósticos
+
+Neovim cuenta con soporte nativo para mostrar **diagnósticos**, que básicamente muestra en pantalla el grado de severidad del código. Por defecto no está activado por aquello de no molestar al usuario,
+pero es muy útil para l@s programador@s.
+
+Veamos en el código de ejemplo cómo se activa y se configuran los diagnósticos:
+
+```lua
+-- Diagnosticos en pantalla
+---@type vim.diagnostic.Opts
+vim.diagnostic.config({
+    -- Activar el texto virtual que se muestra en pantalla
+    virtual_text = true,
+    -- Tabla en la que se configuran los iconos
+	signs = {
+		text = {
+			[vim.diagnostic.severity.ERROR] = ' ',
+			[vim.diagnostic.severity.WARN] = ' ',
+			[vim.diagnostic.severity.INFO] = ' ',
+			[vim.diagnostic.severity.HINT] = ' ',
+		},
+        -- Resaltado de línea de error
+		linehl = {
+			[vim.diagnostic.severity.ERROR] = 'ErrorMsg',
+		},
+        -- Resaltado de línea de advertencia
+		numhl = {
+			[vim.diagnostic.severity.WARN] = 'WarningMsg',
+		},
+	}
+})
+```
+
+Esto se copia dentro del archivo **init.lua** o en un archivo aparte. Reiniciamos Neovim. Escribimos cualquier historia rara y deberían mostrarse los diagnósticos en pantalla.
+
+![Diagnósticos funcionando en Neovim](/images/diagnosticos-funcionando.webp)
+
+> Si te has dado cuenta en el ejemplo de arriba, se ha utilizado una línea **"---@type [clase/tipo]"**, que permite mostrar en el **autocompletado** la definición de tipos/clases, con sus campos, propiedades y explicación de las mismas.
