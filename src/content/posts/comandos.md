@@ -27,7 +27,7 @@ En las siguientes tablas hay una variedad de comandos agrupados por tipo.
 | `:echo [mensaje]`                     | Muestra un mensaje en la línea de comandos                                        |
 | `:call [función]`                     | Llama a una función y sus argumentos                                              |
 | `:let [variable]`                     | Declara una variable interna                                                      |
-| :restart                            | Reinicia Neovim (añadida en la versión **0.12**)                                  |
+| `:restart`                            | Reinicia Neovim (añadida en la versión **0.12**)                                  |
 
 > P.D.: Los [plugins](/plugins) de terceros que se cargan en **Neovim** cuentan con su propia documentación y comandos.
 
