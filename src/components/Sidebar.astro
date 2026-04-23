@@ -47,8 +47,8 @@ const { pathname } = Astro.url;
 					enlaces.map((enlace) => {
 						if (enlace.hijos.length > 0) {
 							return (
-								<details class="sidebar__details">
-									<summary class="sidebar__summary">
+								<details class="sidebar__details" open>
+									<summary class="sidebar__summary" role="button" aria-expanded="false">
 										<span
 											class={`sidebar__summary-item`}
 											aria-label={enlace.titulo}
