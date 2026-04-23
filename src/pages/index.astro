@@ -28,17 +28,20 @@ const postJSONLd = {
             editor de una forma fácil y muy sencilla. Abarcará desde los atajos
             de teclado hasta los diferentes plugins importantes.
         </p>
-        <div class="main__botones">
-            <a href="/instalacion">Instalación</a>
-            <a href="/atajos">Atajos</a>
-            <a href="/comandos">Comandos</a>
-            <a href="/configuracion">Configuración</a>
-            <a href="/plugins">Plugins</a>
-            <a href="/configuraciones-neovim"
+        <div class="main__botones" role="navigation" aria-label="Navegación principal">
+            <a href="/instalacion" tabindex="0">Instalación</a>
+            <a href="/atajos" tabindex="0">Atajos</a>
+            <a href="/comandos" tabindex="0">Comandos</a>
+            <a href="/configuracion" tabindex="0">Configuración</a>
+            <a href="/plugins" tabindex="0">Plugins</a>
+            <a href="/configuraciones-neovim" tabindex="0"
                 >Configuraciones de Neovim</a
             >
-			<a href="/lsp">LSP</a>
+			<a href="/lsp" tabindex="0">LSP</a>
         </div>
+        <p class="keyboard-hint">
+            <kbd>Tab</kbd> para navegar, <kbd>Enter</kbd> para seleccionar
+        </p>
     </main>
 </Layout>
 
@@ -70,20 +73,20 @@ const postJSONLd = {
         & a:visited {
             color: inherit;
             text-decoration: none;
-            background-color: #44f;
+            background-color: var(--color-primary);
             padding: 0.5em 1em;
             border-radius: 1em;
             box-shadow:
-                0 0.25em 1.5em #226,
-                0 0.25em 1.5em #226;
+                0 0.25em 1.5em var(--color-primary-shadow),
+                0 0.25em 1.5em var(--color-primary-shadow);
             transition: all 0.3s ease-in-out;
         }
 
         & a:hover {
-            background-color: #66f;
+            background-color: var(--color-primary-hover);
             box-shadow:
-                0 0.25em 1.5em #448,
-                0 0.25em 1.5em #448;
+                0 0.25em 1.5em var(--color-primary-shadow-hover),
+                0 0.25em 1.5em var(--color-primary-shadow-hover);
         }
     }
 
@@ -94,7 +97,38 @@ const postJSONLd = {
         text-align: center;
         margin-bottom: 1em;
     }
+
+    .keyboard-hint {
+        margin-top: 3.5em;
+        font-size: 1rem;
+        opacity: 0.75;
+        color: var(--dark-fg);
+    }
+
+    .main__botones a:focus {
+        outline: 3px solid var(--color-secondary);
+        outline-offset: 3px;
+    }
 </style>
+
+<script>
+    const links = document.querySelectorAll('.main__botones a');
+    
+    document.addEventListener('keydown', (e) => {
+        const target = e.target;
+        if (!links.includes(target)) return;
+        
+        if (e.key === 'ArrowRight' || e.key === 'ArrowDown') {
+            e.preventDefault();
+            const next = target.nextElementSibling;
+            if (next) next.focus();
+        } else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
+            e.preventDefault();
+            const prev = target.previousElementSibling;
+            if (prev) prev.focus();
+        }
+    });
+</script>
 
 <script type="application/ld+json" set:html={JSON.stringify(postJSONLd)}>
 </script>

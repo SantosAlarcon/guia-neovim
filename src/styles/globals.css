@@ -1,26 +1,39 @@
 @font-face {
 	font-family: "Afacad";
 	src: url("/fonts/Afacad-VariableFont_wght.ttf");
+	font-display: swap;
 }
 
 @font-face {
 	font-family: "Afacad";
 	font-style: italic;
 	src: url("/fonts/Afacad-Italic-VariableFont_wght.ttf");
+	font-display: swap;
 }
 
 @font-face {
 	font-family: "VictorMono";
 	src: url("/fonts/VictorMono-VariableFont_wght.ttf");
+	font-display: swap;
 }
 
 @font-face {
 	font-family: "VictorMono";
 	font-style: italic;
 	src: url("/fonts/VictorMono-Italic-VariableFont_wght.ttf");
+	font-display: swap;
 }
 
 :root {
+	--color-primary: #44f;
+	--color-primary-hover: #66f;
+	--color-primary-shadow: #226;
+	--color-primary-shadow-hover: #448;
+	--color-secondary: #aaf;
+	--color-secondary-hover: #ff0;
+	--color-secondary-shadow: #ff0;
+	--color-code: #33f;
+	--color-code-alt: #bbf;
 	color-scheme: light dark;
 	--dark-bg: hsl(210, 100%, 10%);
 	--dark-bga: hsla(210, 100%, 10%, 0.8);
@@ -70,7 +83,7 @@
 
 		& .header__logo a:hover,
 		& .sidebar__logo a:hover {
-			filter: drop-shadow(0 0 0.5em #ff0);
+			filter: drop-shadow(0 0 0.5em var(--color-secondary-hover));
 		}
 
 		aside {
@@ -113,12 +126,12 @@
 	a:active {
 		text-decoration: inherit;
 		transition: all 0.25s ease-in-out;
-		color: #aaf;
+		color: var(--color-secondary);
 	}
 
 	a:hover {
-		color: #ff0;
-		text-shadow: 0 0 0.25em #ff0;
+		color: var(--color-secondary-hover);
+		text-shadow: 0 0 0.25em var(--color-secondary-shadow);
 	}
 
 	body {
@@ -207,9 +220,13 @@
 	code {
 		font-family: VictorMono;
 
-		color: light-dark(#33f, #bbf);
+		color: var(--color-code);
 		font-size: clamp(0.6rem, 1.75vw, .9rem);
 		font-weight: 900;
+
+		:global(html[theme="dark"]) & {
+			color: var(--color-code-alt);
+		}
 	}
 
 	pre {

@@ -5,12 +5,19 @@ import { getCollection, render } from "astro:content";
 
 export async function getStaticPaths() {
     const posts = await getCollection("posts");
-    return posts.map((post) => ({
+    
+    const sortedPosts = posts.sort((a, b) => a.id.localeCompare(b.id));
+    
+    return sortedPosts.map((post, index) => ({
         params: { id: post.id },
-        props: { post },
+        props: { 
+            post,
+            prevPost: index > 0 ? sortedPosts[index - 1] : null,
+            nextPost: index < sortedPosts.length - 1 ? sortedPosts[index + 1] : null,
+        },
     }));
 }
-const { post } = Astro.props;
+const { post, prevPost, nextPost } = Astro.props;
 
 const articleSchema = {
   "@context": "https://schema.org",
@@ -32,7 +39,28 @@ const { Content } = await render(post);
 
 <MDLayout title={`${post.data.title} | Guía Neovim`} description={post.data.description}>
     <Content />
+    <nav class="post-navigation">
+        {prevPost && (
+            <a href={`/${prevPost.id}`} class="nav-prev">← Anterior</a>
+        )}
+        {nextPost && (
+            <a href={`/${nextPost.id}`} class="nav-next">Siguiente →</a>
+        )}
+    </nav>
 </MDLayout>
 
 <script type="application/ld+json" set:html={JSON.stringify(articleSchema)}>
 </script>
+
+<style>
+    .post-navigation {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 3rem;
+        padding-top: 2rem;
+        border-top: 1px solid #666;
+    }
+    .nav-prev, .nav-next {
+        color: var(--color-secondary);
+    }
+</style>

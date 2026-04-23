@@ -15,18 +15,18 @@ const { title, description } = Astro.props;
 	/>
 	<meta name="title" content={title} />
 	<link rel="icon" type="image/svg+xml" href="/neovim-favicon.svg" />
+	<link rel="manifest" href="/manifest.json" />
 	<link rel="canonical" href={Astro.url} />
 	<meta name="generator" content={Astro.generator} />
 	<meta name="og:title" content={title} />
-	<meta name="og:site_name" content={title} />
+	<meta name="og:site_name" content="Guía Neovim" />
 	<meta name="og:description" content={description} />
 	<meta name="og:url" content={Astro.url} />
 	<meta name="og:image" content="/LogoDark.svg" />
-	<meta name="og:type" content="article" />
+	<meta name="og:type" content="website" />
 	<meta name="twitter:card" content="summary_large_image" />
 	<meta name="twitter:title" content={title} />
 	<meta name="twitter:description" content={description} />
-	<meta name="twitter:url" content={Astro.url} />
 	<meta name="twitter:image" content="/LogoDark.svg" />
 	<title>{title}</title>
 	<ClientRouter />
