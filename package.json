@@ -10,10 +10,10 @@
     "astro": "astro"
   },
   "dependencies": {
-    "@astrojs/compiler-rs": "^0.1.8",
+    "@astrojs/compiler-rs": "^0.2.2",
     "@astrojs/sitemap": "latest",
     "@rehype-pretty/transformers": "^0.13.2",
-    "astro": "6.1.9",
+    "astro": "6.4.7",
     "prettier-plugin-astro": "latest",
     "typescript": "^6.0.3"
   },
