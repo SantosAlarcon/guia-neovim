@@ -7,10 +7,11 @@ Se intentará que sea lo más completo posible y que cuya lectura resulte amena 
 lector.
 
 ## Tabla de contenidos
-
+- [Instalación](https://www.guia-neovim.es/instalacion/)
 - [Atajos](https://www.guia-neovim.es/atajos/)
 - [Comandos](https://www.guia-neovim.es/comandos/)
 - [Configuración](https://www.guia-neovim.es/configuracion/)
+- [LSP](https://www.guia-neovim.es/lsp/)
 - [Plugins](https://www.guia-neovim.es/plugins/)
   - [NeoTree](https://www.guia-neovim.es/plugins/neotree)
   - [Lualine](https://www.guia-neovim.es/plugins/lualine)
@@ -24,3 +25,4 @@ lector.
 - 🚀 Construido en **Astro**, con algunos componentes de **React**.
 - View Transitions de **Astro**
 - 📃 Documentación breve, concisa y con buen sentido del humor.
+- Está actualizado a **Astro 6** y adaptado a **Neovim 0.12**.
