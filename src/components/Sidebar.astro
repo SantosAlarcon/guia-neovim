@@ -53,12 +53,15 @@ const { pathname } = Astro.url;
 											class={`sidebar__summary-item`}
 											aria-label={enlace.titulo}
 										>
-											<Image
-												src={enlace.icono}
-												alt=""
-												width={24}
-												height={24}
-											/>
+											<svg role="img" aria-hidden="true" class="terminal-card__icon" width="32" height="32">
+												<use href=`/icons/${enlace.icono}.svg#${enlace.icono}`></use>
+											</svg>
+											<!-- <Image -->
+											<!-- 	src={enlace.icono} -->
+											<!-- 	alt="" -->
+											<!-- 	width={24} -->
+											<!-- 	height={24} -->
+											<!-- /> -->
 											{enlace.titulo}
 										</span>
 									</summary>
@@ -82,13 +85,9 @@ const { pathname } = Astro.url;
 									href={enlace.ruta}
 									class={`sidebar__link-item ${enlace.ruta === pathname.slice(0, !isDev ? -1 : pathname.length) && "activo"}`}
 								>
-									<Image
-										class="sidebar__link-item-icon"
-										src={enlace.icono}
-										alt=""
-										width={24}
-										height={24}
-									/>
+									<svg role="img" class="sidebar__link-item-icon" width="32" height="32">
+										<use href=`/icons/${enlace.icono}.svg#${enlace.icono}` aria-hidden="true" width="32" height="32"></use>
+									</svg>
 									{enlace.titulo}
 								</a>
 							);
@@ -263,6 +262,7 @@ const { pathname } = Astro.url;
 
 	.sidebar__link-item-icon {
 		margin-right: 0.5rem;
+		transform: scale(0.8);
 	}
 
 	.sidebar__summary-item {
@@ -360,22 +360,22 @@ const { pathname } = Astro.url;
 			const sidebarContainer = this.querySelector(".sidebar__container");
 
 			const closeSidebar = () => {
-				offCanvas.removeAttribute("show");
-				sidebarContainer.classList.remove("open");
-				sidebarContainer.setAttribute("aria-hidden", "true");
-				sidebarContainer.setAttribute("aria-expanded", "false");
-				sidebarContainer.setAttribute("inert", "");
-				html.style.removeProperty("overflow-y");
-				header.removeAttribute("inert");
-				footer.removeAttribute("inert");
-				main.removeAttribute("inert");
+				offCanvas?.removeAttribute("show");
+				sidebarContainer?.classList.remove("open");
+				sidebarContainer?.setAttribute("aria-hidden", "true");
+				sidebarContainer?.setAttribute("aria-expanded", "false");
+				sidebarContainer?.setAttribute("inert", "");
+				html?.style.removeProperty("overflow-y");
+				header?.removeAttribute("inert");
+				footer?.removeAttribute("inert");
+				main?.removeAttribute("inert");
 			};
 
-			closeBtn.addEventListener("click", () => {
+			closeBtn?.addEventListener("click", () => {
 				closeSidebar();
 			});
 
-			offCanvas.addEventListener("click", () => {
+			offCanvas?.addEventListener("click", () => {
 				closeSidebar();
 			});
 		}

@@ -2,44 +2,143 @@
 const { icono, texto, url } = Astro.props;
 ---
 
-<a href={url}>
-	<div class="boton__guapo__container">
-		<span class="boton__guapo__icono">
-			<img src={icono} />
-		</span>
-		<div class="boton__guapo__texto">
-			{texto}
-		</div>
+<a href={url} class="terminal-card">
+	<div class="terminal-card__header">
+		<span class="terminal-card__dot terminal-card__dot--red"></span>
+		<span class="terminal-card__dot terminal-card__dot--yellow"></span>
+		<span class="terminal-card__dot terminal-card__dot--green"></span>
+	</div>
+	<div class="terminal-card__body">
+		<svg role="img" aria-hidden="true" class="terminal-card__icon">
+			<!-- <use href="/icons/sol.svg#sol"></use> -->
+			<use href=`/icons/${icono}.svg#${icono}` aria-hidden="true"></use>
+		</svg>
+		<!-- <img -->
+		<!-- 	class="terminal-card__icon" -->
+		<!-- 	src={icono} -->
+		<!-- 	alt="" -->
+		<!-- /> -->
+		<span class="terminal-card__text">{texto}</span>
 	</div>
 </a>
 
 <style>
 	a {
+		text-decoration: none;
+		color: inherit;
+		display: block;
+	}
+
+	.terminal-card {
+		--card-bg: light-dark(rgba(255, 255, 255, 0.7), rgba(12, 18, 30, 0.65));
+		--card-border: light-dark(
+			rgba(120, 120, 255, 0.5),
+			rgba(120, 120, 255, 1)
+		);
+		--card-text: light-dark(#222, #eee);
+		--card-glow: light-dark(
+			rgba(128, 128, 255, 0.5),
+			rgba(200, 200, 255, 1)
+		);
+		--card-glow-bg: rgba(180, 180, 255, 0.2);
+		--card-glow-blur: rgba(180, 180, 255, 1);
+		--card-icon-shadow: light-dark(
+			rgba(120, 120, 255, 0),
+			rgba(120, 120, 255, 1)
+		);
+		--card-gradient: light-dark(
+			rgba(180, 180, 255, 0.04) rgba(180, 180, 255, 0.04)
+		);
+		--card-text-shadow: light-dark(none, 0 1px 2px rgba(0, 0, 0, 0.3));
+		/* --card-icon-color: light-dark(0, 1); */
+
+		background: var(--card-bg);
+		backdrop-filter: blur(16px);
+		-webkit-backdrop-filter: blur(16px);
+		border: 1px solid var(--card-border);
+		border-radius: 1rem;
+		padding: 1rem 1.25rem;
+		transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+		position: relative;
+		overflow: hidden;
+
+		&::before {
+			content: "";
+			position: absolute;
+			inset: 0;
+			border-radius: 1rem;
+			background: linear-gradient(
+				135deg,
+				transparent 40%,
+				var(--card-gradient) 100%
+			);
+			pointer-events: none;
+		}
+
 		&:hover {
-			color: inherit;
-			text-shadow: inherit;
+			transform: translateY(-4px);
+			border-color: var(--card-glow);
+			box-shadow:
+				0 8px 32px var(--card-glow-bg),
+				0 0 16px var(--card-glow-blur);
+			text-shadow: 0 0 3px rgba(180, 180, 255, 0.76);
+		}
+
+		&:focus-visible {
+			outline: 2px solid var(--color-secondary, #aaf);
+			outline-offset: 3px;
 		}
 	}
-	.boton__guapo__container {
+
+	.terminal-card__header {
+		display: flex;
+		gap: 0.4rem;
+		margin-bottom: 1.7rem;
+		padding-left: 0.15rem;
+	}
+
+	.terminal-card__dot {
+		width: 0.6rem;
+		height: 0.6rem;
+		border-radius: 50%;
+		display: block;
+	}
+
+	.terminal-card__dot--red {
+		background: #ff5f56;
+	}
+	.terminal-card__dot--yellow {
+		background: #ffbd2e;
+	}
+	.terminal-card__dot--green {
+		background: #27c93f;
+	}
+
+	.terminal-card__body {
 		display: flex;
 		align-items: center;
-		padding: 1rem;
+		gap: 0.875rem;
 	}
 
-	.boton__guapo__icono {
-		stroke: white;
-		display: flex;
-		width: 3rem;
-		height: 3rem;
-		background: linear-gradient(0deg, #006 0%, #009 100%);
-		border-radius: 0.8rem 0 0 0.8rem;
-		padding: 0.4rem 1rem;
+	.terminal-card__icon {
+		width: 2rem;
+		height: 2rem;
+		flex-shrink: 0;
+		object-fit: contain;
+		filter: drop-shadow(0 0 3px var(--card-icon-shadow));
+		transition: filter 0.3s ease;
+		/* filter: invert(var(--card-icon-color)); */
 	}
 
-	.boton__guapo__texto {
-		border-radius: 0 0.8rem 0.8rem 0;
-		background: linear-gradient(0deg, #00f 0%, #33f 100%);
-		padding: 0.6rem 1rem;
-		width: 100%;
+	.terminal-card:hover .terminal-card__icon {
+		filter: drop-shadow(0 0 8px var(--card-icon-shadow));
+	}
+
+	.terminal-card__text {
+		font-size: 1.1rem;
+		font-weight: 600;
+		letter-spacing: 0.02em;
+		color: var(--card-text);
+		text-shadow: var(--card-text-shadow);
 	}
 </style>

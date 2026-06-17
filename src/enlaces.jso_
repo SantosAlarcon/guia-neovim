@@ -3,42 +3,42 @@
 		"titulo": "Instalación",
 		"slug": "instalacion",
 		"ruta": "/instalacion",
-		"icono": "install2",
+		"icono": "/icons/install.svg",
 		"hijos": []
 	},
 	{
 		"titulo": "Atajos",
 		"slug": "atajos",
 		"ruta": "/atajos",
-		"icono": "keyboard",
+		"icono": "/icons/keyboard.svg",
 		"hijos": []
 	},
 	{
 		"titulo": "Comandos",
 		"slug": "comandos",
 		"ruta": "/comandos",
-		"icono": "terminal",
+		"icono": "/icons/terminal.svg",
 		"hijos": []
 	},
 	{
 		"titulo": "Configuración",
 		"slug": "configuracion",
 		"ruta": "/configuracion",
-		"icono": "config",
+		"icono": "/icons/config.svg",
 		"hijos": []
 	},
 	{
 		"titulo": "LSP",
 		"slug": "lsp",
 		"ruta": "/lsp",
-		"icono": "lsp",
+		"icono": "/icons/lsp.svg",
 		"hijos": []
 	},
 	{
 		"titulo": "Plugins",
 		"slug": "plugins",
 		"ruta": "/plugins",
-		"icono": "plugin",
+		"icono": "/icons/plugin.svg",
 		"hijos": [
 			{
 				"titulo": "NeoTree",
@@ -71,7 +71,7 @@
 		"titulo": "Configuraciones de Neovim",
 		"slug": "configuraciones-neovim",
 		"ruta": "/configuraciones-neovim",
-		"icono": "configs",
+		"icono": "/icons/configs.svg",
 		"hijos": []
 	}
 ]

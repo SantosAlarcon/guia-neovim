@@ -2,7 +2,6 @@
 import Layout from "../layouts/Layout.astro";
 import LogoNeovim from "../components/LogoNeovim.astro";
 import BotonGuapo from "../components/BotonGuapo.astro";
-import IconoRotate from "../../public/icons/rotate.svg"
 import enlaces from "../enlaces.json"
 
 const postJSONLd = {
@@ -32,7 +31,7 @@ const postJSONLd = {
         </p>
         <div class="main__botones" role="navigation" aria-label="Navegación principal">
 			{
-enlaces.map((enlace) => <BotonGuapo width="auto" height="auto" icono={
+			enlaces.map((enlace) => <BotonGuapo width="auto" height="auto" icono={
 				enlace.icono
 				} url={
 				enlace.ruta
@@ -40,61 +39,29 @@ enlaces.map((enlace) => <BotonGuapo width="auto" height="auto" icono={
 				enlace.titulo
 				} />)
 			}
-			<!--          <a href="/instalacion" tabindex="0">Instalación</a> -->
-			<!--          <a href="/atajos" tabindex="0">Atajos</a> -->
-			<!--          <a href="/comandos" tabindex="0">Comandos</a> -->
-			<!--          <a href="/configuracion" tabindex="0">Configuración</a> -->
-			<!--          <a href="/plugins" tabindex="0">Plugins</a> -->
-			<!--          <a href="/configuraciones-neovim" tabindex="0" -->
-			<!--              >Configuraciones de Neovim</a -->
-			<!--          > -->
-			<!-- <a href="/lsp" tabindex="0">LSP</a> -->
         </div>
         <p class="keyboard-hint">
-            <kbd>Tab</kbd> para navegar, <kbd>Enter</kbd> para seleccionar
-		</p>
-		<!-- <BotonGuapo icono={<IconoRotate width="auto" height="auto" />} url="/" texto="Autocomandos" /> -->
+			<kbd>Tab</kbd> para navegar, &nbsp;&nbsp;&nbsp;<kbd>Enter</kbd> para seleccionar
+        </p>
     </main>
 </Layout>
 
 <style>
     .main__container {
-		width: 100%;
+        width: 100%;
         margin: auto;
-		font-size: clamp(1rem, 2vw, 1.25rem);
+        font-size: clamp(1rem, 2vw, 1.25rem);
         text-align: center;
-		transition: none;
-		padding: 4rem 0;
-	}
+        transition: none;
+        padding: 4rem 0;
+    }
 
     .main__botones {
-        margin-top: 2em;
+        margin: 2em auto 0;
         display: grid;
-		grid-template-columns: repeat(auto-fill, 300px);
-        justify-content: center;
-        color: var(--dark-fg);
-
-        gap: 1.5em;
-
-        @media (width < 720px) {
-            flex-direction: column;
-            width: 100%;
-        }
-
-        & a:visited {
-            color: inherit;
-            text-decoration: none;
-            background-color: var(--color-primary);
-            padding: 0.5em 1em;
-            border-radius: 1em;
-            box-shadow:
-                0 0.25em 1.5em var(--color-primary-shadow),
-                0 0.25em 1.5em var(--color-primary-shadow);
-            transition: all 0.3s ease-in-out;
-        }
-
-        & a:hover {
-        }
+        grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+        gap: 1.25rem;
+        padding: 0 1rem;
     }
 
     h1 {
@@ -109,12 +76,33 @@ enlaces.map((enlace) => <BotonGuapo width="auto" height="auto" icono={
         margin-top: 3.5em;
         font-size: 1rem;
         opacity: 0.75;
-        color: var(--dark-fg);
+		color: light-dark(var(--light-fg), var(--dark-fg));
     }
 
-    .main__botones a:focus {
-        outline: 3px solid var(--color-secondary);
-        outline-offset: 3px;
+    @media (prefers-reduced-motion: no-preference) {
+        .main__botones > * {
+            opacity: 0;
+            animation: cardIn 0.5s ease forwards;
+        }
+
+        .main__botones > *:nth-child(1) { animation-delay: 0s; }
+        .main__botones > *:nth-child(2) { animation-delay: 0.06s; }
+        .main__botones > *:nth-child(3) { animation-delay: 0.12s; }
+        .main__botones > *:nth-child(4) { animation-delay: 0.18s; }
+        .main__botones > *:nth-child(5) { animation-delay: 0.24s; }
+        .main__botones > *:nth-child(6) { animation-delay: 0.3s; }
+        .main__botones > *:nth-child(7) { animation-delay: 0.36s; }
+    }
+
+    @keyframes cardIn {
+        from {
+            opacity: 0;
+            transform: translateY(1.25rem) scale(0.97);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
     }
 </style>
 

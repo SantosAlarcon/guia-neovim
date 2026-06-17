@@ -1,6 +1,6 @@
 ---
 interface Props {
-    title: string;
+	title: string;
 	description: string;
 }
 
@@ -16,16 +16,16 @@ import OffCanvas from "../components/OffCanvas.astro";
 
 <!doctype html>
 <html lang="es">
-    <BaseHead title={title} description={description} />
-    <body>
-        <OffCanvas />
-        <Sidebar />
-        <Header />
-        <main class="main__container" transition:animate="slide">
-            <slot />
-        </main>
-        <Footer />
-        <ScrollTop />
-        <script is:inline src="/script-sonido.js" />
-    </body>
+	<BaseHead title={title} description={description} />
+	<body>
+		<OffCanvas />
+		<Sidebar />
+		<Header />
+		<main class="main__container" transition:animate="slide">
+			<slot />
+		</main>
+		<Footer />
+		<ScrollTop />
+		<script is:inline src="/script-sonido.js"></script>
+	</body>
 </html>
