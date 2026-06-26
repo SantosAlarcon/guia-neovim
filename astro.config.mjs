@@ -18,12 +18,7 @@ export default defineConfig({
 			type: "shiki",
 		},
 	},
-	experimental: {
-		rustCompiler: true,
-		// queueRendering: {
-		// 	enabled: true,
-		// },
-	},
+	rustCompiler: true,
 	site: "https://www.guia-neovim.es",
 	//base: "/guia-neovim/",
 	output: "static",
