@@ -220,13 +220,9 @@
 	code {
 		font-family: VictorMono;
 
-		color: var(--color-code);
+		color: light-dark(var(--color-code), var(--color-code-alt));
 		font-size: clamp(0.6rem, 1.75vw, .9rem);
 		font-weight: 900;
-
-		:global(html[theme="dark"]) & {
-			color: var(--color-code-alt);
-		}
 	}
 
 	pre {

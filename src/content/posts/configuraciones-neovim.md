@@ -76,7 +76,7 @@ te convence.
 
 ## AstroNvim
 
-![AstroNvim](https://astronvim.com/_astro/astrodark.CdHFd1a7_eiWC4.webp)
+![AstroNvim](https://astronvim.com/_astro/astrodark.CdHFd1a7_2kNCug.webp)
 
 Esta configuración incorpora un montón de características interesantes, aunque la
 estética no es mejor que las dos anteriores. Vamos a ver qué nos ofrece.
